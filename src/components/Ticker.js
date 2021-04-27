@@ -19,7 +19,31 @@ function Ticker() {
 
 		fetchData();
 	}, []);
-	return <>{!isLoading && <span>{data.sec_ticker}</span>}</>;
+	return (
+		<>
+			{!isLoading && (
+				<div>
+					<span>{data.sec_ticker}</span>
+					<table>
+						<thead>
+							<tr>
+								<th>Sector</th>
+								<th>ISIN</th>
+								<th>ROE SCORE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{data.sector}</td>
+								<td>{data.isin}</td>
+								<td>{data.roe_score}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			)}
+		</>
+	);
 }
 
 export default Ticker;
