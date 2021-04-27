@@ -17,6 +17,7 @@ function App() {
 		}
 		fetchData();
 	}, []);
+
 	return <div>{!isLoading && <BasicTable ROWS={rows} />}</div>;
 }
 
