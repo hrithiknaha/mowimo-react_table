@@ -10,6 +10,7 @@ td {
 th {
 	text-align: center;
 	padding: 1rem;
+	position: relative;
 	border-bottom: 1px solid $second-color;
 }
 
@@ -24,5 +25,27 @@ th {
 		justify-content: space-around;
 		align-items: center;
 		margin: 0 auto;
+	}
+}
+
+.tooltip {
+	& span {
+		visibility: hidden;
+		width: 12rem;
+		background-color: $second-color;
+		color: $first-color;
+		text-align: center;
+		border-radius: 0.5rem;
+		padding: 0.5rem 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 80%;
+		left: 50%;
+		margin-left: -60px;
+		cursor: pointer;
+	}
+
+	&:hover span {
+		visibility: visible;
 	}
 }

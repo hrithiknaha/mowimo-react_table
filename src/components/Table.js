@@ -52,11 +52,14 @@ function Table({ ROWS }) {
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map((column, index) => (
-								<th {...column.getHeaderProps(column.getSortByToggleProps())}>
+								<th
+									className="tooltip"
+									{...column.getHeaderProps(column.getSortByToggleProps())}
+								>
 									{column.render("Header")}{" "}
-									<span>
-										{column.isSorted ? (column.isSortedDesc ? "⬇️" : "⬆️") : ""}
-									</span>
+									{headerGroup.headers[index].tipText && (
+										<span>{headerGroup.headers[index].tipText}</span>
+									)}
 								</th>
 							))}
 						</tr>
