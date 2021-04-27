@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import BasicTable from "./components/BasicTable";
+import Ticker from "./components/Ticker";
 
 function App() {
 	const [rows, setRowsData] = useState([]);
@@ -18,7 +20,16 @@ function App() {
 		fetchData();
 	}, []);
 
-	return <div>{!isLoading && <BasicTable ROWS={rows} />}</div>;
+	return (
+		<Router>
+			<Switch>
+				<Route path="/" exact>
+					{!isLoading && <BasicTable ROWS={rows} />}
+				</Route>
+				<Route path="/score/:ticker" exact component={Ticker} />
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;

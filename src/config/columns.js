@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 export const COLUMNS = [
 	{
 		Header: "SEC TICKER",
 		accessor: "sec_ticker",
-		Cell: (e) => <a href={e.value}> {e.value} </a>,
+		Cell: (e) => <Link to={`/score/${e.value}`}> {e.value} </Link>,
 	},
 	{
 		Header: "SEC NAME",
