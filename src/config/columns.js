@@ -1,12 +1,12 @@
 export const COLUMNS = [
 	{
-		Header: "SEC NAME",
-		accessor: "sec_name",
-		tipText: "Text for the First Name tooltip",
-	},
-	{
 		Header: "SEC TICKER",
 		accessor: "sec_ticker",
+		Cell: (e) => <a href={e.value}> {e.value} </a>,
+	},
+	{
+		Header: "SEC NAME",
+		accessor: "sec_name",
 	},
 	{
 		Header: "ROE SCORE",
