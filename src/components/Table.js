@@ -12,7 +12,7 @@ import GlobalFilter from "./GlobalFilter";
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
-function BasicTable({ ROWS }) {
+function Table({ ROWS }) {
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => ROWS, []);
 
@@ -143,4 +143,4 @@ function BasicTable({ ROWS }) {
 	);
 }
 
-export default BasicTable;
+export default Table;

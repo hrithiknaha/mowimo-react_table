@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
-import BasicTable from "./components/BasicTable";
+import Table from "./components/Table";
 import Ticker from "./components/Ticker";
 
 import "../src/styles/styles.scss";
@@ -26,7 +26,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					{!isLoading && <BasicTable ROWS={rows} />}
+					{!isLoading && <Table ROWS={rows} />}
 				</Route>
 				<Route path="/score/:ticker" exact component={Ticker} />
 			</Switch>
