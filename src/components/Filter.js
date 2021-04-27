@@ -1,6 +1,7 @@
 import React from "react";
 
-function GlobalFilter({ filter, setFilter }) {
+//Just setting the filter as value and setFilter passed from parent as prop to onchange
+function Filter({ filter, setFilter }) {
 	return (
 		<div class="filter">
 			<input
@@ -18,4 +19,4 @@ function GlobalFilter({ filter, setFilter }) {
 	);
 }
 
-export default GlobalFilter;
+export default Filter;

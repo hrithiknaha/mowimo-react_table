@@ -7,7 +7,8 @@ function Ticker() {
 	const [isLoading, setLoading] = useState(true);
 
 	const { ticker } = useParams();
-	console.log(data);
+
+	//Fetching each ticker from api and setting it.
 	useEffect(() => {
 		async function fetchData() {
 			const response = await axios.get(

@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-
 import {
 	useTable,
 	useSortBy,
@@ -7,15 +6,17 @@ import {
 	usePagination,
 } from "react-table";
 import { COLUMNS } from "../config/columns";
-import GlobalFilter from "./GlobalFilter";
+import Filter from "./Filter";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
 function Table({ ROWS }) {
+	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => ROWS, []);
 
+	// All the props required for the react-table logic
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -42,12 +43,18 @@ function Table({ ROWS }) {
 		usePagination
 	);
 
+	//Destructuring filter data, page index data and page size from react-table state.
 	const { globalFilter, pageIndex, pageSize } = state;
 
 	return (
 		<div className="container table">
-			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+			{/* Filter component, passing filter data and setFilter data as props */}
+			<Filter filter={globalFilter} setFilter={setGlobalFilter} />
+			{/* All table props being spread out */}
 			<table {...getTableProps()}>
+				{/* Maping any header groups first (Grouped Header). then mapping each
+				column inside of grouped header to get each individual columnsa and its
+				index. Printing the Header and the tooltip */}
 				<thead>
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
@@ -65,6 +72,8 @@ function Table({ ROWS }) {
 						</tr>
 					))}
 				</thead>
+				{/* Mapping page index with default size of 10, and then mapping each row
+				inside of each age to get all the rows. */}
 				<tbody {...getTableBodyProps()}>
 					{page.map((row) => {
 						prepareRow(row);
@@ -80,6 +89,8 @@ function Table({ ROWS }) {
 					})}
 				</tbody>
 			</table>
+			{/* //React Table Actions for Changing page size, going to a custom page
+			number and pagination */}
 			<div className="table-actions">
 				<select
 					value={pageSize}

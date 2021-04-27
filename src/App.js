@@ -11,6 +11,7 @@ function App() {
 	const [rows, setRowsData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
+	//Calling the api once the page renders, and to avoid showing error, loading boolean has been used, So while the data is being fetched page will be loading
 	useEffect(() => {
 		async function fetchData() {
 			const result = await axios.get(
