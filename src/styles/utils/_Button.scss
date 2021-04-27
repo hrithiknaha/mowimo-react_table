@@ -1,0 +1,16 @@
+.button {
+	&-primary {
+		border-radius: 0.2rem;
+		padding: 0.5rem 1rem;
+	}
+	&-primary:not([disabled]) {
+		outline: none;
+		border: none;
+		color: $first-color;
+		background-color: $second-color;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

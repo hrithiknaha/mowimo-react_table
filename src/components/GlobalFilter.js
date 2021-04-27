@@ -2,10 +2,19 @@ import React from "react";
 
 function GlobalFilter({ filter, setFilter }) {
 	return (
-		<span>
-			Search{" "}
-			<input value={filter || ""} onChange={(e) => setFilter(e.target.value)} />
-		</span>
+		<div class="filter">
+			<input
+				className="filter-input"
+				type="text"
+				name="input-text"
+				id="input-text"
+				required
+				spellcheck="false"
+				value={filter || ""}
+				onChange={(e) => setFilter(e.target.value)}
+				placeholder="Filter"
+			/>
+		</div>
 	);
 }
 

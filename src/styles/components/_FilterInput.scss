@@ -1,0 +1,20 @@
+.filter {
+	padding-bottom: 2rem;
+	display: flex;
+	justify-content: center;
+
+	&-input {
+		outline: none;
+		background-color: transparent;
+		border: none;
+		color: $second-color;
+		padding-bottom: 0.5rem;
+		text-align: center;
+		border-bottom: 1px solid $second-color;
+
+		&::placeholder {
+			// color: $second-color;
+			text-align: center;
+		}
+	}
+}

@@ -5,6 +5,8 @@ import axios from "axios";
 import BasicTable from "./components/BasicTable";
 import Ticker from "./components/Ticker";
 
+import "../src/styles/styles.scss";
+
 function App() {
 	const [rows, setRowsData] = useState([]);
 	const [isLoading, setLoading] = useState(true);

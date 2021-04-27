@@ -7,10 +7,12 @@ import {
 	usePagination,
 } from "react-table";
 import { COLUMNS } from "../config/columns";
-import "./BasicTable.css";
 import GlobalFilter from "./GlobalFilter";
 
-function BasicTable({ ROWS, onRowClick }) {
+import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
+import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
+
+function BasicTable({ ROWS }) {
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => ROWS, []);
 
@@ -42,20 +44,8 @@ function BasicTable({ ROWS, onRowClick }) {
 
 	const { globalFilter, pageIndex, pageSize } = state;
 
-	onRowClick = (state, rowInfo, column, instance) => {
-		return {
-			onClick: (e) => {
-				console.log("A Td Element was clicked!");
-				console.log("it produced this event:", e);
-				console.log("It was in this column:", column);
-				console.log("It was in this row:", rowInfo);
-				console.log("It was in this table instance:", instance);
-			},
-		};
-	};
-
 	return (
-		<>
+		<div className="container table">
 			<GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 			<table {...getTableProps()}>
 				<thead>
@@ -87,7 +77,7 @@ function BasicTable({ ROWS, onRowClick }) {
 					})}
 				</tbody>
 			</table>
-			<div>
+			<div className="table-actions">
 				<select
 					value={pageSize}
 					onChange={(e) => setPageSize(Number(e.target.value))}
@@ -107,7 +97,7 @@ function BasicTable({ ROWS, onRowClick }) {
 					</strong>
 				</span>
 				<span>
-					| Go to page{" "}
+					Go to page{" "}
 					<input
 						type="number"
 						defaultValue={pageIndex + 1}
@@ -120,20 +110,36 @@ function BasicTable({ ROWS, onRowClick }) {
 						style={{ width: "50px" }}
 					/>
 				</span>
-				<button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-					{"<<"}
+				<button
+					className="button-primary"
+					onClick={() => gotoPage(0)}
+					disabled={!canPreviousPage}
+				>
+					<BsChevronDoubleLeft />
 				</button>
-				<button onClick={() => previousPage()} disabled={!canPreviousPage}>
-					Previous
+				<button
+					className="button-primary"
+					onClick={() => previousPage()}
+					disabled={!canPreviousPage}
+				>
+					<GrFormPreviousLink />
 				</button>
-				<button onClick={() => nextPage()} disabled={!canNextPage}>
-					Next
+				<button
+					className="button-primary"
+					onClick={() => nextPage()}
+					disabled={!canNextPage}
+				>
+					<GrFormNextLink />
 				</button>
-				<button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-					{">>"}
+				<button
+					className="button-primary"
+					onClick={() => gotoPage(pageCount - 1)}
+					disabled={!canNextPage}
+				>
+					<BsChevronDoubleRight />
 				</button>
 			</div>
-		</>
+		</div>
 	);
 }
 

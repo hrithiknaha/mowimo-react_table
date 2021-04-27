@@ -22,8 +22,7 @@ function Ticker() {
 	return (
 		<>
 			{!isLoading && (
-				<div>
-					<span>{data.sec_ticker}</span>
+				<div className="container ticker">
 					<table>
 						<thead>
 							<tr>
