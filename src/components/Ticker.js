@@ -29,14 +29,16 @@ function Ticker() {
 							<tr>
 								<th>Sector</th>
 								<th>ISIN</th>
-								<th>ROE SCORE</th>
+								<th>Industry</th>
+								<th>Total</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>{data.sector}</td>
 								<td>{data.isin}</td>
-								<td>{data.roe_score}</td>
+								<td>{data.industry}</td>
+								<td>{data.end_score}</td>
 							</tr>
 						</tbody>
 					</table>
