@@ -7,7 +7,7 @@ import Ticker from "./components/Ticker";
 
 import "../src/styles/styles.scss";
 
-function App() {
+function App({ i18n }) {
 	const [rows, setRowsData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
@@ -27,7 +27,7 @@ function App() {
 		<Router>
 			<Switch>
 				<Route path="/" exact>
-					{!isLoading && <Table ROWS={rows} />}
+					{!isLoading && <Table ROWS={rows} i18n={i18n} />}
 				</Route>
 				<Route path="/score/:ticker" exact component={Ticker} />
 			</Switch>

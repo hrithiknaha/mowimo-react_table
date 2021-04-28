@@ -5,6 +5,7 @@ import {
 	useGlobalFilter,
 	usePagination,
 } from "react-table";
+import { useTranslation } from "react-i18next";
 import { COLUMNS } from "../config/columns";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Filter from "./Filter";
@@ -12,10 +13,10 @@ import Filter from "./Filter";
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
-function Table({ ROWS }) {
+function Table(props) {
 	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
-	const data = useMemo(() => ROWS, [ROWS]);
+	const data = useMemo(() => props.ROWS, [props.ROWS]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
 	// All the props required for the react-table logic
@@ -51,8 +52,15 @@ function Table({ ROWS }) {
 	//Destructuring filter data, page index data and page size from react-table state.
 	const { globalFilter, pageIndex, pageSize } = state;
 
+	// i18n.changeLanguage("gr");
+
+	console.log(props);
+
+	const { t } = useTranslation();
+
 	return (
 		<div className="container table">
+			<h1>{t("paragraph")}</h1>
 			{/* Filter component, passing filter data and setFilter data as props */}
 			<Filter filter={globalFilter} setFilter={setGlobalFilter} />
 			{/* All table props being spread out */}
