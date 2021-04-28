@@ -19,7 +19,7 @@ function Ticker() {
 		}
 
 		fetchData();
-	}, []);
+	}, [ticker]);
 	return (
 		<>
 			{!isLoading && (

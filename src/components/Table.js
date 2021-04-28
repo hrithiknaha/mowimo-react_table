@@ -15,7 +15,7 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 function Table({ ROWS }) {
 	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
-	const data = useMemo(() => ROWS, []);
+	const data = useMemo(() => ROWS, [ROWS]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
 	// All the props required for the react-table logic
