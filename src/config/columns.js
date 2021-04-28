@@ -76,8 +76,8 @@ export const COLUMNS = [
 		accessor: "profit_growth_score",
 	},
 	{
-		Header: "14",
-		tipText: "END SCORE",
+		Header: "Total",
+		// tipText: "END SCORE",
 		accessor: "end_score",
 	},
 ];
