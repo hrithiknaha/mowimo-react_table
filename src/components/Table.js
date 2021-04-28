@@ -6,6 +6,7 @@ import {
 	usePagination,
 } from "react-table";
 import { COLUMNS } from "../config/columns";
+import { DEFAULT_SORT } from "../config/defaultSort";
 import Filter from "./Filter";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
@@ -15,6 +16,7 @@ function Table({ ROWS }) {
 	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => ROWS, []);
+	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
 	// All the props required for the react-table logic
 	const {
@@ -37,6 +39,9 @@ function Table({ ROWS }) {
 		{
 			columns,
 			data,
+			initialState: {
+				sortBy: [defaultSort],
+			},
 		},
 		useGlobalFilter,
 		useSortBy,
