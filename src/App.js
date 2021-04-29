@@ -15,7 +15,7 @@ function App({ i18n }) {
 	useEffect(() => {
 		async function fetchData() {
 			const result = await axios.get(
-				"https://mysql-test-2021.herokuapp.com/scores"
+				"https://mysql-test-2021.herokuapp.com/levermann/all"
 			);
 			setRowsData(result.data);
 			setLoading(false);
