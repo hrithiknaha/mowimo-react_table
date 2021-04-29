@@ -25,6 +25,14 @@ th {
 		justify-content: space-around;
 		align-items: center;
 		margin: 0 auto;
+
+		@include atSmall {
+			flex-direction: column;
+
+			& button {
+				display: block;
+			}
+		}
 	}
 }
 

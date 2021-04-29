@@ -1,5 +1,9 @@
 .container {
 	padding: 0 10rem;
+
+	@include atSmall {
+		padding: 0 1rem;
+	}
 }
 
 body {
