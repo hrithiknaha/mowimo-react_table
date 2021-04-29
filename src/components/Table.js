@@ -60,7 +60,7 @@ function Table(props) {
 
 	return (
 		<div className="container table">
-			<h1>{t("paragraph")}</h1>
+			{/* <h1>{t("paragraph")}</h1> */}
 			{/* Filter component, passing filter data and setFilter data as props */}
 			<Filter filter={globalFilter} setFilter={setGlobalFilter} />
 			{/* All table props being spread out */}

@@ -15,7 +15,7 @@ i18n
 			gr: languageGR,
 		},
 		/* default language when load the website in browser */
-		lng: "gr",
+		lng: "en",
 		/* When react i18next not finding any language to as default in borwser */
 		fallbackLng: "en",
 		/* debugger For Development environment */
