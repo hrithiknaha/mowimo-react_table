@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
 	useTable,
 	useSortBy,
@@ -9,15 +9,19 @@ import { useTranslation } from "react-i18next";
 import { COLUMNS } from "../config/columns";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Filter from "./Filter";
+import axios from "axios";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import Sidebar from "./Sidebar";
 
-function Table(props) {
+function Table({ ROWS }) {
+	const [selected, setSelected] = useState("all");
+	const [rows, setRowsData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
 	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
-	const data = useMemo(() => props.ROWS, [props.ROWS]);
+	const data = useMemo(() => rows, [rows]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
 	// All the props required for the react-table logic
@@ -55,13 +59,75 @@ function Table(props) {
 
 	// i18n.changeLanguage("gr");
 
-	console.log(props);
-
 	const { t } = useTranslation();
+
+	//Calling the api once the page renders, and to avoid showing error, loading boolean has been used, So while the data is being fetched page will be loading
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	async function fetchData() {
+		const result = await axios.get(
+			"https://mysql-test-2021.herokuapp.com/levermann/all"
+		);
+		setRowsData(result.data);
+		setLoading(false);
+	}
+
+	async function callDowJones() {
+		const result = await axios.get(
+			"https://mysql-test-2021.herokuapp.com/levermann/DowJones"
+		);
+		setRowsData(result.data);
+	}
+
+	async function callSP() {
+		const result = await axios.get(
+			"https://mysql-test-2021.herokuapp.com/levermann/SP500"
+		);
+		setRowsData(result.data);
+	}
+
+	async function callNasdaq() {
+		const result = await axios.get(
+			"https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100"
+		);
+		setRowsData(result.data);
+	}
+
+	const handleAll = () => {
+		console.log("All");
+		setSelected("all");
+		fetchData();
+	};
+
+	const handleDowJones = () => {
+		console.log("Dow Jones");
+		setSelected("dowjones");
+		callDowJones();
+	};
+
+	const handleSP = () => {
+		console.log("SP");
+		setSelected("sp");
+		callSP();
+	};
+
+	const handleNasdaq = () => {
+		console.log("nasdaq");
+		setSelected("nasdaq");
+		callNasdaq();
+	};
 
 	return (
 		<div className="container">
-			<Sidebar />
+			<Sidebar
+				handleAll={handleAll}
+				handleDowJones={handleDowJones}
+				handleSP={handleSP}
+				handleNasdaq={handleNasdaq}
+				selected={selected}
+			/>
 			<div className="table">
 				{/* <h1>{t("paragraph")}</h1> */}
 				{/* Filter component, passing filter data and setFilter data as props */}
