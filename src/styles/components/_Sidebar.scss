@@ -1,0 +1,36 @@
+.sidebar {
+	height: 100%;
+	width: 160px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 6rem;
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		height: 20rem;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	&-selected {
+		border-bottom: 1px solid $second-color;
+		width: 50%;
+		padding-bottom: 1rem;
+	}
+
+	& a {
+		text-align: center;
+		text-decoration: none;
+		color: #818181;
+
+		&:hover {
+			color: $second-color;
+			cursor: pointer;
+		}
+	}
+}
