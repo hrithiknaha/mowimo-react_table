@@ -3,6 +3,11 @@
 	display: flex;
 	justify-content: center;
 
+	@include atSmall {
+		width: 3rem;
+		padding-bottom: 0;
+	}
+
 	&-input {
 		outline: none;
 		background-color: transparent;
