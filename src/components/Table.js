@@ -18,7 +18,6 @@ import Sidebar from "./Sidebar";
 function Table({ ROWS }) {
 	const [selected, setSelected] = useState("all");
 	const [rows, setRowsData] = useState([]);
-	const [isLoading, setLoading] = useState(true);
 	const [weeks, setWeeks] = useState([]);
 	const [weekSelected, setWeekSelected] = useState("");
 	// memoization of column and row data, as prescribed by react-table
