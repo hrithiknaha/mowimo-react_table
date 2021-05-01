@@ -3,14 +3,17 @@ import i18n from "../i18n";
 
 export const COLUMNS = [
 	{
-		Header: i18n.t("SEC TICKER"),
-		accessor: "sec_ticker",
-		Cell: (e) => <Link to={`/score/${e.value}`}> {e.value} </Link>,
-	},
-	{
 		Header: i18n.t("SEC NAME"),
 		accessor: "sec_name",
+		Cell: ({ row, value }) => (
+			<Link to={`/score/${row.original.sec_ticker}`}>{value}</Link>
+		),
 	},
+	{
+		Header: i18n.t("SEC TICKER"),
+		accessor: "sec_ticker",
+	},
+
 	{
 		Header: "1",
 		tipText: i18n.t("1"),
