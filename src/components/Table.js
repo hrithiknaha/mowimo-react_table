@@ -19,6 +19,8 @@ function Table({ ROWS }) {
 	const [selected, setSelected] = useState("all");
 	const [rows, setRowsData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
+	const [weeks, setWeeks] = useState([]);
+	const [weekSelected, setWeekSelected] = useState("");
 	// memoization of column and row data, as prescribed by react-table
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => rows, [rows]);
@@ -64,33 +66,33 @@ function Table({ ROWS }) {
 	//Calling the api once the page renders, and to avoid showing error, loading boolean has been used, So while the data is being fetched page will be loading
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [weekSelected]);
 
 	async function fetchData() {
 		const result = await axios.get(
-			"https://mysql-test-2021.herokuapp.com/levermann/all"
+			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 		);
-		setRowsData(result.data);
-		setLoading(false);
+		setRowsData(result.data[1]);
+		setWeeks(result.data[0].weeks_available);
 	}
 
 	async function callDowJones() {
 		const result = await axios.get(
-			"https://mysql-test-2021.herokuapp.com/levermann/DowJones"
+			`https://mysql-test-2021.herokuapp.com/levermann/DowJones/${weekSelected}`
 		);
 		setRowsData(result.data);
 	}
 
 	async function callSP() {
 		const result = await axios.get(
-			"https://mysql-test-2021.herokuapp.com/levermann/SP500"
+			`https://mysql-test-2021.herokuapp.com/levermann/SP500/${weekSelected}`
 		);
 		setRowsData(result.data);
 	}
 
 	async function callNasdaq() {
 		const result = await axios.get(
-			"https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100"
+			`https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100/${weekSelected}`
 		);
 		setRowsData(result.data);
 	}
@@ -119,6 +121,12 @@ function Table({ ROWS }) {
 		callNasdaq();
 	};
 
+	const handleWeekChange = (e) => {
+		console.log(e.target.value);
+		if (e.target.value === undefined) setWeekSelected("");
+		else setWeekSelected(e.target.value);
+	};
+
 	return (
 		<div className="container">
 			<Sidebar
@@ -131,7 +139,23 @@ function Table({ ROWS }) {
 			<div className="table">
 				{/* <h1>{t("paragraph")}</h1> */}
 				{/* Filter component, passing filter data and setFilter data as props */}
-				<Filter filter={globalFilter} setFilter={setGlobalFilter} />
+				<div className="table-header">
+					<Filter filter={globalFilter} setFilter={setGlobalFilter} />
+					<div className="week-selector">
+						<label>Select Week</label>
+						<select onChange={handleWeekChange}>
+							<option value="">Default</option>
+							{weeks.map((week) => {
+								return (
+									<option key={week} value={week}>
+										{week}
+									</option>
+								);
+							})}
+						</select>
+					</div>
+				</div>
+
 				{/* All table props being spread out */}
 				<table {...getTableProps()}>
 					{/* Maping any header groups first (Grouped Header). then mapping each

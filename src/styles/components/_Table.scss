@@ -18,6 +18,13 @@ th {
 	padding-top: 3rem;
 	padding-left: 3rem;
 
+	&-header {
+		display: flex;
+		justify-content: space-around;
+		width: 40%;
+		margin: 0 auto;
+	}
+
 	&-actions {
 		width: 70%;
 		padding: 2rem 0;
@@ -56,5 +63,17 @@ th {
 
 	&:hover span {
 		visibility: visible;
+	}
+}
+
+.week {
+	&-selector {
+		& label {
+			padding-right: 1rem;
+		}
+
+		& select {
+			width: 5rem;
+		}
 	}
 }
