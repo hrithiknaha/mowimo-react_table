@@ -164,13 +164,13 @@ function Table({ ROWS }) {
 				<div className="table-header">
 					<Filter filter={globalFilter} setFilter={setGlobalFilter} />
 					<div className="week-selector">
-						<label>Select Week</label>
+						<label>{t("Calender Week")}</label>
 						<select onChange={handleWeekChange}>
 							<option value="">Default</option>
 							{weeks.map((week) => {
 								return (
 									<option key={week} value={week}>
-										{week}
+										{t("Week")} {week}
 									</option>
 								);
 							})}
@@ -227,19 +227,19 @@ function Table({ ROWS }) {
 						{[10, 25, 50].map((pageSize) => {
 							return (
 								<option key={pageSize} value={pageSize}>
-									Show {pageSize}
+									{t("Show")} {pageSize}
 								</option>
 							);
 						})}
 					</select>
 					<span>
-						Page{" "}
+						{t("Page")}{" "}
 						<strong>
-							{pageIndex + 1} of {pageOptions.length}{" "}
+							{pageIndex + 1} {t("of")} {pageOptions.length}{" "}
 						</strong>
 					</span>
 					<span>
-						Go to page{" "}
+						{t("Go to Page")}{" "}
 						<input
 							type="number"
 							defaultValue={pageIndex + 1}

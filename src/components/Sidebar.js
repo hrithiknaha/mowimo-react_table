@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Sidebar({
 	handleAll,
@@ -8,6 +9,7 @@ function Sidebar({
 	handleSP,
 	selected,
 }) {
+	const { t } = useTranslation();
 	return (
 		<div className="sidebar">
 			<div className="sidebar-wrapper">
@@ -15,7 +17,7 @@ function Sidebar({
 					className={selected === "all" ? "sidebar-selected" : ""}
 					onClick={handleAll}
 				>
-					All
+					{t("All")}
 				</a>
 				<a
 					className={selected === "dowjones" ? "sidebar-selected" : ""}
