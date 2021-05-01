@@ -1,3 +1,8 @@
 .ticker {
 	padding-top: 3rem;
+
+	@include atSmall {
+		width: 100%;
+		padding: 2rem 2rem;
+	}
 }
