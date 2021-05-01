@@ -24,6 +24,11 @@ th {
 		justify-content: space-around;
 		width: 40%;
 		margin: 0 auto;
+
+		@include atSmall {
+			padding: 3rem 0;
+			width: 100%;
+		}
 	}
 
 	&-actions {
@@ -37,6 +42,7 @@ th {
 
 		@include atSmall {
 			flex-direction: column;
+			height: 20rem;
 
 			& button {
 				display: block;
@@ -69,8 +75,16 @@ th {
 
 .week {
 	&-selector {
+		@include atSmall {
+			width: 3rem;
+		}
 		& label {
 			padding-right: 1rem;
+
+			@include atSmall {
+				text-align: center;
+				width: 100%;
+			}
 		}
 
 		& select {
