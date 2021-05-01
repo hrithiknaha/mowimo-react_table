@@ -17,6 +17,7 @@ th {
 .table {
 	padding-top: 3rem;
 	padding-left: 3rem;
+	overflow-x: auto;
 
 	&-header {
 		display: flex;
