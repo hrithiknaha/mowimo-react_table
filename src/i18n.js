@@ -12,7 +12,7 @@ i18n
 	.init({
 		resources: {
 			en: languageEN,
-			gr: languageGR,
+			de: languageGR,
 		},
 		/* default language when load the website in browser */
 		// lng: "en",
