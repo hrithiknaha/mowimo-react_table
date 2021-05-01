@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function Ticker() {
 	const [data, setData] = useState({});
 	const [isLoading, setLoading] = useState(true);
 
 	const { ticker } = useParams();
+
+	const { t } = useTranslation();
 
 	//Fetching each ticker from api and setting it.
 	useEffect(() => {
@@ -27,10 +30,10 @@ function Ticker() {
 					<table>
 						<thead>
 							<tr>
-								<th>Sector</th>
-								<th>ISIN</th>
-								<th>Industry</th>
-								<th>Total</th>
+								<th>{t("Sector")}</th>
+								<th>{t("ISIN")}</th>
+								<th>{t("Industry")}</th>
+								<th>{t("Total")}</th>
 							</tr>
 						</thead>
 						<tbody>
