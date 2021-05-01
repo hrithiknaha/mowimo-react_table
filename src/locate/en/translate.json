@@ -25,6 +25,11 @@
         "Calender Week": "Calender Week",
         "Week": "Week",
 
-        "All": "All"
+        "All": "All",
+
+        "Sector": "Sector",
+        "Industry": "Industry",
+        "ISIN": "ISIN"
+
     }
 }
