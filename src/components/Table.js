@@ -65,10 +65,28 @@ function Table({ ROWS }) {
 
 	//Calling the api once the page renders, and to avoid showing error, loading boolean has been used, So while the data is being fetched page will be loading
 	useEffect(() => {
-		fetchData();
+		switch (selected) {
+			case "all":
+				fetchData();
+				break;
+			case "dowjones":
+				callDowJones();
+				break;
+			case "sp":
+				callSP();
+				break;
+			case "nasdaq":
+				callNasdaq();
+				break;
+			default:
+				fetchData();
+		}
 	}, [weekSelected]);
 
 	async function fetchData() {
+		console.log(
+			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
+		);
 		const result = await axios.get(
 			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 		);
@@ -81,9 +99,15 @@ function Table({ ROWS }) {
 			`https://mysql-test-2021.herokuapp.com/levermann/DowJones/${weekSelected}`
 		);
 		setRowsData(result.data);
+		console.log(
+			`https://mysql-test-2021.herokuapp.com/levermann/DowJones/${weekSelected}`
+		);
 	}
 
 	async function callSP() {
+		console.log(
+			`https://mysql-test-2021.herokuapp.com/levermann/SP500/${weekSelected}`
+		);
 		const result = await axios.get(
 			`https://mysql-test-2021.herokuapp.com/levermann/SP500/${weekSelected}`
 		);
@@ -91,6 +115,9 @@ function Table({ ROWS }) {
 	}
 
 	async function callNasdaq() {
+		console.log(
+			`https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100/${weekSelected}`
+		);
 		const result = await axios.get(
 			`https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100/${weekSelected}`
 		);
@@ -98,31 +125,26 @@ function Table({ ROWS }) {
 	}
 
 	const handleAll = () => {
-		console.log("All");
 		setSelected("all");
 		fetchData();
 	};
 
 	const handleDowJones = () => {
-		console.log("Dow Jones");
 		setSelected("dowjones");
 		callDowJones();
 	};
 
 	const handleSP = () => {
-		console.log("SP");
 		setSelected("sp");
 		callSP();
 	};
 
 	const handleNasdaq = () => {
-		console.log("nasdaq");
 		setSelected("nasdaq");
 		callNasdaq();
 	};
 
 	const handleWeekChange = (e) => {
-		console.log(e.target.value);
 		if (e.target.value === undefined) setWeekSelected("");
 		else setWeekSelected(e.target.value);
 	};
