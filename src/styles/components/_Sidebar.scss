@@ -9,6 +9,12 @@
 	overflow-x: hidden;
 	padding-top: 6rem;
 
+	@include atSmall {
+		display: block;
+		width: 100%;
+		position: relative;
+	}
+
 	&-wrapper {
 		display: flex;
 		flex-direction: column;
