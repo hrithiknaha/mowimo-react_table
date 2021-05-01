@@ -1,13 +1,30 @@
 {
     "translations": {
-        "paragraph": "Einführung",
-        "author": {
-            "title": "Autorenname",
-            "value": "Tariqul"
-        },
-        "description": {
-            "title": "Beschreibung",
-            "value": "Immer wenn ich starken Tabakrauch rieche, wenn ich mich in einem geschlossenen Raum wie einem Raum, einem Zug oder einem Flugzeug befinde, werde ich wütend. Es gibt verschiedene Gründe. Erstens haben medizinische Forscher gezeigt, dass Passivrauchen, dh der Rauch von Zigaretten anderer Menschen, Krebs und andere Gesundheitsprobleme verursacht. Wenn der Rauch Autoabgase oder brennender Müll wäre, würden wir das Feuer löschen und die Fenster öffnen, um den Rauch loszuwerden. Zweitens stinkt es. Der Rauch driftet vom Raucher weg und füllt den Raum."
-        }
+        "Page" : "Seite",
+        "of": "von",
+        "Go to Page": "Gehe zu Seite",
+        "Show": "Zeige",
+
+        "SEC TICKER": "Ticker",
+        "SEC NAME": "AKTIE",
+        "1": "Eigenkapitalrendite LJ",
+        "2": "EBIT-Marge LJ",
+        "3": "Eigenkapitalquote LJ",
+        "4": "KGV 5 Jahre",
+        "5": "KGV aktuell",
+        "6": "Analystenmeinungen",
+        "7": "Reaktion auf Quartalszahlen",
+        "8": "Gewinnrevision",
+        "9": "Kurs heute gg. Kurs vor 6 Monaten",
+        "10": "Kurs heute gg. Kurs vor 1 Jahr",
+        "11": "Kursmomentum steigend",
+        "12": "Dreimonatsreversal",
+        "13": "Gewinnwachstum",
+        "Total": "Gesamt",
+
+        "Calender Week": "Kalendarwoche",
+        "Week": "Woche",
+
+        "All": "Alle"
     }
 }

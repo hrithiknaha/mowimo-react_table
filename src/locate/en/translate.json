@@ -1,13 +1,30 @@
 {
     "translations": {
-        "paragraph": "Introduction",
-        "author": {
-            "title": "Author Name",
-            "value": "Tariqul"
-        },
-        "description": {
-            "title": "description",
-            "value": "Whenever I smell strong tobacco smoke when I'm in an enclosed space such as a room, train, or aircraft, I begin to get angry. There are several reasons. First, medical researchers have shown that secondhand smoke, that is, the smoke from other people's cigarettes, causes cancer and other health problems. If the smoke were car exhaust or burning trash, we would put out the fire and open the windows to get rid of the smoke. Second, it stinks. The smoke drifts away from the smoker and fills the room."
-        }
+        "page" : "page",
+        "of": "of",
+        "Go to Page": "Go to Page",
+        "Show": "Show",
+
+        "SEC TICKER": "Ticker",
+        "SEC NAME": "Stock",
+        "1": "Return on Equity CY",
+        "2": "EBIT-Margin CY",
+        "3": "Equity Ratio CY",
+        "4": "KP/E ratio 5Y",
+        "5": "P/E ratio CY",
+        "6": "Analyst opinions",
+        "7": "Reaction to quarterly earnings",
+        "8": "Profit revision",
+        "9": "Price today vs. Price 6 months ago",
+        "10": "Price today vs. Price 1 year ago",
+        "11": "Price momentum",
+        "12": "Three-month-reversal",
+        "13": "Profit growth",
+        "Total": "Gesamt",
+
+        "Calender Week": "Calender Week",
+        "Week": "Week",
+
+        "All": "All"
     }
 }
