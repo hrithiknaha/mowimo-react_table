@@ -5,9 +5,10 @@ import XHR from "i18next-xhr-backend";
 import languageEN from "./locate/en/translate.json";
 import languageGR from "./locate/gr/translate.json";
 
+//i18n configuration file
 i18n
 	.use(XHR)
-	.use(LanguageDetector)
+	.use(LanguageDetector) //Detects the language of the browser
 	.use(initReactI18next)
 	.init({
 		resources: {
@@ -19,7 +20,7 @@ i18n
 		/* When react i18next not finding any language to as default in borwser */
 		fallbackLng: "en",
 		/* debugger For Development environment */
-		debug: true,
+		debug: false,
 		ns: ["translations"],
 		defaultNS: "translations",
 		keySeparator: ".",

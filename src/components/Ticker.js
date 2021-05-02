@@ -7,8 +7,10 @@ function Ticker() {
 	const [data, setData] = useState({});
 	const [isLoading, setLoading] = useState(true);
 
+	//Getting the paramater from the URL for ex, /score/AGM or /score/AAPL, so ticker will have AGM or AAPLE or any other ticker name depending on which URL it is going
 	const { ticker } = useParams();
 
+	//The translation function
 	const { t } = useTranslation();
 
 	//Fetching each ticker from api and setting it.

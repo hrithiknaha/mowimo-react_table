@@ -16,16 +16,18 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import Sidebar from "./Sidebar";
 
 function Table({ ROWS }) {
+	//State of Table Component, state are basically the data that drives a component.
 	const [selected, setSelected] = useState("all");
 	const [rows, setRowsData] = useState([]);
 	const [weeks, setWeeks] = useState([]);
 	const [weekSelected, setWeekSelected] = useState("");
-	// memoization of column and row data, as prescribed by react-table
+
+	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
 	const columns = useMemo(() => COLUMNS, []);
 	const data = useMemo(() => rows, [rows]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
-	// All the props required for the react-table logic
+	// All the props required for the react-table logic, boilerplate code from react table
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -46,10 +48,14 @@ function Table({ ROWS }) {
 		{
 			columns,
 			data,
+
+			// Setting default state of sort from the object declared in /config/defaultSort
 			initialState: {
 				sortBy: [defaultSort],
 			},
 		},
+
+		// Using Filter, Sort and Pagination logic, for them to work we need to add these three in here, they are initialized here.
 		useGlobalFilter,
 		useSortBy,
 		usePagination
@@ -58,11 +64,10 @@ function Table({ ROWS }) {
 	//Destructuring filter data, page index data and page size from react-table state.
 	const { globalFilter, pageIndex, pageSize } = state;
 
-	// i18n.changeLanguage("gr");
-
+	//Getting the translation function for Internilations
 	const { t } = useTranslation();
 
-	//Calling the api once the page renders, and to avoid showing error, loading boolean has been used, So while the data is being fetched page will be loading
+	//Use effect will be called once after the page renders, and then everytime the weekSelected data state is changed. Depending on which Index is selected the switch case logic will call the subsequent functions.
 	useEffect(() => {
 		switch (selected) {
 			case "all":
@@ -82,6 +87,7 @@ function Table({ ROWS }) {
 		}
 	}, [weekSelected]);
 
+	//The Functions for calling backend API, also after getting the result, the data is stored by the setRowsData and SetWeeks in the state, See so state is sort of the memory of the application, but it changes everytime you refresh the page, but as we are calling the backend api everytime the page refreshes, thanks to UseEffect fucntion above, nothing is lost
 	async function fetchData() {
 		console.log(
 			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
@@ -123,6 +129,7 @@ function Table({ ROWS }) {
 		setRowsData(result.data);
 	}
 
+	//These are called hanlders, they are run when ever a button is clicker or the dropdown is changed, they are called basically when there is a DOM Change
 	const handleAll = () => {
 		setSelected("all");
 		fetchData();
@@ -150,6 +157,8 @@ function Table({ ROWS }) {
 
 	return (
 		<div className="container">
+			{/* Sidebar component is called here and the handle functions are passed as
+			props */}
 			<Sidebar
 				handleAll={handleAll}
 				handleDowJones={handleDowJones}
@@ -158,7 +167,6 @@ function Table({ ROWS }) {
 				selected={selected}
 			/>
 			<div className="table">
-				{/* <h1>{t("paragraph")}</h1> */}
 				{/* Filter component, passing filter data and setFilter data as props */}
 				<div className="table-header">
 					<Filter filter={globalFilter} setFilter={setGlobalFilter} />
@@ -223,6 +231,7 @@ function Table({ ROWS }) {
 						value={pageSize}
 						onChange={(e) => setPageSize(Number(e.target.value))}
 					>
+						{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
 						{[10, 25, 50].map((pageSize) => {
 							return (
 								<option key={pageSize} value={pageSize}>
@@ -232,6 +241,9 @@ function Table({ ROWS }) {
 						})}
 					</select>
 					<span>
+						{/* All the {t()} functions are basically the translation functions, and
+						depending on the browser language it will automatically detect it
+						and switch between Englisha and German */}
 						{t("Page")}{" "}
 						<strong>
 							{pageIndex + 1} {t("of")} {pageOptions.length}{" "}

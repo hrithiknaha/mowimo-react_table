@@ -6,6 +6,7 @@ import Ticker from "./components/Ticker";
 
 import "../src/styles/styles.scss";
 
+//App Function passing in the i18n props to the table component
 function App({ i18n }) {
 	return (
 		<Router>

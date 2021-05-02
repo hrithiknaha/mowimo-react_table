@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import i18n from "../i18n";
 
+//The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
+// accessor is basically the data from which it should map each column from the api returned json,
+// Tiptext is the hover over tip value which needs to be displayed
+// And cell is in a nutshell t function which can be modified, here i have modified only the Sec_name cell to retuen a Link to the subsequent Ticker page
+
 export const COLUMNS = [
 	{
 		Header: i18n.t("SEC NAME"),
