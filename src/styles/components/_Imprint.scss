@@ -1,0 +1,10 @@
+.imprint {
+	height: 100vh;
+	padding-top: 4rem;
+
+	& > h3 {
+		border-bottom: 1px solid $second-color;
+		padding-bottom: 1rem;
+		margin-bottom: 3rem;
+	}
+}
