@@ -67,10 +67,11 @@ th {
 		padding: 0.5rem 0;
 		position: absolute;
 		z-index: 1;
-		bottom: 80%;
+		top: 100%;
 		left: 50%;
 		margin-left: -60px;
 		cursor: pointer;
+		opacity: 80%;
 	}
 
 	&:hover span {
