@@ -3,6 +3,7 @@ import React from "react";
 function Policy() {
 	return (
 		<div className="container policy">
+			<h3>Privacy Police</h3>
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ullam
 				deserunt possimus nesciunt minima illum sapiente earum doloremque
