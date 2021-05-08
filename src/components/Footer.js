@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
 	return (
 		<div className="footer">
 			<div className="footer-links">
-				<p>Privacy Policy</p>
+				<Link to="/policy">Privacy Policy</Link>
 				<p>|</p>
-				<p>Imprint</p>
+				<Link to="/imprint">Imprint</Link>
 			</div>
 		</div>
 	);
