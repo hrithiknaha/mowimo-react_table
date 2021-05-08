@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Table from "./components/Table";
 import Ticker from "./components/Ticker";
+import Footer from "./components/Footer";
 
 import "../src/styles/styles.scss";
 
@@ -16,6 +17,7 @@ function App({ i18n }) {
 				</Route>
 				<Route path="/score/:ticker" exact component={Ticker} />
 			</Switch>
+			<Footer />
 		</Router>
 	);
 }
