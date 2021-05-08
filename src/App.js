@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Table from "./components/Table";
 import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
+import Policy from "./components/Policy";
+import Imprint from "./components/Imprint";
 
 import "../src/styles/styles.scss";
 
@@ -16,6 +18,8 @@ function App({ i18n }) {
 					<Table i18n={i18n} />
 				</Route>
 				<Route path="/score/:ticker" exact component={Ticker} />
+				<Route path="/policy" component={Policy} />
+				<Route path="/imprint" component={Imprint} />
 			</Switch>
 			<Footer />
 		</Router>
