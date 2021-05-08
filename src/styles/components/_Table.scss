@@ -10,14 +10,19 @@ td {
 th {
 	text-align: center;
 	padding: 1rem;
-	position: relative;
+	position: sticky;
+	top: 0;
 	border-bottom: 1px solid $second-color;
+	background-color: darken($color: $first-color, $amount: 60%);
 }
 
 .table {
 	padding-top: 3rem;
 	padding-left: 3rem;
-	overflow-x: auto;
+
+	@include atSmall {
+		overflow-x: auto;
+	}
 
 	&-header {
 		display: flex;
