@@ -29,6 +29,20 @@
 
         "Sector": "Sektor",
         "Industry": "Industrie",
-        "ISIN": "ISIN"
+        "ISIN": "ISIN",
+
+        "Stock Earning": "Quartalszahlen",
+        "Score Selector": "Aktienauswahl",
+        "Number": "Nummer",
+        "Score": "Score",
+        "Privacy Policy": "Datenschutzerklärung",
+        "Imprint": "Impressum",
+        "roe_value": "Eigenkapitalrendite",
+        "ebit_margin_value": "EBIT-Marge",
+        "equity_ratio_value": "Eigenkapitalquote",
+        "pe_ratio_5y_value": "KGV 5 Jahre",
+        "price_today_vs_year_value": "Kurs heute gg. Kurs vor 1 Jahr",
+        "profit_growth_value": "Gewinnwachstum"
+
     }
 }

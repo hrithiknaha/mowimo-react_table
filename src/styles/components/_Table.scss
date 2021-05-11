@@ -27,7 +27,6 @@ th {
 	&-header {
 		display: flex;
 		justify-content: space-around;
-		width: 40%;
 		margin: 0 auto;
 
 		@include atSmall {
@@ -95,6 +94,14 @@ th {
 
 		& select {
 			width: 7rem;
+		}
+	}
+}
+
+.score {
+	&-selector {
+		& label {
+			padding-right: 1rem;
 		}
 	}
 }
