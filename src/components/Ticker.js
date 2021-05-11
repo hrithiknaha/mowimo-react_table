@@ -17,7 +17,7 @@ function Ticker() {
 	useEffect(() => {
 		async function fetchData() {
 			const response = await axios.get(
-				`https://mysql-test-2021.herokuapp.com/score/${ticker}`
+				`https://levermy.herokuapp.com/leverman/stock/${ticker}`
 			);
 			setData(response.data[0]);
 			setLoading(false);
