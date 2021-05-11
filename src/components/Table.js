@@ -89,11 +89,10 @@ function Table({ ROWS }) {
 
 	//The Functions for calling backend API, also after getting the result, the data is stored by the setRowsData and SetWeeks in the state, See so state is sort of the memory of the application, but it changes everytime you refresh the page, but as we are calling the backend api everytime the page refreshes, thanks to UseEffect fucntion above, nothing is lost
 	async function fetchData() {
-		console.log(
-			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
-		);
+		console.log(`https://levermy.herokuapp.com/leverman?week=${weekSelected}`);
 		const result = await axios.get(
-			`https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?week=${weekSelected}`
+			// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 		);
 		setRowsData(result.data[1]);
 		setWeeks(result.data[0].weeks_available);
@@ -101,32 +100,32 @@ function Table({ ROWS }) {
 
 	async function callDowJones() {
 		const result = await axios.get(
-			`https://mysql-test-2021.herokuapp.com/levermann/DowJones/${weekSelected}`
+			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}`
 		);
-		setRowsData(result.data);
+		setRowsData(result.data[1]);
 		console.log(
-			`https://mysql-test-2021.herokuapp.com/levermann/DowJones/${weekSelected}`
+			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}`
 		);
 	}
 
 	async function callSP() {
 		console.log(
-			`https://mysql-test-2021.herokuapp.com/levermann/SP500/${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}`
 		);
 		const result = await axios.get(
-			`https://mysql-test-2021.herokuapp.com/levermann/SP500/${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}`
 		);
-		setRowsData(result.data);
+		setRowsData(result.data[1]);
 	}
 
 	async function callNasdaq() {
 		console.log(
-			`https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100/${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}`
 		);
 		const result = await axios.get(
-			`https://mysql-test-2021.herokuapp.com/levermann/Nasdaq100/${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}`
 		);
-		setRowsData(result.data);
+		setRowsData(result.data[1]);
 	}
 
 	//These are called hanlders, they are run when ever a button is clicker or the dropdown is changed, they are called basically when there is a DOM Change
