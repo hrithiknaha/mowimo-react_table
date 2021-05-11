@@ -194,10 +194,10 @@ function Table() {
 						</select>
 					</div>
 					<div className="score-selector">
-						<label>Score Selector</label>
+						<label>{t("Score Selector")}</label>
 						<select onChange={handleScoreChange}>
-							<option value="scores">Scores</option>
-							<option value="numbers">Numbers</option>
+							<option value="scores">{t("Scores")}</option>
+							<option value="numbers">{t("Number")}</option>
 						</select>
 					</div>
 				</div>

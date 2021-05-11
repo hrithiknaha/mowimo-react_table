@@ -31,7 +31,20 @@
 
         "Sector": "Sector",
         "Industry": "Industry",
-        "ISIN": "ISIN"
+        "ISIN": "ISIN",
+
+        "Stock Earning": "Stock Earnings",
+        "Score Selector": "Score Selector",
+        "Number": "Number",
+        "Score": "Score",
+        "Privacy Policy": "Privacy Policy",
+        "Imprint": "Imprint",
+        "roe_value": "Return on Equity",
+        "ebit_margin_value": "EBIT Margin",
+        "equity_ratio_value": "EBIT Ratio",
+        "pe_ratio_5y_value": "Price-Earnings-Ratio 5 years",
+        "price_today_vs_year_value": "Price today vs year ",
+        "profit_growth_value": "Profit Growth"
 
     }
 }
