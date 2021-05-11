@@ -6,7 +6,9 @@ function Navbar() {
 	return (
 		<div className="container navbar">
 			<div className="navbar-logo">
-				<AiOutlineStock />
+				<Link to="/">
+					<AiOutlineStock />
+				</Link>
 			</div>
 			<div className="navbar-links">
 				<Link to="stocks-earning">Stocks Earning</Link>
