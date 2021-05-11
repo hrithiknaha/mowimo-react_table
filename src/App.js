@@ -6,6 +6,7 @@ import Ticker from "./components/Ticker";
 import Footer from "./components/Footer";
 import Policy from "./components/Policy";
 import Imprint from "./components/Imprint";
+import StocksEarning from "./components/StocksEarning";
 
 import "../src/styles/styles.scss";
 import Navbar from "./components/Navbar";
@@ -22,6 +23,7 @@ function App({ i18n }) {
 				<Route path="/score/:ticker" exact component={Ticker} />
 				<Route path="/policy" component={Policy} />
 				<Route path="/imprint" component={Imprint} />
+				<Route parth="/stocks/earning" component={StocksEarning} />
 			</Switch>
 			<Footer />
 		</Router>
