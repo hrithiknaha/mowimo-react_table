@@ -7,6 +7,7 @@ import {
 } from "react-table";
 import { useTranslation } from "react-i18next";
 import { COLUMNS } from "../config/columns";
+import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Filter from "./Filter";
 import axios from "axios";
@@ -15,15 +16,19 @@ import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import Sidebar from "./Sidebar";
 
-function Table({ ROWS }) {
+function Table() {
 	//State of Table Component, state are basically the data that drives a component.
 	const [selected, setSelected] = useState("all");
 	const [rows, setRowsData] = useState([]);
 	const [weeks, setWeeks] = useState([]);
 	const [weekSelected, setWeekSelected] = useState("");
+	const [scoreStyle, setScoreStyle] = useState("scores");
 
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
-	const columns = useMemo(() => COLUMNS, []);
+	const columns = useMemo(() => {
+		if (scoreStyle === "scores") return COLUMNS;
+		else return NUM_COLUMNS;
+	}, [scoreStyle]);
 	const data = useMemo(() => rows, [rows]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
 
@@ -85,13 +90,15 @@ function Table({ ROWS }) {
 			default:
 				fetchData();
 		}
-	}, [weekSelected]);
+	}, [weekSelected, scoreStyle]);
 
 	//The Functions for calling backend API, also after getting the result, the data is stored by the setRowsData and SetWeeks in the state, See so state is sort of the memory of the application, but it changes everytime you refresh the page, but as we are calling the backend api everytime the page refreshes, thanks to UseEffect fucntion above, nothing is lost
 	async function fetchData() {
-		console.log(`https://levermy.herokuapp.com/leverman?week=${weekSelected}`);
+		console.log(
+			`https://levermy.herokuapp.com/leverman?week=${weekSelected}&style=${scoreStyle}`
+		);
 		const result = await axios.get(
-			`https://levermy.herokuapp.com/leverman?week=${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?week=${weekSelected}&style=${scoreStyle}`
 			// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 		);
 		setRowsData(result.data[1]);
@@ -100,30 +107,30 @@ function Table({ ROWS }) {
 
 	async function callDowJones() {
 		const result = await axios.get(
-			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}`
+			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}&style=${scoreStyle}`
 		);
 		setRowsData(result.data[1]);
 		console.log(
-			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}`
+			`http://levermy.herokuapp.com/leverman?index=DowJones&week=${weekSelected}&style=${scoreStyle}`
 		);
 	}
 
 	async function callSP() {
 		console.log(
-			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}&style=${scoreStyle}`
 		);
 		const result = await axios.get(
-			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=SP500&week=${weekSelected}&style=${scoreStyle}`
 		);
 		setRowsData(result.data[1]);
 	}
 
 	async function callNasdaq() {
 		console.log(
-			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}&style=${scoreStyle}`
 		);
 		const result = await axios.get(
-			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}`
+			`https://levermy.herokuapp.com/leverman?index=Nasdaq100&week=${weekSelected}&style=${scoreStyle}`
 		);
 		setRowsData(result.data[1]);
 	}
@@ -154,6 +161,10 @@ function Table({ ROWS }) {
 		else setWeekSelected(e.target.value);
 	};
 
+	const handleScoreChange = (e) => {
+		setScoreStyle(e.target.value);
+	};
+
 	return (
 		<div className="container">
 			{/* Sidebar component is called here and the handle functions are passed as
@@ -180,6 +191,13 @@ function Table({ ROWS }) {
 									</option>
 								);
 							})}
+						</select>
+					</div>
+					<div className="score-selector">
+						<label>Score Selector</label>
+						<select onChange={handleScoreChange}>
+							<option value="scores">Scores</option>
+							<option value="numbers">Numbers</option>
 						</select>
 					</div>
 				</div>
