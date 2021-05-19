@@ -165,6 +165,11 @@ function Table() {
 		setScoreStyle(e.target.value);
 	};
 
+	const handleToggleClick = (e) => {
+		if (e.target.checked) setScoreStyle("numbers");
+		else setScoreStyle("scores");
+	};
+
 	return (
 		<div className="container">
 			{/* Sidebar component is called here and the handle functions are passed as
@@ -198,7 +203,7 @@ function Table() {
 						<div className="togglers">
 							<label>{t("Scores")}</label>
 							<label class="switch">
-								<input type="checkbox" />
+								<input onClick={handleToggleClick} type="checkbox" />
 								<div>
 									<span></span>
 								</div>
