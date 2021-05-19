@@ -20,10 +20,19 @@ function App({ i18n }) {
 				<Route path="/" exact>
 					<Table i18n={i18n} />
 				</Route>
+				<Route path="/dowjones">
+					<Table i18n={i18n} />
+				</Route>
+				<Route path="/nasdaq">
+					<Table i18n={i18n} />
+				</Route>
+				<Route path="/sp500">
+					<Table i18n={i18n} />
+				</Route>
 				<Route path="/score/:ticker" exact component={Ticker} />
 				<Route path="/policy" component={Policy} />
 				<Route path="/imprint" component={Imprint} />
-				<Route parth="/stocks/earning" component={StocksEarning} />
+				<Route path="/stocks/earning" component={StocksEarning} />
 			</Switch>
 			<Footer />
 		</Router>
