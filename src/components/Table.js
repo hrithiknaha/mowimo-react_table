@@ -193,12 +193,23 @@ function Table() {
 							})}
 						</select>
 					</div>
-					<div className="score-selector">
-						<label>{t("Score Selector")}</label>
-						<select onChange={handleScoreChange}>
+					<div className="score-selector ">
+						{/* <label>{t("Score Selector")}</label> */}
+						<div className="togglers">
+							<label>{t("Scores")}</label>
+							<label class="switch">
+								<input type="checkbox" />
+								<div>
+									<span></span>
+								</div>
+							</label>
+							<label>{t("Number")}</label>
+						</div>
+
+						{/* <select onChange={handleScoreChange}>
 							<option value="scores">{t("Scores")}</option>
 							<option value="numbers">{t("Number")}</option>
-						</select>
+						</select> */}
 					</div>
 				</div>
 
