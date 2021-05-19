@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Table from "./components/Table";
 import Ticker from "./components/Ticker";
-import Footer from "./components/Footer";
 import Policy from "./components/Policy";
 import Imprint from "./components/Imprint";
 import StocksEarning from "./components/StocksEarning";
@@ -34,7 +33,6 @@ function App({ i18n }) {
 				<Route path="/imprint" component={Imprint} />
 				<Route path="/stocks/earning" component={StocksEarning} />
 			</Switch>
-			<Footer />
 		</Router>
 	);
 }
