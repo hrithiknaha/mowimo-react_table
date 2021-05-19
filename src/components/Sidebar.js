@@ -50,6 +50,10 @@ function Sidebar({
 					S&P500
 				</Link>
 			</div>
+			<div className="sidebar-links">
+				<Link to="/policy">{t("Privacy Policy")}</Link>
+				<Link to="/imprint">{t("Imprint")}</Link>
+			</div>
 		</div>
 	);
 }

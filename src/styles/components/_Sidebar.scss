@@ -1,5 +1,4 @@
 .sidebar {
-	height: 100%;
 	width: 160px;
 	position: fixed;
 	z-index: 1;
@@ -7,11 +6,21 @@
 	left: 0;
 	background-color: black;
 	overflow-x: hidden;
-	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	justify-content: space-around;
 
 	&-logo {
 		font-size: 4rem;
 		text-align: center;
+	}
+
+	&-links {
+		display: flex;
+		flex-direction: column;
+		height: 4rem;
+		justify-content: space-around;
 	}
 
 	@include atSmall {
