@@ -5,9 +5,14 @@
 	z-index: 1;
 	top: 0;
 	left: 0;
-	background-color: #111;
+	background-color: black;
 	overflow-x: hidden;
-	padding-top: 6rem;
+	padding-top: 1rem;
+
+	&-logo {
+		font-size: 4rem;
+		text-align: center;
+	}
 
 	@include atSmall {
 		display: block;
@@ -32,10 +37,10 @@
 	& a {
 		text-align: center;
 		text-decoration: none;
-		color: #818181;
+		// color: white;
 
 		&:hover {
-			color: $second-color;
+			color: lighten(grey, 10%);
 			cursor: pointer;
 		}
 	}
