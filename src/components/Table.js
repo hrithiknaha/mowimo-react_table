@@ -93,23 +93,6 @@ function Table(props) {
 		}
 	}, [props.table.weekSelected, props.table.scoreStyle]);
 
-	//These are called hanlders, they are run when ever a button is clicker or the dropdown is changed, they are called basically when there is a DOM Change
-	const handleAll = () => {
-		props.fetchData();
-	};
-
-	const handleDowJones = () => {
-		props.callDowJones();
-	};
-
-	const handleSP = () => {
-		props.callSP();
-	};
-
-	const handleNasdaq = () => {
-		props.callNasdaq();
-	};
-
 	const handleWeekChange = (e) => {
 		if (e.target.value === undefined) props.setWeekSelected("");
 		else props.setWeekSelected(e.target.value);
@@ -124,15 +107,6 @@ function Table(props) {
 		<>
 			<div className="container">
 				<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
-				{/* Sidebar component is called here and the handle functions are passed as
-			props */}
-				{/* <Sidebar
-					handleAll={handleAll}
-					handleDowJones={handleDowJones}
-					handleSP={handleSP}
-					handleNasdaq={handleNasdaq}
-					selected={props.table.selected}
-				/> */}
 				<div className="table">
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">

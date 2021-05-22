@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-import { useTranslation } from "react-i18next";
-import Sidebar from "./Sidebar";
 
-function Ticker() {
-	const [data, setData] = useState({});
-	const [isLoading, setLoading] = useState(true);
+import { useTranslation } from "react-i18next";
+
+import { connect } from "react-redux";
+
+import { fetchTickerData } from "../actions/table";
+
+function Ticker(props) {
+	// const [data, setData] = useState({});
+	// const [isLoading, setLoading] = useState(true);
 
 	//Getting the paramater from the URL for ex, /score/AGM or /score/AAPL, so ticker will have AGM or AAPLE or any other ticker name depending on which URL it is going
 	const { ticker } = useParams();
@@ -16,20 +19,20 @@ function Ticker() {
 
 	//Fetching each ticker from api and setting it.
 	useEffect(() => {
-		async function fetchData() {
-			const response = await axios.get(
-				`https://levermy.herokuapp.com/leverman/stock/${ticker}`
-			);
-			setData(response.data[0][0]);
-			setLoading(false);
-		}
+		// async function fetchData() {
+		// 	const response = await axios.get(
+		// 		`https://levermy.herokuapp.com/leverman/stock/${ticker}`
+		// 	);
+		// 	setData(response.data[0][0]);
+		// 	setLoading(false);
+		// }
 
-		fetchData();
+		props.fetchTickerData(ticker);
 	}, []);
 
 	return (
 		<>
-			{!isLoading && (
+			{!props.table.isLoading && (
 				<div className="container ticker">
 					<table>
 						<thead>
@@ -81,23 +84,23 @@ function Ticker() {
 						</thead>
 						<tbody>
 							<tr>
-								<td>{data.sector}</td>
-								<td>{data.isin}</td>
-								<td>{data.industry}</td>
-								<td>{data.roe_score}</td>
-								<td>{data.ebit_margin_score}</td>
-								<td>{data.equity_ratio_score}</td>
-								<td>{data.pe_ratio_5y_score}</td>
-								<td>{data.pe_ratio_cy_score}</td>
-								<td>{data.analyst_opinions_score}</td>
-								<td>{data.reaction_earnings_score}</td>
-								<td>{data.profit_revision_score}</td>
-								<td>{data.price_today_vs_6_months_score}</td>
-								<td>{data.price_today_vs_year_score}</td>
-								<td>{data.price_momentum_score}</td>
-								<td>{data.three_month_reversal_score}</td>
-								<td>{data.profit_growth_score}</td>
-								<td>{data.end_score}</td>
+								<td>{props.table.data.sector}</td>
+								<td>{props.table.data.isin}</td>
+								<td>{props.table.data.industry}</td>
+								<td>{props.table.data.roe_score}</td>
+								<td>{props.table.data.ebit_margin_score}</td>
+								<td>{props.table.data.equity_ratio_score}</td>
+								<td>{props.table.data.pe_ratio_5y_score}</td>
+								<td>{props.table.data.pe_ratio_cy_score}</td>
+								<td>{props.table.data.analyst_opinions_score}</td>
+								<td>{props.table.data.reaction_earnings_score}</td>
+								<td>{props.table.data.profit_revision_score}</td>
+								<td>{props.table.data.price_today_vs_6_months_score}</td>
+								<td>{props.table.data.price_today_vs_year_score}</td>
+								<td>{props.table.data.price_momentum_score}</td>
+								<td>{props.table.data.three_month_reversal_score}</td>
+								<td>{props.table.data.profit_growth_score}</td>
+								<td>{props.table.data.end_score}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -107,4 +110,7 @@ function Ticker() {
 	);
 }
 
-export default Ticker;
+const mapStateToProps = (state) => ({
+	table: state.table,
+});
+export default connect(mapStateToProps, { fetchTickerData })(Ticker);

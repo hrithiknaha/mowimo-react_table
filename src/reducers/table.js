@@ -1,11 +1,14 @@
 import {
 	DOW_JONES,
 	FETCH_DATA,
+	FETCH_TICKER,
 	NASDAQ,
 	SET_SCORE_STYLE,
 	SET_WEEK_SELECTED,
 	SP500,
 } from "../actions/types";
+
+var empty = require("is-empty");
 
 const initialState = {
 	selected: "all",
@@ -13,6 +16,8 @@ const initialState = {
 	weeks: [],
 	weekSelected: "",
 	scoreStyle: "scores",
+	data: {},
+	isLoading: true,
 };
 
 export default function (state = initialState, action) {
@@ -52,6 +57,12 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				scoreStyle: action.payload,
+			};
+		case FETCH_TICKER:
+			return {
+				...state,
+				isLoading: empty(action.payload),
+				data: action.payload[1][0],
 			};
 		default:
 			return state;

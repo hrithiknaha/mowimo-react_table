@@ -6,9 +6,11 @@ import {
 	SP500,
 	SET_WEEK_SELECTED,
 	SET_SCORE_STYLE,
+	FETCH_TICKER,
 } from "./types";
 
 export const fetchData = () => (dispatch, state) => {
+	console.log("Fetching");
 	const { weekSelected, scoreStyle } = state().table;
 
 	console.log(
@@ -100,4 +102,16 @@ export const setScoreStyle = (style) => (dispatch) => {
 		type: SET_SCORE_STYLE,
 		payload: style,
 	});
+};
+
+export const fetchTickerData = (ticker) => (dispatch) => {
+	axios
+		.get(`https://levermy.herokuapp.com/levermann/stock/${ticker}`)
+		.then(({ data }) => {
+			console.log(data[1][0]);
+			dispatch({
+				type: FETCH_TICKER,
+				payload: data,
+			});
+		});
 };

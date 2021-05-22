@@ -11,36 +11,37 @@ import store from "./store";
 
 import "../src/styles/styles.scss";
 import Sidebar from "./components/Sidebar";
+import SidebarWrapper from "./components/SidebarWrapper";
 
 //App Function passing in the i18n props to the table component
-function App({ i18n }) {
+function App(props) {
 	return (
 		<Provider store={store}>
-			<div className="app">
-				<Sidebar />
-				<div className="section">
-					<Router>
+			<Router>
+				<div className="app">
+					<SidebarWrapper />
+					<div className="section">
 						<Switch>
 							<Route path="/" exact>
-								<Table i18n={i18n} />
+								<Table i18n={props.i18n} />
 							</Route>
-							<Route path="/dowjones">
-								<Table i18n={i18n} />
+							<Route path="/dowjones" exact>
+								<Table i18n={props.i18n} />
 							</Route>
-							<Route path="/nasdaq">
-								<Table i18n={i18n} />
+							<Route path="/nasdaq" exact>
+								<Table i18n={props.i18n} />
 							</Route>
-							<Route path="/sp500">
-								<Table i18n={i18n} />
+							<Route path="/sp500" exact>
+								<Table i18n={props.i18n} />
 							</Route>
 							<Route path="/score/:ticker" exact component={Ticker} />
-							<Route path="/policy" component={Policy} />
-							<Route path="/imprint" component={Imprint} />
-							<Route path="/stocks/earning" component={StocksEarning} />
+							<Route path="/policy" exact component={Policy} />
+							<Route path="/imprint" exact component={Imprint} />
+							<Route path="/stocks/earning" exact component={StocksEarning} />
 						</Switch>
-					</Router>
+					</div>
 				</div>
-			</div>
+			</Router>
 		</Provider>
 	);
 }
