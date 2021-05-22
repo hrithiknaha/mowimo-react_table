@@ -127,7 +127,11 @@ function Table(props) {
 							<div className="togglers">
 								<label>{t("Scores")}</label>
 								<label class="switch">
-									<input onClick={handleToggleClick} type="checkbox" />
+									<input
+										onClick={handleToggleClick}
+										type="checkbox"
+										checked={props.table.scoreStyle === "scores" ? false : true}
+									/>
 									<div>
 										<span></span>
 									</div>
