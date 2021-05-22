@@ -1,9 +1,11 @@
 import React from "react";
+import { IoSearchOutline } from "react-icons/io5";
 
 //Just setting the filter as value and setFilter passed from parent as prop to onchange
 function Filter({ filter, setFilter }) {
 	return (
 		<div className="filter">
+			<IoSearchOutline size={2} className="font" />
 			<input
 				className="filter-input"
 				type="text"

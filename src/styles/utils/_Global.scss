@@ -1,10 +1,10 @@
-// .container {
-// 	padding: 0 10rem;
+.container {
+	padding: 0 5rem;
 
-// 	@include atSmall {
-// 		padding: 0 1rem;
-// 	}
-// }
+	@include atSmall {
+		padding: 0 1rem;
+	}
+}
 
 body {
 	background-color: $first-color;
@@ -26,4 +26,8 @@ a {
 .section {
 	flex: 1 1 auto;
 	overflow: auto;
+}
+
+input[type="text" i] {
+	padding: 0;
 }

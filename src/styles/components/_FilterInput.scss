@@ -1,8 +1,7 @@
 .filter {
-	padding-bottom: 2rem;
+	width: 80%;
+	height: 80%;
 	display: flex;
-	justify-content: center;
-
 	@include atSmall {
 		width: 3rem;
 		padding-bottom: 0;
@@ -10,16 +9,19 @@
 
 	&-input {
 		outline: none;
-		background-color: transparent;
 		border: none;
-		color: $second-color;
-		padding-bottom: 0.5rem;
-		text-align: center;
-		border-bottom: 1px solid $second-color;
-
-		&::placeholder {
-			// color: $second-color;
-			text-align: center;
-		}
+		color: #191616;
+		width: 100%;
+		padding-left: 1rem !important;
+		height: 100%;
+		background-color: #e2e2e2;
 	}
+}
+
+.font {
+	height: 100%;
+	width: 5%;
+	background-color: #e2e2e2;
+	font-size: 1rem;
+	color: gray;
 }

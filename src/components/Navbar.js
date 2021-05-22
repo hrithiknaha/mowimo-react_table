@@ -8,7 +8,7 @@ import Filter from "./Filter";
 function Navbar({ filter, setFilter }) {
 	const { t } = useTranslation();
 	return (
-		<div className="container navbar">
+		<div className="navbar">
 			<Filter filter={filter} setFilter={setFilter} />
 			<div className="navbar-links">
 				<Link to="stocks-earning">{t("Stock Earning")}</Link>

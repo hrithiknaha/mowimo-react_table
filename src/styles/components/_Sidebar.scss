@@ -14,9 +14,10 @@
 
 	&-links {
 		display: flex;
-		flex-direction: column;
+		// flex-direction: column;
 		height: 4rem;
-		justify-content: space-around;
+		font-size: 0.5rem;
+		justify-content: space-evenly;
 	}
 
 	@include atSmall {
