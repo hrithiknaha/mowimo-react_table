@@ -1,18 +1,29 @@
-.container {
-	padding: 0 10rem;
+// .container {
+// 	padding: 0 10rem;
 
-	@include atSmall {
-		padding: 0 1rem;
-	}
-}
+// 	@include atSmall {
+// 		padding: 0 1rem;
+// 	}
+// }
 
 body {
 	background-color: $first-color;
 	color: $second-color;
 	letter-spacing: 1.6;
 	font-family: "Roboto", sans-serif;
+	margin: 0;
 }
 
 a {
 	color: $second-color;
+}
+
+.app {
+	display: flex;
+	height: 100vh;
+}
+
+.section {
+	flex: 1 1 auto;
+	overflow: auto;
 }
