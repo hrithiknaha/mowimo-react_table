@@ -8,13 +8,11 @@ import Imprint from "./components/Imprint";
 import StocksEarning from "./components/StocksEarning";
 
 import "../src/styles/styles.scss";
-import Navbar from "./components/Navbar";
 
 //App Function passing in the i18n props to the table component
 function App({ i18n }) {
 	return (
 		<Router>
-			<Navbar />
 			<Switch>
 				<Route path="/" exact>
 					<Table i18n={i18n} />

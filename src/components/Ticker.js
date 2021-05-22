@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import Sidebar from "./Sidebar";
 
 function Ticker() {
 	const [data, setData] = useState({});
@@ -28,6 +29,13 @@ function Ticker() {
 
 	return (
 		<>
+			<Sidebar
+			// handleAll={handleAll}
+			// handleDowJones={handleDowJones}
+			// handleSP={handleSP}
+			// handleNasdaq={handleNasdaq}
+			// selected={selected}
+			/>
 			{!isLoading && (
 				<div className="container ticker">
 					<table>

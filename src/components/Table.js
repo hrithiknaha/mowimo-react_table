@@ -11,6 +11,7 @@ import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Filter from "./Filter";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
@@ -95,14 +96,14 @@ function Table() {
 	//The Functions for calling backend API, also after getting the result, the data is stored by the setRowsData and SetWeeks in the state, See so state is sort of the memory of the application, but it changes everytime you refresh the page, but as we are calling the backend api everytime the page refreshes, thanks to UseEffect fucntion above, nothing is lost
 	async function fetchData() {
 		console.log(
-			`https://levermy.herokuapp.com/leverman?week=${weekSelected}&style=${scoreStyle}`
+			`https://levermy.herokuapp.com/levermann/all/${weekSelected}?style=${scoreStyle}`
 		);
 		const result = await axios.get(
-			`https://levermy.herokuapp.com/leverman?week=${weekSelected}&style=${scoreStyle}`
+			`https://levermy.herokuapp.com/levermann/all/${weekSelected}?style=${scoreStyle}`
 			// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 		);
 		setRowsData(result.data[1]);
-		setWeeks(result.data[0].weeks_available);
+		setWeeks(result.data[0].dates_available[0]);
 	}
 
 	async function callDowJones() {
@@ -171,162 +172,164 @@ function Table() {
 	};
 
 	return (
-		<div className="container">
-			{/* Sidebar component is called here and the handle functions are passed as
+		<>
+			<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
+			<div className="container">
+				{/* Sidebar component is called here and the handle functions are passed as
 			props */}
-			<Sidebar
-				handleAll={handleAll}
-				handleDowJones={handleDowJones}
-				handleSP={handleSP}
-				handleNasdaq={handleNasdaq}
-				selected={selected}
-			/>
-			<div className="table">
-				{/* Filter component, passing filter data and setFilter data as props */}
-				<div className="table-header">
-					<Filter filter={globalFilter} setFilter={setGlobalFilter} />
-					<div className="week-selector">
-						<label>{t("Calender Week")}</label>
-						<select onChange={handleWeekChange}>
-							<option value="">Default</option>
-							{weeks.map((week) => {
+				<Sidebar
+					handleAll={handleAll}
+					handleDowJones={handleDowJones}
+					handleSP={handleSP}
+					handleNasdaq={handleNasdaq}
+					selected={selected}
+				/>
+				<div className="table">
+					{/* Filter component, passing filter data and setFilter data as props */}
+					<div className="table-header">
+						<div className="week-selector">
+							<label>{t("Calender Week")}</label>
+							<select onChange={handleWeekChange}>
+								<option value="">Default</option>
+								{weeks.map((week) => {
+									return (
+										<option key={week} value={week}>
+											{t("Week")} {week}
+										</option>
+									);
+								})}
+							</select>
+						</div>
+						<div className="score-selector ">
+							{/* <label>{t("Score Selector")}</label> */}
+							<div className="togglers">
+								<label>{t("Scores")}</label>
+								<label class="switch">
+									<input onClick={handleToggleClick} type="checkbox" />
+									<div>
+										<span></span>
+									</div>
+								</label>
+								<label>{t("Number")}</label>
+							</div>
+
+							{/* <select onChange={handleScoreChange}>
+							<option value="scores">{t("Scores")}</option>
+							<option value="numbers">{t("Number")}</option>
+						</select> */}
+						</div>
+					</div>
+
+					{/* All table props being spread out */}
+					<table {...getTableProps()}>
+						{/* Maping any header groups first (Grouped Header). then mapping each
+				column inside of grouped header to get each individual columnsa and its
+				index. Printing the Header and the tooltip */}
+						<thead>
+							{headerGroups.map((headerGroup) => (
+								<tr {...headerGroup.getHeaderGroupProps()}>
+									{headerGroup.headers.map((column, index) => (
+										<th
+											className="tooltip"
+											{...column.getHeaderProps(column.getSortByToggleProps())}
+										>
+											{column.render("Header")}{" "}
+											{headerGroup.headers[index].tipText && (
+												<span>{headerGroup.headers[index].tipText}</span>
+											)}
+										</th>
+									))}
+								</tr>
+							))}
+						</thead>
+						{/* Mapping page index with default size of 10, and then mapping each row
+				inside of each age to get all the rows. */}
+						<tbody {...getTableBodyProps()}>
+							{page.map((row) => {
+								prepareRow(row);
 								return (
-									<option key={week} value={week}>
-										{t("Week")} {week}
+									<tr {...row.getRowProps()}>
+										{row.cells.map((cell) => {
+											return (
+												<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+											);
+										})}
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
+					{/* //React Table Actions for Changing page size, going to a custom page
+			number and pagination */}
+					<div className="table-actions">
+						<select
+							value={pageSize}
+							onChange={(e) => setPageSize(Number(e.target.value))}
+						>
+							{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
+							{[10, 25, 50].map((pageSize) => {
+								return (
+									<option key={pageSize} value={pageSize}>
+										{t("Show")} {pageSize}
 									</option>
 								);
 							})}
 						</select>
-					</div>
-					<div className="score-selector ">
-						{/* <label>{t("Score Selector")}</label> */}
-						<div className="togglers">
-							<label>{t("Scores")}</label>
-							<label class="switch">
-								<input onClick={handleToggleClick} type="checkbox" />
-								<div>
-									<span></span>
-								</div>
-							</label>
-							<label>{t("Number")}</label>
-						</div>
-
-						{/* <select onChange={handleScoreChange}>
-							<option value="scores">{t("Scores")}</option>
-							<option value="numbers">{t("Number")}</option>
-						</select> */}
-					</div>
-				</div>
-
-				{/* All table props being spread out */}
-				<table {...getTableProps()}>
-					{/* Maping any header groups first (Grouped Header). then mapping each
-				column inside of grouped header to get each individual columnsa and its
-				index. Printing the Header and the tooltip */}
-					<thead>
-						{headerGroups.map((headerGroup) => (
-							<tr {...headerGroup.getHeaderGroupProps()}>
-								{headerGroup.headers.map((column, index) => (
-									<th
-										className="tooltip"
-										{...column.getHeaderProps(column.getSortByToggleProps())}
-									>
-										{column.render("Header")}{" "}
-										{headerGroup.headers[index].tipText && (
-											<span>{headerGroup.headers[index].tipText}</span>
-										)}
-									</th>
-								))}
-							</tr>
-						))}
-					</thead>
-					{/* Mapping page index with default size of 10, and then mapping each row
-				inside of each age to get all the rows. */}
-					<tbody {...getTableBodyProps()}>
-						{page.map((row) => {
-							prepareRow(row);
-							return (
-								<tr {...row.getRowProps()}>
-									{row.cells.map((cell) => {
-										return (
-											<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-										);
-									})}
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
-				{/* //React Table Actions for Changing page size, going to a custom page
-			number and pagination */}
-				<div className="table-actions">
-					<select
-						value={pageSize}
-						onChange={(e) => setPageSize(Number(e.target.value))}
-					>
-						{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
-						{[10, 25, 50].map((pageSize) => {
-							return (
-								<option key={pageSize} value={pageSize}>
-									{t("Show")} {pageSize}
-								</option>
-							);
-						})}
-					</select>
-					<span>
-						{/* All the {t()} functions are basically the translation functions, and
+						<span>
+							{/* All the {t()} functions are basically the translation functions, and
 						depending on the browser language it will automatically detect it
 						and switch between Englisha and German */}
-						{t("Page")}{" "}
-						<strong>
-							{pageIndex + 1} {t("of")} {pageOptions.length}{" "}
-						</strong>
-					</span>
-					<span>
-						{t("Go to Page")}{" "}
-						<input
-							type="number"
-							defaultValue={pageIndex + 1}
-							onChange={(e) => {
-								const pageNumber = e.target.value
-									? Number(e.target.value) - 1
-									: 0;
-								gotoPage(pageNumber);
-							}}
-							style={{ width: "50px" }}
-						/>
-					</span>
-					<button
-						className="button-primary"
-						onClick={() => gotoPage(0)}
-						disabled={!canPreviousPage}
-					>
-						<BsChevronDoubleLeft />
-					</button>
-					<button
-						className="button-primary"
-						onClick={() => previousPage()}
-						disabled={!canPreviousPage}
-					>
-						<GrFormPreviousLink />
-					</button>
-					<button
-						className="button-primary"
-						onClick={() => nextPage()}
-						disabled={!canNextPage}
-					>
-						<GrFormNextLink />
-					</button>
-					<button
-						className="button-primary"
-						onClick={() => gotoPage(pageCount - 1)}
-						disabled={!canNextPage}
-					>
-						<BsChevronDoubleRight />
-					</button>
+							{t("Page")}{" "}
+							<strong>
+								{pageIndex + 1} {t("of")} {pageOptions.length}{" "}
+							</strong>
+						</span>
+						<span>
+							{t("Go to Page")}{" "}
+							<input
+								type="number"
+								defaultValue={pageIndex + 1}
+								onChange={(e) => {
+									const pageNumber = e.target.value
+										? Number(e.target.value) - 1
+										: 0;
+									gotoPage(pageNumber);
+								}}
+								style={{ width: "50px" }}
+							/>
+						</span>
+						<button
+							className="button-primary"
+							onClick={() => gotoPage(0)}
+							disabled={!canPreviousPage}
+						>
+							<BsChevronDoubleLeft />
+						</button>
+						<button
+							className="button-primary"
+							onClick={() => previousPage()}
+							disabled={!canPreviousPage}
+						>
+							<GrFormPreviousLink />
+						</button>
+						<button
+							className="button-primary"
+							onClick={() => nextPage()}
+							disabled={!canNextPage}
+						>
+							<GrFormNextLink />
+						</button>
+						<button
+							className="button-primary"
+							onClick={() => gotoPage(pageCount - 1)}
+							disabled={!canNextPage}
+						>
+							<BsChevronDoubleRight />
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
