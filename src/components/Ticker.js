@@ -29,13 +29,6 @@ function Ticker() {
 
 	return (
 		<>
-			<Sidebar
-			// handleAll={handleAll}
-			// handleDowJones={handleDowJones}
-			// handleSP={handleSP}
-			// handleNasdaq={handleNasdaq}
-			// selected={selected}
-			/>
 			{!isLoading && (
 				<div className="container ticker">
 					<table>
