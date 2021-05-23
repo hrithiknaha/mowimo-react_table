@@ -11,12 +11,12 @@ import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Navbar from "./Navbar";
 import { connect } from "react-redux";
-import { fetchData, setWeekSelected, setScoreStyle } from "../actions/table";
+import { callNasdaq, setWeekSelected, setScoreStyle } from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
-function Table(props) {
+function Nasdaq(props) {
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
 	const columns = useMemo(() => {
 		if (props.table.scoreStyle === "scores") return COLUMNS;
@@ -67,7 +67,7 @@ function Table(props) {
 
 	//Use effect will be called once after the page renders, and then everytime the weekSelected data state is changed. Depending on which Index is selected the switch case logic will call the subsequent functions.
 	useEffect(() => {
-		props.fetchData();
+		props.callNasdaq();
 	}, [props.table.weekSelected, props.table.scoreStyle]);
 
 	const handleWeekChange = (e) => {
@@ -238,7 +238,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-	fetchData,
+	callNasdaq,
 	setWeekSelected,
 	setScoreStyle,
-})(Table);
+})(Nasdaq);
