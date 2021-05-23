@@ -11,7 +11,8 @@ const store = createStore(
 	compose(
 		applyMiddleware(...middleware),
 		//Use after using reduct chrome devtool
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+		window.__REDUX_DEVTOOLS_EXTENSION__ &&
+			window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true })
 	)
 );
 export default store;
