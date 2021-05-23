@@ -21,7 +21,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-	console.log(action.payload);
 	switch (action.type) {
 		case FETCH_DATA:
 			return {
@@ -29,24 +28,28 @@ export default function (state = initialState, action) {
 				weeks: action.payload.data[0].dates_available[0],
 				rows: action.payload.data[1],
 				selected: action.payload.type,
+				isLoading: true,
 			};
 		case DOW_JONES:
 			return {
 				...state,
 				rows: action.payload.data[1],
 				selected: action.payload.type,
+				isLoading: true,
 			};
 		case NASDAQ:
 			return {
 				...state,
 				rows: action.payload.data[1],
 				selected: action.payload.type,
+				isLoading: true,
 			};
 		case SP500:
 			return {
 				...state,
 				rows: action.payload.data[1],
 				selected: action.payload.type,
+				isLoading: true,
 			};
 		case SET_WEEK_SELECTED:
 			return {
