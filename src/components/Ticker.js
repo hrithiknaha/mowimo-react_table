@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 
 import { fetchTickerData } from "../actions/table";
 
+import { AiFillLock } from "react-icons/ai";
+
 function Ticker(props) {
 	// const [data, setData] = useState({});
 	// const [isLoading, setLoading] = useState(true);
@@ -19,16 +21,13 @@ function Ticker(props) {
 
 	//Fetching each ticker from api and setting it.
 	useEffect(() => {
-		// async function fetchData() {
-		// 	const response = await axios.get(
-		// 		`https://levermy.herokuapp.com/leverman/stock/${ticker}`
-		// 	);
-		// 	setData(response.data[0][0]);
-		// 	setLoading(false);
-		// }
-
 		props.fetchTickerData(ticker);
 	}, []);
+
+	let color = null;
+	if (props.table.data.end_score >= 4) color = "green";
+	else if (props.table.data.end_score === 3) color = "grey";
+	else color = "red";
 
 	return (
 		<>
@@ -41,43 +40,43 @@ function Ticker(props) {
 								<th>{t("ISIN")}</th>
 								<th>{t("Industry")}</th>
 								<th className="tooltipT">
-									1 <span class="tooltiptextT">{t("1")}</span>
+									1 <span className="tooltiptextT">{t("1")}</span>
 								</th>
 								<th className="tooltipT">
-									2 <span class="tooltiptextT">{t("2")}</span>
+									2 <span className="tooltiptextT">{t("2")}</span>
 								</th>
 								<th className="tooltipT">
-									3 <span class="tooltiptextT">{t("3")}</span>
+									3 <span className="tooltiptextT">{t("3")}</span>
 								</th>
 								<th className="tooltipT">
-									4 <span class="tooltiptextT">{t("4")}</span>
+									4 <span className="tooltiptextT">{t("4")}</span>
 								</th>
 								<th className="tooltipT">
-									5 <span class="tooltiptextT">{t("5")}</span>
+									5 <span className="tooltiptextT">{t("5")}</span>
 								</th>
 								<th className="tooltipT">
-									6 <span class="tooltiptextT">{t("6")}</span>
+									6 <span className="tooltiptextT">{t("6")}</span>
 								</th>
 								<th className="tooltipT">
-									7 <span class="tooltiptextT">{t("7")}</span>
+									7 <span className="tooltiptextT">{t("7")}</span>
 								</th>
 								<th className="tooltipT">
-									8 <span class="tooltiptextT">{t("8")}</span>
+									8 <span className="tooltiptextT">{t("8")}</span>
 								</th>
 								<th className="tooltipT">
-									9<span class="tooltiptextT">{t("9")}</span>
+									9<span className="tooltiptextT">{t("9")}</span>
 								</th>
 								<th className="tooltipT">
-									10 <span class="tooltiptextT">{t("10")}</span>
+									10 <span className="tooltiptextT">{t("10")}</span>
 								</th>
 								<th className="tooltipT">
-									11 <span class="tooltiptextT">{t("11")}</span>
+									11 <span className="tooltiptextT">{t("11")}</span>
 								</th>
 								<th className="tooltipT">
-									12 <span class="tooltiptextT">{t("12")}</span>
+									12 <span className="tooltiptextT">{t("12")}</span>
 								</th>
 								<th className="tooltipT">
-									13 <span class="tooltiptextT">{t("13")}</span>
+									13 <span className="tooltiptextT">{t("13")}</span>
 								</th>
 								<th>{t("Total")}</th>
 							</tr>
@@ -93,14 +92,24 @@ function Ticker(props) {
 								<td>{props.table.data.pe_ratio_5y_score}</td>
 								<td>{props.table.data.pe_ratio_cy_score}</td>
 								<td>{props.table.data.analyst_opinions_score}</td>
-								<td>{props.table.data.reaction_earnings_score}</td>
+								<td>
+									{props.table.data.reaction_earnings_score ? (
+										props.table.data.reaction_earnings_score
+									) : (
+										<AiFillLock />
+									)}
+								</td>
 								<td>{props.table.data.profit_revision_score}</td>
 								<td>{props.table.data.price_today_vs_6_months_score}</td>
 								<td>{props.table.data.price_today_vs_year_score}</td>
 								<td>{props.table.data.price_momentum_score}</td>
 								<td>{props.table.data.three_month_reversal_score}</td>
 								<td>{props.table.data.profit_growth_score}</td>
-								<td>{props.table.data.end_score}</td>
+								<td>
+									<span className={`flag-${color}`}>
+										{props.table.data.end_score}
+									</span>
+								</td>
 							</tr>
 						</tbody>
 					</table>
