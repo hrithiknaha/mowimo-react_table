@@ -88,13 +88,13 @@ function SP500(props) {
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">
 						<div className="week-selector">
-							<label>{t("Calender Week")}</label>
+							<label>{t("Calender")}</label>
 							<select onChange={handleWeekChange}>
 								<option value="">Default</option>
 								{props.table.weeks.map((week) => {
 									return (
 										<option key={week} value={week}>
-											{t("Week")} {week}
+											{week}
 										</option>
 									);
 								})}
