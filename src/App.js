@@ -10,7 +10,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import "../src/styles/styles.scss";
-import Sidebar from "./components/Sidebar";
 import SidebarWrapper from "./components/SidebarWrapper";
 import DowJones from "./components/DowJones";
 import Nasdaq from "./components/Nasdaq";
