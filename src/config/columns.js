@@ -101,5 +101,12 @@ export const COLUMNS = [
 		Header: i18n.t("Total"),
 		// tipText: "END SCORE",
 		accessor: "end_score",
+		Cell: (row) => {
+			console.log(row);
+			if (row.value > 4) return <span className="flag-green">{row.value}</span>;
+			else if (row.value === 3)
+				return <span className="flag-grey">{row.value}</span>;
+			else return <span className="flag-red">{row.value}</span>;
+		},
 	},
 ];
