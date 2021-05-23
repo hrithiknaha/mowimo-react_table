@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import i18n from "../i18n";
+import { AiFillLock } from "react-icons/ai";
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
 // accessor is basically the data from which it should map each column from the api returned json,
@@ -60,6 +61,10 @@ export const COLUMNS = [
 		tipText: i18n.t("7"),
 		accessor: "reaction_earnings_score",
 		disableGlobalFilter: true,
+		Cell: (row) => {
+			if (row.row.original.visibility === 0) return <AiFillLock />;
+			return row.value || null;
+		},
 	},
 	{
 		Header: "8",
@@ -102,8 +107,8 @@ export const COLUMNS = [
 		// tipText: "END SCORE",
 		accessor: "end_score",
 		Cell: (row) => {
-			console.log(row);
-			if (row.value > 4) return <span className="flag-green">{row.value}</span>;
+			if (row.value >= 4)
+				return <span className="flag-green">{row.value}</span>;
 			else if (row.value === 3)
 				return <span className="flag-grey">{row.value}</span>;
 			else return <span className="flag-red">{row.value}</span>;
