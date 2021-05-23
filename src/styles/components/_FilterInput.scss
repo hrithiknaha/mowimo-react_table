@@ -3,7 +3,7 @@
 	height: 80%;
 	display: flex;
 	@include atSmall {
-		width: 3rem;
+		width: 50%;
 		padding-bottom: 0;
 	}
 
@@ -24,4 +24,8 @@
 	background-color: #e2e2e2;
 	font-size: 1rem;
 	color: gray;
+
+	@include atSmall {
+		width: 20%;
+	}
 }

@@ -21,11 +21,19 @@ a {
 .app {
 	display: flex;
 	height: 100vh;
+
+	@include atSmall {
+		flex-direction: column;
+	}
 }
 
 .section {
 	flex: 1 1 auto;
 	overflow: auto;
+
+	@include atSmall {
+		overflow: initial;
+	}
 }
 
 input[type="text" i] {

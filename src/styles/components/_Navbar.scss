@@ -4,4 +4,9 @@
 	align-items: center;
 	height: 3rem;
 	width: 100%;
+
+	@include atSmall {
+		padding-top: 1rem;
+		justify-content: space-around;
+	}
 }

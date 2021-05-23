@@ -30,8 +30,9 @@ th {
 		margin: 0 auto;
 
 		@include atSmall {
-			padding: 3rem 0;
 			width: 100%;
+			flex-direction: column;
+			align-items: center;
 		}
 	}
 
@@ -81,15 +82,11 @@ th {
 .week {
 	&-selector {
 		@include atSmall {
-			width: 3rem;
+			height: 2rem;
 		}
+
 		& label {
 			padding-right: 1rem;
-
-			@include atSmall {
-				text-align: center;
-				width: 100%;
-			}
 		}
 
 		& select {
