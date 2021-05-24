@@ -50,6 +50,39 @@ function Sidebar({
 					S&P500
 				</Link>
 			</div>
+			<div className="sidebar-portfolio">
+				<span className="sidebar-portfolio-title">Portfolio</span>
+				<table className="sidebar-portfolio-table">
+					<tr>
+						<th>Stock</th>
+						<th>Score</th>
+					</tr>
+					<tr>
+						<td>Jill</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>Eve</td>
+						<td>94</td>
+					</tr>
+					<tr>
+						<td>Jill</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>Eve</td>
+						<td>94</td>
+					</tr>
+					<tr>
+						<td>Jill</td>
+						<td>50</td>
+					</tr>
+					<tr>
+						<td>Eve</td>
+						<td>94</td>
+					</tr>
+				</table>
+			</div>
 			<div className="sidebar-links">
 				<Link to="/policy">{t("Privacy Policy")}</Link>
 				<Link to="/imprint">{t("Imprint")}</Link>

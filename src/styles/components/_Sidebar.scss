@@ -1,5 +1,5 @@
 .sidebar {
-	width: 160px;
+	width: 15rem;
 	background-color: black;
 	overflow-x: hidden;
 	display: flex;
@@ -14,10 +14,10 @@
 
 	&-links {
 		display: flex;
-		// flex-direction: column;
 		height: 4rem;
-		font-size: 0.5rem;
+		font-size: 0.7rem;
 		justify-content: space-evenly;
+		align-items: flex-end;
 	}
 
 	@include atSmall {
@@ -28,7 +28,7 @@
 	&-wrapper {
 		display: flex;
 		flex-direction: column;
-		height: 20rem;
+		height: 10rem;
 		justify-content: space-around;
 		align-items: center;
 	}
@@ -47,6 +47,26 @@
 		&:hover {
 			color: lighten(grey, 10%);
 			cursor: pointer;
+		}
+	}
+
+	&-portfolio {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		&-title {
+			font-size: 1.2rem;
+		}
+
+		&-table {
+			border-spacing: 0;
+			width: 50%;
+			padding-top: 0;
+
+			& > tr > td {
+				padding: 0.3rem;
+			}
 		}
 	}
 }
