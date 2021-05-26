@@ -1,6 +1,40 @@
 import { Link } from "react-router-dom";
 import i18n from "../i18n";
 import { AiFillLock } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+
+import store from "../store";
+import { ADD_PORTFOLIO, REMOVE_PORTFOLIO } from "../actions/types";
+
+const chooseTicker = (data) => {
+	if (store.getState().table.portfolio.length <= 5) {
+		store.dispatch({
+			type: ADD_PORTFOLIO,
+			payload: data,
+		});
+
+		let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
+		if (existingPortfolio == null) existingPortfolio = [];
+		existingPortfolio.push(data);
+		localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
+	}
+};
+
+const removeTicker = (data) => {
+	store.dispatch({
+		type: REMOVE_PORTFOLIO,
+		payload: data,
+	});
+
+	let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
+
+	const index = existingPortfolio.findIndex(function (stock) {
+		return stock.sec_ticker === data.sec_ticker;
+	});
+	existingPortfolio.splice(index, 1);
+	localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
+};
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
 // accessor is basically the data from which it should map each column from the api returned json,
@@ -9,11 +43,31 @@ import { AiFillLock } from "react-icons/ai";
 
 export const NUM_COLUMNS = [
 	{
-		Header: i18n.t("SEC NAME"),
-		accessor: "sec_name",
-		Cell: ({ row, value }) => (
-			<Link to={`/score/${row.original.sec_ticker}`}>{value}</Link>
+		Header: () => (
+			<div
+				style={{
+					textAlign: "left",
+				}}
+			>
+				{i18n.t("SEC NAME")}
+			</div>
 		),
+		accessor: "sec_name",
+		align: "left",
+		Cell: (props) => {
+			return (
+				<Link
+					to={`/score/${props.cell.row.original.sec_ticker}`}
+					style={{
+						display: "block",
+						width: "100%",
+						textAlign: props.cell.column.align,
+					}}
+				>
+					{props.cell.value}
+				</Link>
+			);
+		},
 	},
 	{
 		Header: i18n.t("SEC TICKER"),
@@ -70,6 +124,33 @@ export const NUM_COLUMNS = [
 			else if (row.value === 3)
 				return <span className="flag-grey">{row.value}</span>;
 			else return <span className="flag-red">{row.value}</span>;
+		},
+	},
+	{
+		Header: "Interactions",
+		Cell: ({ row }) => {
+			if (store.getState().table.portfolio.includes(row.original)) {
+				return (
+					<div>
+						<button
+							className="column-interactions"
+							onClick={() => removeTicker(row.original)}
+						>
+							<AiFillHeart />
+						</button>
+					</div>
+				);
+			} else
+				return (
+					<div>
+						<button
+							className="column-interactions"
+							onClick={() => chooseTicker(row.original)}
+						>
+							<AiOutlineHeart />
+						</button>
+					</div>
+				);
 		},
 	},
 ];

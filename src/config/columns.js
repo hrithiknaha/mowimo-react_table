@@ -180,13 +180,6 @@ export const COLUMNS = [
 	{
 		Header: "Interactions",
 		Cell: ({ row }) => {
-			// if (store.getState().table.portfolio.length != 0) {
-			// if (row.original.sec_ticker === "PHM") {
-			// 	console.log(store.getState().table.portfolio);
-			// 	console.log(row.original);
-			// 	console.log(contains(store.getState().table.portfolio, row.original));
-			// }
-			// console.log(contains(store.getState().table.portfolio, row.original));
 			if (store.getState().table.portfolio.includes(row.original)) {
 				return (
 					<div>
