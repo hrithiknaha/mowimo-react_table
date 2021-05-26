@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
 	useTable,
 	useSortBy,
@@ -15,6 +15,8 @@ import { fetchData, setWeekSelected, setScoreStyle } from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
+import useCookie from "../hooks/useCookie";
+import { div } from "prelude-ls";
 
 function Table(props) {
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
@@ -24,6 +26,14 @@ function Table(props) {
 	}, [props.table.scoreStyle]);
 	const data = useMemo(() => props.table.rows, [props.table.rows]);
 	const defaultSort = useMemo(() => DEFAULT_SORT, []);
+
+	const [cookie, updateCookie] = useCookie("color", "black");
+	const [color, setColor] = useState();
+
+	const hanldeColorChange = (e) => {
+		setColor(e.target.value);
+		props.handleColor(e.target.value);
+	};
 
 	// All the props required for the react-table logic, boilerplate code from react table
 	const {
@@ -82,6 +92,29 @@ function Table(props) {
 
 	return (
 		<>
+			{!document.cookie && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<p>
+								We use cookies to personalize content and improve our products.
+								Select a color and submit to express your consent.
+							</p>
+							<div className="modal-content-form">
+								<input type="color" onChange={hanldeColorChange} />
+								<button
+									onClick={() => {
+										updateCookie(color, 100);
+									}}
+								>
+									I Accept
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
 			<div className="container">
 				<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
 				<div className="table">

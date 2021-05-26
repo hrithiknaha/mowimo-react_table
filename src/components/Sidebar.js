@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { AiOutlineStock } from "react-icons/ai";
+import { connect } from "react-redux";
 
 //The hnadlers are received here and are destructured as a norm of writing clean code.
 function Sidebar({
@@ -10,8 +11,11 @@ function Sidebar({
 	handleNasdaq,
 	handleSP,
 	selected,
+	table,
 }) {
 	const { t } = useTranslation();
+
+	// console.log(table.portfolio);
 	return (
 		<div className="sidebar">
 			<div className="sidebar-logo">
@@ -53,34 +57,23 @@ function Sidebar({
 			<div className="sidebar-portfolio">
 				<span className="sidebar-portfolio-title">Portfolio</span>
 				<table className="sidebar-portfolio-table">
-					<tr>
-						<th>Stock</th>
-						<th>Score</th>
-					</tr>
-					<tr>
-						<td>Jill</td>
-						<td>50</td>
-					</tr>
-					<tr>
-						<td>Eve</td>
-						<td>94</td>
-					</tr>
-					<tr>
-						<td>Jill</td>
-						<td>50</td>
-					</tr>
-					<tr>
-						<td>Eve</td>
-						<td>94</td>
-					</tr>
-					<tr>
-						<td>Jill</td>
-						<td>50</td>
-					</tr>
-					<tr>
-						<td>Eve</td>
-						<td>94</td>
-					</tr>
+					<thead>
+						<tr>
+							<th>Stock</th>
+							<th>Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						{table.hasPortfolio &&
+							table.portfolio.map((stock) => {
+								return (
+									<tr key={stock.sec_ticker}>
+										<td className="td">{stock.sec_ticker}</td>
+										<td className="td">{stock.end_score}</td>
+									</tr>
+								);
+							})}
+					</tbody>
 				</table>
 			</div>
 			<div className="sidebar-links">
@@ -91,4 +84,8 @@ function Sidebar({
 	);
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+	table: state.table,
+});
+
+export default connect(mapStateToProps)(Sidebar);

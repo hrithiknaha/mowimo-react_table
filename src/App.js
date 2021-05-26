@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Table from "./components/Table";
@@ -17,15 +17,27 @@ import SP500 from "./components/SP500";
 
 //App Function passing in the i18n props to the table component
 function App(props) {
+	const [color, setColor] = useState(document.cookie.split("=")[1]);
+	const handleColor = (c) => {
+		setColor(c);
+	};
+
+	console.log(color);
+
 	return (
 		<Provider store={store}>
 			<Router>
 				<div className="app">
 					<SidebarWrapper />
-					<div className="section">
+					<div
+						style={{
+							backgroundImage: `linear-gradient(to right, ${color}, #000)`,
+						}}
+						className="section"
+					>
 						<Switch>
 							<Route path="/" exact>
-								<Table i18n={props.i18n} />
+								<Table i18n={props.i18n} handleColor={handleColor} />
 							</Route>
 							<Route path="/dowjones" exact>
 								<DowJones i18n={props.i18n} />

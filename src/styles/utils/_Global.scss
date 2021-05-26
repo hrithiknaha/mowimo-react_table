@@ -16,6 +16,7 @@ body {
 
 a {
 	color: $second-color;
+	text-decoration: none;
 }
 
 .app {
@@ -30,6 +31,7 @@ a {
 .section {
 	flex: 1 1 auto;
 	overflow: auto;
+	// background-color: $second-color; /* For browsers that do not support gradients */
 
 	@include atSmall {
 		overflow: initial;
@@ -38,4 +40,15 @@ a {
 
 input[type="text" i] {
 	padding: 0;
+}
+
+.right {
+	text-align: left;
+}
+
+.column-interactions {
+	background-color: transparent;
+	color: white;
+	border: none;
+	font-size: 1.5rem;
 }

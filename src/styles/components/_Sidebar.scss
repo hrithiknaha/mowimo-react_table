@@ -63,10 +63,10 @@
 			border-spacing: 0;
 			width: 50%;
 			padding-top: 0;
-
-			& > tr > td {
-				padding: 0.3rem;
-			}
 		}
 	}
+}
+
+.td {
+	padding: 0.3rem;
 }

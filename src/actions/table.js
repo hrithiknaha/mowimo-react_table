@@ -99,3 +99,7 @@ export const fetchTickerData = (ticker) => (dispatch) => {
 			});
 		});
 };
+
+export const chooseTicker = (row) => {
+	console.log("Liked");
+};
