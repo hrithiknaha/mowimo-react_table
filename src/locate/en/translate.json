@@ -44,7 +44,9 @@
         "equity_ratio_value": "EBIT Ratio",
         "pe_ratio_5y_value": "Price-Earnings-Ratio 5 years",
         "price_today_vs_year_value": "Price today vs year ",
-        "profit_growth_value": "Profit Growth"
+        "profit_growth_value": "Profit Growth",
 
+        "cookie": "We use cookies to personalize content and improve our products. Select a color and submit to express your consent.",
+        "Accept": "Accept"
     }
 }

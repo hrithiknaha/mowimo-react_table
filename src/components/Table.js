@@ -96,18 +96,19 @@ function Table(props) {
 				<div>
 					<div class="modal">
 						<div class="modal-content">
-							<p>
-								We use cookies to personalize content and improve our products.
-								Select a color and submit to express your consent.
-							</p>
+							<p>{t("cookie")}</p>
 							<div className="modal-content-form">
-								<input type="color" onChange={hanldeColorChange} />
+								<input
+									type="color"
+									onChange={hanldeColorChange}
+									value="#151515"
+								/>
 								<button
 									onClick={() => {
 										updateCookie(color, 100);
 									}}
 								>
-									I Accept
+									{t("Accept")}
 								</button>
 							</div>
 						</div>

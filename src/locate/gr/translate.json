@@ -42,7 +42,10 @@
         "equity_ratio_value": "Eigenkapitalquote",
         "pe_ratio_5y_value": "KGV 5 Jahre",
         "price_today_vs_year_value": "Kurs heute gg. Kurs vor 1 Jahr",
-        "profit_growth_value": "Gewinnwachstum"
+        "profit_growth_value": "Gewinnwachstum",
+
+        "cookie": "Wir verwenden Cookies, um Inhalte zu personalisieren und unsere Produkte zu verbessern. Wähle eine Farbe und bestätige die Auswahl, um dein Einverständnis auszudrücken.",
+        "Accept": "Akzeptieren"
 
     }
 }

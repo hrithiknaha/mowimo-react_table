@@ -126,7 +126,7 @@ export const COLUMNS = [
 		disableGlobalFilter: true,
 		Cell: (row) => {
 			if (row.row.original.visibility === 0) return <AiFillLock />;
-			return row.value;
+			return row.value || null;
 		},
 	},
 	{
