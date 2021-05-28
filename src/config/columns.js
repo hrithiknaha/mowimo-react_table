@@ -15,9 +15,17 @@ const chooseTicker = (data) => {
 		});
 
 		let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
-		if (existingPortfolio == null) existingPortfolio = [];
-		existingPortfolio.push(data);
+		if (existingPortfolio === null) existingPortfolio = [];
+		existingPortfolio = [
+			...existingPortfolio,
+			data.sec_ticker + "," + data.end_score,
+		];
 		localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
+
+		let like = JSON.parse(localStorage.getItem("like"));
+		if (like === null) like = [];
+		like = [...like, data.sec_ticker];
+		localStorage.setItem("like", JSON.stringify(like));
 	}
 };
 
@@ -28,22 +36,19 @@ const removeTicker = (data) => {
 	});
 
 	let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
-
 	const index = existingPortfolio.findIndex(function (stock) {
 		return stock.sec_ticker === data.sec_ticker;
 	});
 	existingPortfolio.splice(index, 1);
 	localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
-};
 
-function contains(a, obj) {
-	for (var i = 0; i < a.length; i++) {
-		if (a[i] === obj) {
-			return true;
-		}
-	}
-	return false;
-}
+	let like = JSON.parse(localStorage.getItem("like"));
+	const indexofLike = like.findIndex(function (stock) {
+		return stock.sec_ticker === data.sec_ticker;
+	});
+	like.splice(indexofLike, 1);
+	localStorage.setItem("like", JSON.stringify(like));
+};
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
 // accessor is basically the data from which it should map each column from the api returned json,
@@ -180,7 +185,9 @@ export const COLUMNS = [
 	{
 		Header: "Interactions",
 		Cell: ({ row }) => {
-			if (store.getState().table.portfolio.includes(row.original)) {
+			if (
+				store.getState().table.portfolio_like.includes(row.original.sec_ticker)
+			) {
 				return (
 					<div>
 						<button

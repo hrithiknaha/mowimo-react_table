@@ -14,13 +14,15 @@ var empty = require("is-empty");
 
 const portfolioToken = JSON.parse(localStorage.getItem("portfolioToken"));
 
+const like = JSON.parse(localStorage.getItem("like"));
+
 let initialState = {};
 
 if (portfolioToken) {
 	initialState = {
 		hasPortfolio: !empty(portfolioToken),
 		portfolio: portfolioToken,
-		portfolio_like: [],
+		portfolio_like: like,
 		selected: "all",
 		rows: [],
 		weeks: [],
@@ -43,6 +45,8 @@ if (portfolioToken) {
 		isLoading: true,
 	};
 }
+
+console.log(initialState.portfolio);
 
 export default function (state = initialState, action) {
 	switch (action.type) {
@@ -97,13 +101,24 @@ export default function (state = initialState, action) {
 		case ADD_PORTFOLIO:
 			return {
 				...state,
-				portfolio: [...state.portfolio, action.payload],
+				portfolio: [
+					...state.portfolio,
+					action.payload.sec_ticker + "," + action.payload.end_score,
+				],
+				portfolio_like: [...state.portfolio_like, action.payload.sec_ticker],
 				hasPortfolio: true,
 			};
 		case REMOVE_PORTFOLIO:
+			console.log(state.portfolio);
 			return {
 				...state,
-				portfolio: state.portfolio.filter((item) => item !== action.payload),
+				portfolio: state.portfolio.filter(
+					(item) =>
+						item != action.payload.sec_ticker + "," + action.payload.end_score
+				),
+				portfolio_like: state.portfolio_like.filter(
+					(item) => item != action.payload.sec_ticker
+				),
 			};
 		default:
 			return state;

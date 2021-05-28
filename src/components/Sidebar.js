@@ -67,9 +67,9 @@ function Sidebar({
 						{table.hasPortfolio &&
 							table.portfolio.map((stock) => {
 								return (
-									<tr key={stock.sec_ticker}>
-										<td className="td">{stock.sec_ticker}</td>
-										<td className="td">{stock.end_score}</td>
+									<tr key={stock}>
+										<td className="td">{stock.split(",")[0]}</td>
+										<td className="td">{stock.split(",")[1]}</td>
 									</tr>
 								);
 							})}

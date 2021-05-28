@@ -18,6 +18,11 @@ const chooseTicker = (data) => {
 		if (existingPortfolio == null) existingPortfolio = [];
 		existingPortfolio.push(data);
 		localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
+
+		let like = JSON.parse(localStorage.getItem("like"));
+		if (like === null) like = [];
+		like = [...like, data.sec_ticker];
+		localStorage.setItem("like", JSON.stringify(like));
 	}
 };
 
@@ -28,12 +33,18 @@ const removeTicker = (data) => {
 	});
 
 	let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
-
 	const index = existingPortfolio.findIndex(function (stock) {
 		return stock.sec_ticker === data.sec_ticker;
 	});
 	existingPortfolio.splice(index, 1);
 	localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
+
+	let like = JSON.parse(localStorage.getItem("like"));
+	const indexofLike = like.findIndex(function (stock) {
+		return stock.sec_ticker === data.sec_ticker;
+	});
+	like.splice(indexofLike, 1);
+	localStorage.setItem("like", JSON.stringify(like));
 };
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
@@ -129,7 +140,9 @@ export const NUM_COLUMNS = [
 	{
 		Header: "Interactions",
 		Cell: ({ row }) => {
-			if (store.getState().table.portfolio.includes(row.original)) {
+			if (
+				store.getState().table.portfolio_like.includes(row.original.sec_ticker)
+			) {
 				return (
 					<div>
 						<button
