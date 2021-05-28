@@ -9,6 +9,7 @@ import {
 	FETCH_TICKER,
 } from "./types";
 
+//Now this is known as actions, actions are basically functions which are called by or from components and actions in return triggers or calles the reducers functions, Al the dipatch function are basically a fancy way of calling reducer functions
 export const fetchData = () => (dispatch, state) => {
 	console.log("Fetching All");
 	const { weekSelected, scoreStyle } = state().table;

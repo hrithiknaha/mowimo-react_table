@@ -7,6 +7,8 @@ import { AiFillHeart } from "react-icons/ai";
 import store from "../store";
 import { ADD_PORTFOLIO, REMOVE_PORTFOLIO } from "../actions/types";
 
+//The last column, which is the interaction column has two button depending on the data stored in localstorage. Here the two functions are written, one to add the liked ticker and one to remove the liked ticket
+//Here we are calling the recuder function ADD_PORTFOIO and also storing thr data in localstorage, same for removal calling dispatch function REMOVE_PORTFOLIO and also removing from localstorage
 const chooseTicker = (data) => {
 	if (store.getState().table.portfolio.length <= 5) {
 		store.dispatch({

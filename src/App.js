@@ -17,13 +17,13 @@ import SP500 from "./components/SP500";
 
 //App Function passing in the i18n props to the table component
 function App(props) {
+	//This is the second file but the main functioning file which gets called when the app is working. Here we are storing the color from our modal into a state which then is passed in line 35 for thr gradient effect
 	const [color, setColor] = useState(document.cookie.split("=")[1]);
 	const handleColor = (c) => {
 		setColor(c);
 	};
 
-	console.log(color);
-
+	//Below are all the routes which makes our app works, You could see the path and the corresponding component to fire when the user visits the path
 	return (
 		<Provider store={store}>
 			<Router>

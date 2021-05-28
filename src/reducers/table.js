@@ -12,6 +12,7 @@ import {
 
 var empty = require("is-empty");
 
+//Here the initial state is considring the data of the liked portfolio to be taken from localstorage if, the localstorage has no data then a brand new state is created.
 const portfolioToken = JSON.parse(localStorage.getItem("portfolioToken"));
 
 const like = JSON.parse(localStorage.getItem("like"));
@@ -46,7 +47,8 @@ if (portfolioToken) {
 	};
 }
 
-console.log(initialState.portfolio);
+//This is something known as a Reducer, it basically is called by the action(more on that on the action folder), to manipulate the data, If i take one example the first one FETCH_DATA when called it will only update the fields mentioned inside it which are weeks, rows, selected, isLoading, similarly all the reducers are called one by one when the requirement is placed
+//It harness the power of a siple switch case.
 
 export default function (state = initialState, action) {
 	switch (action.type) {

@@ -15,8 +15,11 @@ const chooseTicker = (data) => {
 		});
 
 		let existingPortfolio = JSON.parse(localStorage.getItem("portfolioToken"));
-		if (existingPortfolio == null) existingPortfolio = [];
-		existingPortfolio.push(data);
+		if (existingPortfolio === null) existingPortfolio = [];
+		existingPortfolio = [
+			...existingPortfolio,
+			data.sec_ticker + "," + data.end_score,
+		];
 		localStorage.setItem("portfolioToken", JSON.stringify(existingPortfolio));
 
 		let like = JSON.parse(localStorage.getItem("like"));
