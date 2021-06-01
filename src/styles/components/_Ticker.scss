@@ -6,6 +6,29 @@
 		width: 100%;
 		padding: 2rem 2rem;
 	}
+
+	&-content {
+		&-meta {
+			display: flex;
+			width: 50%;
+			justify-content: space-between;
+
+			&_row-one {
+				width: 40%;
+				margin-right: 2rem;
+			}
+
+			&_row-two {
+				width: 40%;
+				margin-right: 2rem;
+			}
+
+			&_data {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+	}
 }
 
 .tooltipT {
