@@ -6,6 +6,7 @@
 	flex-direction: column;
 	height: 100vh;
 	justify-content: space-around;
+	font-size: 0.9rem;
 
 	&-logo {
 		font-size: 4rem;
@@ -14,10 +15,22 @@
 
 	&-links {
 		display: flex;
+		flex-direction: column;
 		height: 4rem;
 		font-size: 0.7rem;
 		justify-content: space-evenly;
-		align-items: flex-end;
+
+		width: 80%;
+		margin: 0 auto;
+		padding-left: 1rem;
+
+		& > a {
+			color: #9a9a9a;
+
+			&:hover {
+				color: white;
+			}
+		}
 	}
 
 	@include atSmall {
@@ -33,27 +46,11 @@
 		align-items: center;
 	}
 
-	&-selected {
-		border-bottom: 1px solid $second-color;
-		width: 50%;
-		padding-bottom: 1rem;
-	}
-
-	& a {
-		text-align: center;
-		text-decoration: none;
-		// color: white;
-
-		&:hover {
-			color: lighten(grey, 10%);
-			cursor: pointer;
-		}
-	}
-
 	&-portfolio {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		color: #9a9a9a;
 
 		&-title {
 			font-size: 1.2rem;
@@ -69,4 +66,43 @@
 
 .td {
 	padding: 0.3rem;
+}
+
+.sidebar-anchor {
+	height: 2.3rem;
+	width: 80%;
+	border-radius: 0.1rem;
+	display: flex;
+	align-items: center;
+	color: #9a9a9a;
+	margin: 0 auto;
+	padding-left: 1rem;
+
+	&:hover {
+		color: lighten(white, 80%) !important;
+	}
+}
+
+.sidebar-anchor_selected {
+	height: 2.3rem;
+	width: 80%;
+	border-radius: 0.1rem;
+	display: flex;
+	align-items: center;
+	background-color: #444444;
+	color: white;
+	margin: 0 auto;
+	padding-left: 1rem;
+}
+
+.sidebar-index_selected {
+	height: 2.3rem;
+	width: 80%;
+	border-radius: 0.1rem;
+	display: flex;
+	align-items: center;
+	// background-color: #444444;
+	color: white;
+	margin: 0 auto;
+	padding-left: 1rem;
 }

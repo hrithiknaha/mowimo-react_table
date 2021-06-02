@@ -23,10 +23,16 @@ function Sidebar({
 					<AiOutlineStock />
 				</Link>
 			</div>
+			<div className="sidebar-portfolio">
+				<a className="sidebar-anchor">Start</a>
+				<a className="sidebar-anchor_selected sidebar-anchor">Livermann</a>
+			</div>
 			<div className="sidebar-wrapper">
 				<Link
 					to="/"
-					className={selected === "all" ? "sidebar-selected" : ""}
+					className={
+						selected === "all" ? "sidebar-index_selected" : "sidebar-anchor"
+					}
 					// The function are called everytime the anchor tag is clicked, similar for all the below anchor tags
 					onClick={handleAll}
 				>
@@ -34,29 +40,37 @@ function Sidebar({
 				</Link>
 				<Link
 					to="/dowjones"
-					className={selected === "dowjones" ? "sidebar-selected" : ""}
+					className={
+						selected === "dowjones"
+							? "sidebar-index_selected"
+							: "sidebar-anchor"
+					}
 					onClick={handleDowJones}
 				>
 					Dow Jones
 				</Link>
 				<Link
 					to="/nasdaq"
-					className={selected === "nasdaq" ? "sidebar-selected" : ""}
+					className={
+						selected === "nasdaq" ? "sidebar-index_selected" : "sidebar-anchor"
+					}
 					onClick={handleNasdaq}
 				>
 					Nasdaq
 				</Link>
 				<Link
 					to="/sp500"
-					className={selected === "sp" ? "sidebar-selected" : ""}
+					className={
+						selected === "sp" ? "sidebar-index_selected" : "sidebar-anchor"
+					}
 					onClick={handleSP}
 				>
 					S&P500
 				</Link>
 			</div>
 			<div className="sidebar-portfolio">
-				<span className="sidebar-portfolio-title">Portfolio</span>
-				<table className="sidebar-portfolio-table">
+				<a className="sidebar-anchor">Portfolio</a>
+				{/* <table className="sidebar-portfolio-table">
 					<thead>
 						<tr>
 							<th>Stock</th>
@@ -74,7 +88,7 @@ function Sidebar({
 								);
 							})}
 					</tbody>
-				</table>
+				</table> */}
 			</div>
 			<div className="sidebar-links">
 				<Link to="/policy">{t("Privacy Policy")}</Link>
