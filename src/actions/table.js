@@ -7,6 +7,7 @@ import {
 	SET_WEEK_SELECTED,
 	SET_SCORE_STYLE,
 	FETCH_TICKER,
+	SET_TYPE,
 } from "./types";
 
 //Now this is known as actions, actions are basically functions which are called by or from components and actions in return triggers or calles the reducers functions, Al the dipatch function are basically a fancy way of calling reducer functions
@@ -99,6 +100,27 @@ export const fetchTickerData = (ticker) => (dispatch) => {
 				payload: data,
 			});
 		});
+};
+
+export const callStart = () => (dispatch) => {
+	dispatch({
+		type: SET_TYPE,
+		payload: "start",
+	});
+};
+
+export const callLevermann = () => (dispatch) => {
+	dispatch({
+		type: SET_TYPE,
+		payload: "levermann",
+	});
+};
+
+export const callLike = () => (dispatch) => {
+	dispatch({
+		type: SET_TYPE,
+		payload: "liked",
+	});
 };
 
 export const chooseTicker = (row) => {

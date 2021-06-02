@@ -6,6 +6,7 @@ import {
 	NASDAQ,
 	REMOVE_PORTFOLIO,
 	SET_SCORE_STYLE,
+	SET_TYPE,
 	SET_WEEK_SELECTED,
 	SP500,
 } from "../actions/types";
@@ -31,6 +32,7 @@ if (portfolioToken) {
 		scoreStyle: "scores",
 		data: {},
 		isLoading: true,
+		type: "levermann",
 	};
 } else {
 	initialState = {
@@ -44,6 +46,7 @@ if (portfolioToken) {
 		scoreStyle: "scores",
 		data: {},
 		isLoading: true,
+		type: "levermann",
 	};
 }
 
@@ -121,6 +124,11 @@ export default function (state = initialState, action) {
 				portfolio_like: state.portfolio_like.filter(
 					(item) => item != action.payload.sec_ticker
 				),
+			};
+		case SET_TYPE:
+			return {
+				...state,
+				type: action.payload,
 			};
 		default:
 			return state;

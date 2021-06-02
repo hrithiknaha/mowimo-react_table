@@ -78,6 +78,11 @@
 	margin: 0 auto;
 	padding-left: 1rem;
 
+	& > img {
+		padding-right: 1rem;
+		width: 10%;
+	}
+
 	&:hover {
 		color: lighten(white, 80%) !important;
 	}
@@ -93,6 +98,11 @@
 	color: white;
 	margin: 0 auto;
 	padding-left: 1rem;
+
+	& > img {
+		padding-right: 1rem;
+		width: 10%;
+	}
 }
 
 .sidebar-index_selected {

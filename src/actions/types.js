@@ -11,3 +11,5 @@ export const FETCH_TICKER = "FETCH_TICKER";
 
 export const ADD_PORTFOLIO = "ADD_PORTFOLIO";
 export const REMOVE_PORTFOLIO = "REMOVE_PORTFOLIO";
+
+export const SET_TYPE = "SET_TYPE";

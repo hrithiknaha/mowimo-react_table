@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import { AiOutlineStock } from "react-icons/ai";
 import { connect } from "react-redux";
 
+import HomeSelected from "../assets/symbol/home_selected.png";
+import Home from "../assets/symbol/home.png";
+import LevermannSelected from "../assets/symbol/levermann_selected.png";
+import Levermann from "../assets/symbol/levermann.png";
+import Heart from "../assets/symbol/heart.png";
+
 //The hnadlers are received here and are destructured as a norm of writing clean code.
 function Sidebar({
 	handleAll,
@@ -11,11 +17,13 @@ function Sidebar({
 	handleNasdaq,
 	handleSP,
 	selected,
-	table,
+	handleStart,
+	handleLevermann,
+	handleLike,
+	type,
 }) {
 	const { t } = useTranslation();
 
-	// console.log(table.portfolio);
 	return (
 		<div className="sidebar">
 			<div className="sidebar-logo">
@@ -24,8 +32,29 @@ function Sidebar({
 				</Link>
 			</div>
 			<div className="sidebar-portfolio">
-				<a className="sidebar-anchor">Start</a>
-				<a className="sidebar-anchor_selected sidebar-anchor">Livermann</a>
+				{type === "start" ? (
+					<Link className="sidebar-anchor_selected" onClick={handleStart}>
+						<img src={HomeSelected} alt="Home selected image" />
+						<span>Start</span>
+					</Link>
+				) : (
+					<Link className="sidebar-anchor" onClick={handleStart}>
+						<img src={Home} alt="Home image" />
+						<span>Start</span>
+					</Link>
+				)}
+
+				{type === "levermann" ? (
+					<Link className="sidebar-anchor_selected" onClick={handleLevermann}>
+						<img src={LevermannSelected} alt="Levermann selected l image" />
+						<span>Livermann</span>
+					</Link>
+				) : (
+					<Link className="sidebar-anchor" onClick={handleLevermann}>
+						<img src={Levermann} alt="Levermann l image" />
+						<span>Livermann</span>
+					</Link>
+				)}
 			</div>
 			<div className="sidebar-wrapper">
 				<Link
@@ -69,7 +98,11 @@ function Sidebar({
 				</Link>
 			</div>
 			<div className="sidebar-portfolio">
-				<a className="sidebar-anchor">Portfolio</a>
+				<Link className="sidebar-anchor">
+					<img src={Heart} alt="Liked Portfolio Image" />
+					<span>Portfolio</span>
+				</Link>
+
 				{/* <table className="sidebar-portfolio-table">
 					<thead>
 						<tr>

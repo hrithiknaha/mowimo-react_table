@@ -6,6 +6,9 @@ import {
 	callSP,
 	setWeekSelected,
 	setScoreStyle,
+	callLevermann,
+	callStart,
+	callLike,
 } from "../actions/table";
 import Sidebar from "./Sidebar";
 
@@ -28,6 +31,19 @@ function SidebarWrapper(props) {
 	const handleNasdaq = () => {
 		props.callNasdaq();
 	};
+
+	const handleLevermann = () => {
+		props.callLevermann();
+	};
+
+	const handleStart = () => {
+		props.callStart();
+	};
+
+	const handleLike = () => {
+		props.callLike();
+	};
+
 	return (
 		<div>
 			{/* Sidebar component is called here and the handle functions are passed as
@@ -38,6 +54,10 @@ function SidebarWrapper(props) {
 				handleSP={handleSP}
 				handleNasdaq={handleNasdaq}
 				selected={props.table.selected}
+				handleLevermann={handleLevermann}
+				handleStart={handleStart}
+				handleLike={handleLike}
+				type={props.table.type}
 			/>
 		</div>
 	);
@@ -54,4 +74,7 @@ export default connect(mapStateToProps, {
 	callSP,
 	setWeekSelected,
 	setScoreStyle,
+	callLevermann,
+	callStart,
+	callLike,
 })(SidebarWrapper);
