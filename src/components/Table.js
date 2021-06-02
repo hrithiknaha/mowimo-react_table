@@ -53,6 +53,7 @@ function Table(props) {
 		prepareRow,
 		state,
 		setGlobalFilter,
+		rows,
 	} = useTable(
 		{
 			columns,
@@ -71,7 +72,7 @@ function Table(props) {
 	);
 
 	//Destructuring filter data, page index data and page size from react-table state.
-	const { globalFilter, pageIndex, pageSize } = state;
+	const { globalFilter } = state;
 
 	//Getting the translation function for Internilations
 	const { t } = useTranslation();
@@ -180,7 +181,7 @@ function Table(props) {
 						{/* Mapping page index with default size of 10, and then mapping each row
 				inside of each age to get all the rows. */}
 						<tbody {...getTableBodyProps()}>
-							{page.map((row) => {
+							{rows.map((row) => {
 								prepareRow(row);
 								return (
 									<tr {...row.getRowProps()}>
@@ -198,13 +199,13 @@ function Table(props) {
 					</table>
 					{/* //React Table Actions for Changing page size, going to a custom page
 			number and pagination */}
-					<div className="table-actions">
+					{/* <div className="table-actions">
 						<select
 							value={pageSize}
 							onChange={(e) => setPageSize(Number(e.target.value))}
-						>
-							{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
-							{[10, 25, 50].map((pageSize) => {
+						> */}
+					{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
+					{/* {[10, 25, 50].map((pageSize) => {
 								return (
 									<option key={pageSize} value={pageSize}>
 										{t("Show")} {pageSize}
@@ -212,11 +213,11 @@ function Table(props) {
 								);
 							})}
 						</select>
-						<span>
-							{/* All the {t()} functions are basically the translation functions, and
+						<span> */}
+					{/* All the {t()} functions are basically the translation functions, and
 						depending on the browser language it will automatically detect it
 						and switch between Englisha and German */}
-							{t("Page")}{" "}
+					{/* {t("Page")}{" "}
 							<strong>
 								{pageIndex + 1} {t("of")} {pageOptions.length}{" "}
 							</strong>
@@ -263,7 +264,7 @@ function Table(props) {
 						>
 							<BsChevronDoubleRight />
 						</button>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</>
