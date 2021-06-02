@@ -87,7 +87,9 @@ function RowTwo(props) {
 						</p>
 					</div>
 					<div className="footer">
-						<button onClick={props.onClose}>Close</button>
+						<button onClick={props.onClose} className="modal-button">
+							Close
+						</button>
 					</div>
 				</div>
 			</div>
