@@ -68,11 +68,7 @@ function RowEight(props) {
 					</div>
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
-						<p>
-							Current fiscal year 2021 EPS 2021 am 30.04.2021: 9.61 USD EPS 2021
-							am 02.04.2021: 9.51 USD EPS 2022 am 30.04.2021: 10.46 USD EPS 2022
-							am 02.04.2021: 10.28 USD-- TO BE CHANGED
-						</p>
+						<p></p>
 					</div>
 					<div className="modal-body-calculation">
 						<h4>CALCULATION FOR {props.data.data.sec_name}</h4>

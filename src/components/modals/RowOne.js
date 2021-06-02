@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import i18n from "../../i18n";
 
 function RowOne(props) {
 	if (props.show) return null;
@@ -34,16 +35,16 @@ function RowOne(props) {
 		<div className="backdrop" style={{ backdropStyle }}>
 			<div className="modal" style={{ modalStyle }}>
 				<div className="modal-body">
-					<h1>Return on Equity CY</h1>
+					<h1>{i18n.t("roe_value")}</h1>
 					<div className="modal-body-definition">
-						<h4>DEFINITION</h4>
+						<h4>{i18n.t("DEFINITION")}</h4>
 						<p>
 							The return on equity (RoE) describes the relationship between
 							profit and equity.
 						</p>
 					</div>
 					<div className="modal-body-importance">
-						<h4>IMPORTANCE</h4>
+						<h4>{i18n.t("IMPORTANCE")}</h4>
 						<p>
 							The return on equity is important for equities. It has been found
 							that there is a connection between the return on equity and the
@@ -52,7 +53,7 @@ function RowOne(props) {
 						</p>
 					</div>
 					<div className="modal-body-score">
-						<h4>SCORE</h4>
+						<h4>{i18n.t("SCORE")}</h4>
 						<p className="modal-table">
 							<span>+1 Pkt</span> if the return on equity is greater than 20%
 						</p>
@@ -64,11 +65,13 @@ function RowOne(props) {
 						</p>
 					</div>
 					<div className="modal-body-exception">
-						<h4>EXCEPTION</h4>
+						<h4>{i18n.t("EXCEPTION")}</h4>
 						<p>None.</p>
 					</div>
 					<div className="modal-body-calculation">
-						<h4>CALCULATION FOR {props.data.data.sec_name}</h4>
+						<h4>
+							{i18n.t("CALCULATION FOR")} {props.data.data.sec_name}
+						</h4>
 						<p className="modal-table">
 							Last Year <span>2020</span>
 						</p>

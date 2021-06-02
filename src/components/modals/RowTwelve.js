@@ -71,13 +71,7 @@ function RowEleven(props) {
 					</div>
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
-						<p>
-							Close 31.12.2020: 157.380 USD Close 29.01.2021: 163.130 USD Close
-							26.02.2021: 158.460 USD Close 31.03.2021: 164.350 USD Dow Jones
-							Close 31.12.2020: 30606.48 USD Dow Jones Close 29.01.2021:
-							29982.62 USD Dow Jones Close 26.02.2021: 30932.37 USD Dow Jones
-							Close 31.03.2021: 32981.55 USD --TO BE CHANGED
-						</p>
+						<p></p>
 					</div>
 
 					<div className="modal-body-calculation">

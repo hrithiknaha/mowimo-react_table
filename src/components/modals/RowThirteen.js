@@ -67,10 +67,8 @@ function RowThirteen(props) {
 					</div>
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
-						<p>
-							Current fiscal year 2021 EPS 2021 9.61 USD EPS 2022 10.46 USD --TO
-							BE CHANGED
-						</p>
+						<p>EPS {props.data.data.fiscal_year} </p>
+						<p>EPS {props.data.data.last_eps_year} </p>
 					</div>
 
 					<div className="modal-body-calculation">

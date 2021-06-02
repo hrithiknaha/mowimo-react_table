@@ -71,8 +71,13 @@ function RowTen(props) {
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
 						<p>
-							Price on 30.04.2021: 162.730 USD Price on 30.04.2020: 150.040
-							USD-- TO BE CHANGED
+							<p>
+								Price On {props.data.data.today}: {props.data.data.last_price}
+							</p>
+							<p>
+								Price On {props.data.data.one_year_date}:{" "}
+								{props.data.data.price_1_year_ago}
+							</p>
 						</p>
 					</div>
 					<div className="modal-body-calculation">

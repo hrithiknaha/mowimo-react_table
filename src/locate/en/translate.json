@@ -18,7 +18,7 @@
         "7": "REACTION TO QUATERLY EARNINGS",
         "8": "PROFIT REVISION",
         "9": "PRICE TODAY VS. PRICE 6 MONTHS AGO",
-        "10": "PRICE TODAY vs. PRICE 1 YEAR AGO",
+        "10": "PRICE TODAY VS. PRICE 1 YEAR AGO",
         "11": "PRICE MOMENTUM",
         "12": "THREE-MONTH-REVERSAL",
         "13": "PROFIT GROWTH",
@@ -47,6 +47,14 @@
         "profit_growth_value": "Profit Growth",
 
         "cookie": "We use cookies to personalize content and improve our products. Select a color and submit to express your consent.",
-        "Accept": "Accept"
+        "Accept": "Accept",
+
+        "Interactions": "INTERACTIONS",
+
+        "DEFINITION": "DEFINITION",
+        "IMPORTANCE": "IMPORTANCE",
+        "SCORE": "SCORE",
+        "EXCEPTION": "EXCEPTION",
+        "CALCULATION FOR": "CALCULATOR FOR"
     }
 }

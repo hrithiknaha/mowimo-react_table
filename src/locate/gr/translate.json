@@ -5,22 +5,22 @@
         "Go to Page": "Gehe zu Seite",
         "Show": "Zeige",
 
-        "SEC TICKER": "Ticker",
+        "SEC TICKER": "TICKER",
         "SEC NAME": "AKTIE",
-        "1": "Eigenkapitalrendite LJ",
-        "2": "EBIT-Marge LJ",
-        "3": "Eigenkapitalquote LJ",
-        "4": "KGV 5 Jahre",
-        "5": "KGV aktuell",
-        "6": "Gewinnwachstum",
-        "7": "Reaktion auf Quartalszahlen",
-        "8": "Gewinnrevision",
-        "9": "Kurs heute gg. Kurs vor 6 Monaten",
-        "10": "Kurs heute gg. Kurs vor 1 Jahr",
-        "11": "Kursmomentum steigend",
-        "12": "Dreimonatsreversal",
-        "13": "Gewinnwachstum",
-        "Total": "Gesamt",
+        "1": "EIGENKAPITALRENDITE LJ",
+        "2": "EBIT-MARGE LJ",
+        "3": "EIGENKAPITALQUOTE LJ",
+        "4": "KGV 5 JAHRE",
+        "5": "KGV AKTUELL",
+        "6": "GEWINNWACHSTUM",
+        "7": "REAKTION AUF QUARTALSZAHLEN",
+        "8": "GEWINNREVISION",
+        "9": "KURS HEUTE GG. KURS VOR 6 MONATEN",
+        "10": "KURS HEUTE GG. KURS VOR 1 JAHR",
+        "11": "KURSMOMENTUM STEIGEND",
+        "12": "DREIMONATSREVERSAL",
+        "13": "GEWINNWACHSTUM",
+        "Total": "GESAMT",
 
         "Calender": "Kalendarwoche",
         "Week": "Woche",
@@ -45,7 +45,14 @@
         "profit_growth_value": "Gewinnwachstum",
 
         "cookie": "Wir verwenden Cookies, um Inhalte zu personalisieren und unsere Produkte zu verbessern. Wähle eine Farbe und bestätige die Auswahl, um dein Einverständnis auszudrücken.",
-        "Accept": "Akzeptieren"
+        "Accept": "Akzeptieren",
 
+        "Interactions" : "INTERAKTIONEN",
+
+        "DEFINITION": "DEFINITION",
+        "IMPORTANCE": "BEDEUTUNG",
+        "SCORE": "SCORE",
+        "EXCEPTION": "AUSNAHME",
+        "CALCULATION FOR": "BERECHNUNG FÜR"
     }
 }

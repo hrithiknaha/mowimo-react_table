@@ -75,9 +75,24 @@ function RowSeven(props) {
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
 						<p>
-							Johnson & Johnson Close 19.04.2021: 162.690 USD Johnson & Johnson
-							Close 20.04.2021: 166.480 USD Dow Jones Close 19.04.2021: 34077.63
-							Dow Jones Close 20.04.2021: 33821.30 -- TO BE CHANGED
+							{props.data.data.sec_name} Close{" "}
+							{props.data.data.reaction_first_date}:{" "}
+							<span> {props.data.data.reaction_stock_first_price} USD</span>
+						</p>
+						<p>
+							{props.data.data.sec_name} Close{" "}
+							{props.data.data.reaction_second_date}:{" "}
+							<span>{props.data.data.reaction_stock_second_price} USD</span>
+						</p>
+						<p>
+							{props.data.data.indexgroup} Close{" "}
+							{props.data.data.reaction_first_date}:{" "}
+							<span> {props.data.data.reaction_index_first_price} USD</span>
+						</p>
+						<p>
+							{props.data.data.indexgroup} Close{" "}
+							{props.data.data.reaction_second_date}:{" "}
+							<span>{props.data.data.reaction_index_second_price} USD</span>
 						</p>
 					</div>
 					<div className="modal-body-calculation">

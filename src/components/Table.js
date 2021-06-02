@@ -19,7 +19,6 @@ import useCookie from "../hooks/useCookie";
 import { div } from "prelude-ls";
 
 function Table(props) {
-	const [scroll, setScroll] = useState(false);
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
 	const columns = useMemo(() => {
 		if (props.table.scoreStyle === "scores") return COLUMNS;
@@ -161,7 +160,7 @@ function Table(props) {
 						{/* Maping any header groups first (Grouped Header). then mapping each
 				column inside of grouped header to get each individual columnsa and its
 				index. Printing the Header and the tooltip */}
-						<thead className={scroll ? "bg-black" : "bg-white"}>
+						<thead>
 							{headerGroups.map((headerGroup) => (
 								<tr {...headerGroup.getHeaderGroupProps()}>
 									{headerGroup.headers.map((column, index) => (

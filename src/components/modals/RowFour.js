@@ -77,9 +77,11 @@ function RowFour(props) {
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
 						<p>
-							Current fiscal year 2021 Price on 30.04.2021: 162.730 USD Earnings
-							per share (EPS) USD of 2018 bis 2022 am 30.04.2021: 5.61, 5.63,
-							5.51, 9.61, 10.46 --TO BE CHANGED
+							Earnings per share (EPS) <span>{props.data.data.eps_1}</span>{" "}
+							<span>{props.data.data.eps_2}</span>{" "}
+							<span>{props.data.data.eps_3}</span>{" "}
+							<span>{props.data.data.eps_4}</span>{" "}
+							<span>{props.data.data.eps_5}</span>
 						</p>
 					</div>
 					<div className="modal-body-calculation">

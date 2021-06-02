@@ -191,10 +191,10 @@ function Ticker(props) {
 									Index <span>{props.table.data.indexgroup}</span>
 								</p>
 								<p className="ticker-content-meta_data">
-									Sector <span>{props.table.data.sector}</span>
+									{t("Sector")} <span>{props.table.data.sector}</span>
 								</p>
 								<p className="ticker-content-meta_data">
-									Industry <span>{props.table.data.industry}</span>
+									{t("Industry")} <span>{props.table.data.industry}</span>
 								</p>
 								<p className="ticker-content-meta_data">
 									Share On <span>{props.table.data.shareon}</span>

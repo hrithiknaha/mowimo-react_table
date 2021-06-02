@@ -71,8 +71,11 @@ function RowNine(props) {
 					<div className="modal-body-data">
 						<h4>DATA FOR {props.data.data.sec_name}</h4>
 						<p>
-							Price on 30.04.2021: 162.730 USD Price on 30.10.2020: 137.110
-							USD-- TO BE CHANGED
+							Price On {props.data.data.today}: {props.data.data.last_price}
+						</p>
+						<p>
+							Price On {props.data.data.six_months_date}:{" "}
+							{props.data.data.price_6_months_ago}
 						</p>
 					</div>
 					<div className="modal-body-calculation">
