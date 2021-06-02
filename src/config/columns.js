@@ -185,7 +185,7 @@ export const COLUMNS = [
 		},
 	},
 	{
-		Header: "Interactions",
+		Header: "INTERACTIONS",
 		Cell: ({ row }) => {
 			if (
 				store.getState().table.portfolio_like.includes(row.original.sec_ticker)

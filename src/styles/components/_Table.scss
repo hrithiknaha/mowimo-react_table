@@ -12,9 +12,12 @@ th {
 	text-align: center;
 	padding: 1rem;
 	position: sticky;
+	color: #b3b3b3;
+	font-size: 0.75rem;
+	letter-spacing: 1.2px;
+	// line-height: 16px;
 	top: 0;
-	border-bottom: 1px solid $second-color;
-	background-color: darken($color: $first-color, $amount: 60%);
+	border-bottom: 1px solid #b3b3b3;
 }
 
 .table {

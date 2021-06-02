@@ -1,5 +1,5 @@
 .container {
-	padding: 0 5rem;
+	padding: 0 2rem;
 
 	@include atSmall {
 		padding: 0 1rem;
@@ -10,7 +10,9 @@ body {
 	background-color: $first-color;
 	color: $second-color;
 	letter-spacing: 1.6;
-	font-family: "Roboto", sans-serif;
+	// font-family: "Roboto", sans-serif;
+	// font-family: "URW Geometric";
+	font-family: "URWGeometric-Medium";
 	margin: 0;
 }
 

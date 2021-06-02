@@ -7,8 +7,8 @@
         "Go to Page": "Go to Page",
         "Show": "Show",
 
-        "SEC TICKER": "Ticker",
-        "SEC NAME": "Stock",
+        "SEC TICKER": "TICKER",
+        "SEC NAME": "STOCK",
         "1": "Return on Equity CY",
         "2": "EBIT-Margin CY",
         "3": "Equity Ratio CY",
@@ -22,7 +22,7 @@
         "11": "Price momentum",
         "12": "Three-month-reversal",
         "13": "Profit growth",
-        "Total": "Total",
+        "Total": "TOTAL",
 
         "Calender": "Calender",
         "Week": "Week",
