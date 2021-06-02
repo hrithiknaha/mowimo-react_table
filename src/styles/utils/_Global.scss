@@ -54,3 +54,11 @@ input[type="text" i] {
 .text-align {
 	text-align: left;
 }
+
+tbody {
+	& > tr {
+		&:hover {
+			background-color: #e6e6e645;
+		}
+	}
+}

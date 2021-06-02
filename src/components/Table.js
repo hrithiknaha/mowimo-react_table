@@ -186,7 +186,9 @@ function Table(props) {
 									<tr {...row.getRowProps()}>
 										{row.cells.map((cell) => {
 											return (
-												<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+												<td className="row" {...cell.getCellProps()}>
+													{cell.render("Cell")}
+												</td>
 											);
 										})}
 									</tr>

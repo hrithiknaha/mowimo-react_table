@@ -205,9 +205,9 @@ function Ticker(props) {
 					<table>
 						<thead>
 							<tr>
-								<th className="text-align">Criteria</th>
-								<th>Value</th>
-								<th>Point</th>
+								<th className="text-align">CRITERIA</th>
+								<th>VALUE</th>
+								<th>POINT</th>
 							</tr>
 						</thead>
 						<tbody>
