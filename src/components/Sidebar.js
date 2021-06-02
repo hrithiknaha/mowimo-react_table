@@ -98,30 +98,10 @@ function Sidebar({
 				</Link>
 			</div>
 			<div className="sidebar-portfolio">
-				<Link className="sidebar-anchor">
+				<Link className="sidebar-anchor" to="/portfolio">
 					<img src={Heart} alt="Liked Portfolio Image" />
 					<span>Portfolio</span>
 				</Link>
-
-				{/* <table className="sidebar-portfolio-table">
-					<thead>
-						<tr>
-							<th>Stock</th>
-							<th>Score</th>
-						</tr>
-					</thead>
-					<tbody>
-						{table.hasPortfolio &&
-							table.portfolio.map((stock) => {
-								return (
-									<tr key={stock}>
-										<td className="td">{stock.split(",")[0]}</td>
-										<td className="td">{stock.split(",")[1]}</td>
-									</tr>
-								);
-							})}
-					</tbody>
-				</table> */}
 			</div>
 			<div className="sidebar-links">
 				<Link to="/policy">{t("Privacy Policy")}</Link>

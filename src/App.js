@@ -14,6 +14,7 @@ import SidebarWrapper from "./components/SidebarWrapper";
 import DowJones from "./components/DowJones";
 import Nasdaq from "./components/Nasdaq";
 import SP500 from "./components/SP500";
+import Portfolio from "./components/Portfolio";
 
 //App Function passing in the i18n props to the table component
 function App(props) {
@@ -51,6 +52,7 @@ function App(props) {
 							<Route path="/score/:ticker" exact component={Ticker} />
 							<Route path="/policy" exact component={Policy} />
 							<Route path="/imprint" exact component={Imprint} />
+							<Route path="/portfolio" exact component={Portfolio} />
 							<Route path="/stocks/earning" exact component={StocksEarning} />
 						</Switch>
 					</div>

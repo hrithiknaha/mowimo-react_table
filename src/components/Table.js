@@ -81,12 +81,6 @@ function Table(props) {
 		props.fetchData();
 	}, [props.table.weekSelected, props.table.scoreStyle]);
 
-	useEffect(() => {
-		window.addEventListener("scroll", () => {
-			setScroll(window.scrollY > 50);
-		});
-	}, []);
-
 	const handleWeekChange = (e) => {
 		if (e.target.value === undefined) props.setWeekSelected("");
 		else props.setWeekSelected(e.target.value);
