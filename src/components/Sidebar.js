@@ -22,6 +22,7 @@ function Sidebar({
 	handleLevermann,
 	handleLike,
 	type,
+	table,
 }) {
 	const { t } = useTranslation();
 
@@ -110,6 +111,26 @@ function Sidebar({
 							<img src={Heart} alt="Liked Portfolio Image" />
 							<span>Portfolio</span>
 						</Link>
+
+						<table className="sidebar-portfolio-table">
+							<thead>
+								<tr>
+									<th>STOCK</th>
+									<th>SCORE</th>
+								</tr>
+							</thead>
+							<tbody>
+								{table.hasPortfolio &&
+									table.portfolio.map((stock) => {
+										return (
+											<tr key={stock}>
+												<td className="td">{stock.split(",")[0]}</td>
+												<td className="td">{stock.split(",")[1]}</td>
+											</tr>
+										);
+									})}
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div className="sidebar-links">
