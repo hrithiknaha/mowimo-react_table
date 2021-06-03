@@ -16,9 +16,10 @@ import { fetchData, setWeekSelected, setScoreStyle } from "../actions/table";
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import useCookie from "../hooks/useCookie";
-import { div } from "prelude-ls";
 
 function Table(props) {
+	const [top, setTop] = useState("");
+
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
 	const columns = useMemo(() => {
 		if (props.table.scoreStyle === "scores") return COLUMNS;
@@ -79,6 +80,19 @@ function Table(props) {
 	//Use effect will be called once after the page renders, and then everytime the weekSelected data state is changed. Depending on which Index is selected the switch case logic will call the subsequent functions.
 	useEffect(() => {
 		props.fetchData();
+		window.addEventListener(
+			"scroll",
+			() => {
+				console.log(window.scrollY > 170);
+				// console.log(window.scrollY > 50);
+				// setScroll(window.scrollY > 170);
+				// console.log(scroll);
+				if (window.scrollY > 170) {
+					setTop("top");
+				} else setTop("");
+			},
+			true
+		);
 	}, [props.table.weekSelected, props.table.scoreStyle]);
 
 	const handleWeekChange = (e) => {
@@ -162,7 +176,7 @@ function Table(props) {
 				index. Printing the Header and the tooltip */}
 						<thead>
 							{headerGroups.map((headerGroup) => (
-								<tr {...headerGroup.getHeaderGroupProps()}>
+								<tr className={top} {...headerGroup.getHeaderGroupProps()}>
 									{headerGroup.headers.map((column, index) => (
 										<th
 											className="tooltip"

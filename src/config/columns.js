@@ -132,7 +132,6 @@ export const COLUMNS = [
 		accessor: "reaction_earnings_score",
 		disableGlobalFilter: true,
 		Cell: (row) => {
-			console.log(row.row.original.reaction_earnings_score);
 			if (row.row.original.visibility === 0) return <AiFillLock />;
 			if (row.row.original.reaction_earnings_score === 0) return 0;
 			return row.row.original.reaction_earnings_score || 0;
