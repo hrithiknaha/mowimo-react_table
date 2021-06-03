@@ -56,9 +56,10 @@ if (portfolioToken) {
 export default function (state = initialState, action) {
 	switch (action.type) {
 		case FETCH_DATA:
+			console.log(action.payload);
 			return {
 				...state,
-				weeks: action.payload.data[0].dates_available[0],
+				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
 				isLoading: true,
@@ -66,7 +67,7 @@ export default function (state = initialState, action) {
 		case DOW_JONES:
 			return {
 				...state,
-				weeks: action.payload.data[0].dates_available[0],
+				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
 				isLoading: true,
@@ -74,7 +75,7 @@ export default function (state = initialState, action) {
 		case NASDAQ:
 			return {
 				...state,
-				weeks: action.payload.data[0].dates_available[0],
+				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
 				isLoading: true,
@@ -82,7 +83,7 @@ export default function (state = initialState, action) {
 		case SP500:
 			return {
 				...state,
-				weeks: action.payload.data[0].dates_available[0],
+				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
 				isLoading: true,
