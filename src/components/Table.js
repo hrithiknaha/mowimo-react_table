@@ -83,10 +83,6 @@ function Table(props) {
 		window.addEventListener(
 			"scroll",
 			() => {
-				console.log(window.scrollY > 170);
-				// console.log(window.scrollY > 50);
-				// setScroll(window.scrollY > 170);
-				// console.log(scroll);
 				if (window.scrollY > 170) {
 					setTop("top");
 				} else setTop("");

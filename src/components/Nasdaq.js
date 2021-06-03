@@ -19,6 +19,7 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import useCookie from "../hooks/useCookie";
 
 function Nasdaq(props) {
+	const [top, setTop] = useState("");
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
 	const columns = useMemo(() => {
 		if (props.table.scoreStyle === "scores") return COLUMNS;
@@ -34,6 +35,18 @@ function Nasdaq(props) {
 		setColor(e.target.value);
 		props.handleColor(e.target.value);
 	};
+
+	useEffect(() => {
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (window.scrollY > 170) {
+					setTop("top");
+				} else setTop("");
+			},
+			true
+		);
+	}, []);
 
 	// All the props required for the react-table logic, boilerplate code from react table
 	const {
@@ -161,7 +174,7 @@ function Nasdaq(props) {
 				index. Printing the Header and the tooltip */}
 						<thead>
 							{headerGroups.map((headerGroup) => (
-								<tr {...headerGroup.getHeaderGroupProps()}>
+								<tr className={top} {...headerGroup.getHeaderGroupProps()}>
 									{headerGroup.headers.map((column, index) => (
 										<th
 											className="tooltip"
