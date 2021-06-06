@@ -8,7 +8,7 @@ import Table from "./components/Table";
 import Ticker from "./components/Ticker";
 import Policy from "./components/Policy";
 import Imprint from "./components/Imprint";
-import StocksEarning from "./components/StocksEarning";
+import StockEarnings from "./components/StockEarnings";
 import SidebarWrapper from "./components/SidebarWrapper";
 import DowJones from "./components/DowJones";
 import Nasdaq from "./components/Nasdaq";
@@ -69,7 +69,7 @@ function App(props) {
 							<Route path="/policy" exact component={Policy} />
 							<Route path="/imprint" exact component={Imprint} />
 							<Route path="/portfolio" exact component={Portfolio} />
-							<Route path="/stocks/earning" exact component={StocksEarning} />
+							<Route path="/stock/earnings" exact component={StockEarnings} />
 						</Switch>
 					</div>
 				</div>

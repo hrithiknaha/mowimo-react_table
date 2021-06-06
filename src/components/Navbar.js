@@ -11,7 +11,7 @@ function Navbar({ filter, setFilter }) {
 		<div className="navbar">
 			<Filter filter={filter} setFilter={setFilter} />
 			<div className="navbar-links">
-				<Link to="stocks-earning">{t("Stock Earning")}</Link>
+				<Link to="/stock/earnings">{t("Stock Earning")}</Link>
 			</div>
 		</div>
 	);
