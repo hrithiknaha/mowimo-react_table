@@ -1,5 +1,5 @@
 .container {
-	padding: 0 2rem;
+	padding: 0;
 
 	@include atSmall {
 		padding: 0 1rem;
@@ -64,19 +64,20 @@ tbody {
 }
 
 td:first-child {
-	border-top-left-radius: 0.3rem;
-	border-bottom-left-radius: 0.3rem;
+	border-top-left-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+	// padding: 1rem 3rem;
 }
 td:last-child {
-	border-bottom-right-radius: 0.3rem;
-	border-top-right-radius: 0.3rem;
+	border-bottom-right-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
 }
 
 .top {
 	background-color: black;
 
 	& > th {
-		background: black;
+		background: #181818;
 		position: sticky;
 		top: 0; /* Don't forget this, required for the stickiness */
 		box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);

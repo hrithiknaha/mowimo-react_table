@@ -3,13 +3,13 @@ table {
 	border-spacing: 0;
 	table-layout: auto;
 	padding-top: 3rem;
+	//table-layout:fixed;
 }
 td {
 	padding: 1rem;
 	text-align: center;
 }
 th {
-	// font-family: "URW Geometric";
 	text-align: center;
 	padding: 0.5rem 1rem;
 	position: sticky;
@@ -18,9 +18,14 @@ th {
 	letter-spacing: 1.2px;
 	// line-height: 16px;
 	top: 0;
-	border-bottom: 1px solid #b3b3b3;
-	// background: rgba(255, 255, 255, 0.6);
+	border-bottom: 1px solid #6e6e6e;
 }
+// creates some space between sidebar and table header // see also global.scss
+th:first-child {
+	padding: 0.5rem 3rem;
+	
+}
+
 
 .table {
 	padding-top: 3rem;

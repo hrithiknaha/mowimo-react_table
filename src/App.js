@@ -46,9 +46,9 @@ function App(props) {
 					<SidebarWrapper />
 					<div
 						style={{
-							backgroundImage: `linear-gradient(to bottom,0 300, ${color}, #000)`,
+							backgroundImage: `linear-gradient(to bottom,0 300, ${color}, #121212)`,
 							marginLeft: "15rem",
-							backgroundImage: `-webkit-gradient(linear, left top, 0 250, from(${color}), to(#000))`,
+							backgroundImage: `-webkit-gradient(linear, left top, 0 250, from(${color}), to(#121212))`,
 						}}
 						className="section"
 					>

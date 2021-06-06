@@ -177,6 +177,7 @@ export const COLUMNS = [
 		Header: i18n.t("Total"),
 		// tipText: "END SCORE",
 		accessor: "end_score",
+		sortType: "basic",
 		Cell: (row) => {
 			if (row.value >= 4)
 				return <span className="flag-green">{row.value}</span>;

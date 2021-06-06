@@ -135,7 +135,6 @@ function Table(props) {
 						<div className="week-selector">
 							<label>{t("Calender")}</label>
 							<select onChange={handleWeekChange}>
-								<option value="">Default</option>
 								{props.table.weeks.map((week) => {
 									return (
 										<option key={week} value={week}>

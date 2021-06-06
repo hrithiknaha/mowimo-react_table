@@ -2,11 +2,39 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 3rem;
+	height: 3.8rem;
 	width: 100%;
 
 	@include atSmall {
 		padding-top: 1rem;
 		justify-content: space-around;
 	}
+	
+	background: rgba(0, 0, 0, 0.23);
+}
+.navbar-links{
+	margin-right: 2rem;
+	/*padding-right: 2rem*/
+	
+}
+.navbar-links a{
+	
+	background-color: #fafafa; /* Green */
+	border-radius: 1.9rem;
+	color: black;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	transition: 0.1s;
+	
+}
+
+.navbar-links a:hover{
+	
+	transform:scale(1.06,1.06);
+    -webkit-transform:scale(1.06,1.06);
+    -moz-transform:scale(1.06,1.06);
+	
 }

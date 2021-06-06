@@ -94,7 +94,7 @@ function Sidebar({
 							}
 							onClick={handleNasdaq}
 						>
-							Nasdaq
+							Nasdaq 100
 						</Link>
 						<Link
 							to="/sp500"
@@ -103,7 +103,7 @@ function Sidebar({
 							}
 							onClick={handleSP}
 						>
-							S&P500
+							S&P 500
 						</Link>
 					</div>
 					<div className="sidebar-portfolio">

@@ -15,7 +15,7 @@ function Filter({ filter, setFilter }) {
 				spellCheck="false"
 				value={filter || ""}
 				onChange={(e) => setFilter(e.target.value)}
-				placeholder="Search"
+				placeholder="Companies, Tickers or Endscore"
 			/>
 		</div>
 	);
