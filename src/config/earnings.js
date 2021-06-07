@@ -21,13 +21,10 @@ export const earnings_column = [
 	},
 	{
 		Header: "Last Reaction",
-		accessor: "earnings_reaction",
-		Cell: (row) => {
-			const last_earning = row.row.original.earnings_reaction;
-			return last_earning[3][1];
+		id: "last_reaction",
+		accessor: (row) => {
+			return row.earnings_reaction[3][1];
 		},
-		defaultCanSort: true,
-		// disableGlobalFilter: true,
 	},
 	{
 		Header: "Average",
