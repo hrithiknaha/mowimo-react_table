@@ -32,29 +32,29 @@ export const earnings_column = [
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: "Count",
-		// accessor: (row) => {
-		// 	const earnings = row.row.original.earnings_reaction;
-
-		// 	let positive = null;
-		// 	earnings.map((earning) => {
-		// 		if (earning[1] >= 0) positive++;
-		// 	});
-		// 	// if (positive) return positive;
-		// 	// else return 0;
-		// 	return 0;
-		// },
-		// disableGlobalFilter: true,
-		defaultCanSort: true,
-		Cell: (row) => {
-			const earnings = row.row.original.earnings_reaction;
-
+		Header: "Count (+ve)",
+		id: "count",
+		accessor: (row) => {
 			let positive = null;
+			const earnings = row.earnings_reaction;
+
 			earnings.map((earning) => {
 				if (earning[1] >= 0) positive++;
 			});
 			if (positive) return positive;
 			else return 0;
 		},
+		// disableGlobalFilter: true,
+		// defaultCanSort: true,
+		// Cell: (row) => {
+		// 	const earnings = row.row.original.earnings_reaction;
+
+		// 	let positive = null;
+		// 	earnings.map((earning) => {
+		// 		if (earning[1] >= 0) positive++;
+		// 	});
+		// 	if (positive) return positive;
+		// 	else return 0;
+		// },
 	},
 ];
