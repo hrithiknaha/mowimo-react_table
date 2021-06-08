@@ -48,7 +48,10 @@ export const earnings_column = [
 	},
 	{
 		Header: "Earnings",
-		// accessor: "roe_value",
+		id: "earnings_reaction",
+		accessor: (row) => {
+			return row.earnings_reaction[0][0];
+		},
 		// disableGlobalFilter: true,
 		Cell: (row) => {
 			const earnings = row.row.original.earnings_reaction;
@@ -95,7 +98,9 @@ export const earnings_column = [
 					}}
 					className="line"
 				>
+					<div className="line-left">1Y</div>
 					<div>{printMarkers()}</div>
+					<div className="line-right">TODAY</div>
 				</div>
 			);
 		},
@@ -148,23 +153,78 @@ export const earnings_column_negative = [
 			</div>
 		),
 		accessor: "name",
-		// disableGlobalFilter: true,
-	},
-	{
-		Header: "Earnings",
-		// accessor: "last_earnings_date",
-		// disableGlobalFilter: true,
-
-		Cell: (row) => {
+		align: "left",
+		Cell: (props) => {
 			return (
 				<div
 					style={{
 						display: "block",
+						width: "100%",
+						textAlign: props.cell.column.align,
+					}}
+				>
+					{props.cell.value}
+				</div>
+			);
+		},
+		// disableGlobalFilter: true,
+	},
+	{
+		Header: "Earnings",
+		id: "earnings_reaction",
+		accessor: (row) => {
+			return row.earnings_reaction[0][0];
+		},
+		// disableGlobalFilter: true,
+		Cell: (row) => {
+			const earnings = row.row.original.earnings_reaction;
+			let markers = [];
+			let markerScores = [];
+			earnings.map((earning) => {
+				const dateOfEarning = earning[0];
+				const date = parseDate(dateOfEarning);
+				const timespan = date_diff(date, new Date());
+				const relative_marker = relativePosition(timespan);
+				markers.push(relative_marker);
+				markerScores.push(earning[1]);
+			});
+			console.log(markers);
+			console.log(markerScores);
+
+			const printMarkers = () => {
+				let markersArray = [];
+				for (let i = 0; i < markers.length; i++) {
+					let arrow = null;
+					if (markerScores[i] > 1) arrow = "up";
+					else if (markerScores[i] < -1) arrow = "down";
+					else arrow = "dot";
+
+					markersArray.push(
+						<div
+							className={`arrow ${arrow}`}
+							style={{
+								position: "absolute",
+								textAlign: "left",
+								left: `${markers[i]}%`,
+							}}
+						></div>
+					);
+				}
+
+				return markersArray;
+			};
+
+			return (
+				<div
+					style={{
 						width: "30rem",
-						// textAlign: props.cell.column.align,
 					}}
 					className="line"
-				></div>
+				>
+					<div className="line-left">1Y</div>
+					<div>{printMarkers()}</div>
+					<div className="line-right">TODAY</div>
+				</div>
 			);
 		},
 	},
