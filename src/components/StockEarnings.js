@@ -10,7 +10,6 @@ function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
 
 	const { index } = useParams();
-	console.log(index);
 
 	const columns = useMemo(() => {
 		if (props.earnings.isNegative) return earnings_column;

@@ -57,16 +57,40 @@ export const earnings_column = [
 			const earnings = row.row.original.earnings_reaction;
 			let markers = [];
 			let markerScores = [];
-			earnings.map((earning) => {
+			let daysDiff = [];
+			let daysDiffScores = [];
+			earnings.map((earning, i, el) => {
 				const dateOfEarning = earning[0];
 				const date = parseDate(dateOfEarning);
 				const timespan = date_diff(date, new Date());
 				const relative_marker = relativePosition(timespan);
 				markers.push(relative_marker);
 				markerScores.push(earning[1]);
+
+				//Days Between Tickers
+				if (el[i + 1] != undefined) {
+					const days_difference = date_diff(
+						date,
+						parseDate(earnings[i + 1][0])
+					);
+					daysDiffScores.push(days_difference);
+					let relative_description = relativePosition(
+						timespan - days_difference / 2
+					);
+					daysDiff.push(relative_description);
+				} else {
+					const days_difference = date_diff(date, new Date());
+					daysDiffScores.push(days_difference);
+					let relative_description = relativePosition(
+						timespan - days_difference / 2
+					);
+					daysDiff.push(relative_description);
+				}
 			});
 			console.log(markers);
 			console.log(markerScores);
+			console.log(daysDiff);
+			console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
@@ -91,6 +115,26 @@ export const earnings_column = [
 				return markersArray;
 			};
 
+			const printDaysDiff = () => {
+				let daysArray = [];
+				for (let i = 0; i < daysDiff.length; i++) {
+					daysArray.push(
+						<div
+							className="line-days"
+							style={{
+								position: "absolute",
+								textAlign: "left",
+								left: `${daysDiff[i]}%`,
+							}}
+						>
+							{daysDiffScores[i]}d
+						</div>
+					);
+				}
+
+				return daysArray;
+			};
+
 			return (
 				<div
 					style={{
@@ -100,6 +144,7 @@ export const earnings_column = [
 				>
 					<div className="line-left">1Y</div>
 					<div>{printMarkers()}</div>
+					<div>{printDaysDiff()}</div>
 					<div className="line-right">TODAY</div>
 				</div>
 			);
@@ -188,8 +233,8 @@ export const earnings_column_negative = [
 				markers.push(relative_marker);
 				markerScores.push(earning[1]);
 			});
-			console.log(markers);
-			console.log(markerScores);
+			// console.log(markers);
+			// console.log(markerScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
