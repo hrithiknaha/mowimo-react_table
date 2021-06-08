@@ -4,9 +4,13 @@ import { useTable, useSortBy } from "react-table";
 import { earnings_column, earnings_column_negative } from "../config/earnings";
 import { connect } from "react-redux";
 import { countSignToggler } from "../actions/earnings";
+import { useParams } from "react-router-dom";
 
 function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
+
+	const { index } = useParams();
+	console.log(index);
 
 	const columns = useMemo(() => {
 		if (props.earnings.isNegative) return earnings_column;
@@ -16,7 +20,7 @@ function StockEarnings(props) {
 
 	useEffect(() => {
 		axios
-			.get("http://levermy.herokuapp.com/earnings/DowJones")
+			.get(`http://levermy.herokuapp.com/earnings/${index}`)
 			.then(({ data }) => {
 				setEarnings(data);
 			});

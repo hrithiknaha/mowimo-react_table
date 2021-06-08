@@ -130,7 +130,11 @@ function DowJones(props) {
 				</div>
 			)}
 			<div className="container">
-				<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
+				<Navbar
+					filter={globalFilter}
+					setFilter={setGlobalFilter}
+					index={"dowjones"}
+				/>
 				<div className="table">
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">

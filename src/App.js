@@ -69,7 +69,11 @@ function App(props) {
 							<Route path="/policy" exact component={Policy} />
 							<Route path="/imprint" exact component={Imprint} />
 							<Route path="/portfolio" exact component={Portfolio} />
-							<Route path="/stock/earnings" exact component={StockEarnings} />
+							<Route
+								path="/stock/earnings/:index"
+								exact
+								component={StockEarnings}
+							/>
 						</Switch>
 					</div>
 				</div>

@@ -117,7 +117,7 @@ export const earnings_column = [
 		Header: "Last Reaction",
 		id: "last_reaction",
 		accessor: (row) => {
-			return row.earnings_reaction[3][1];
+			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
 	{
@@ -240,7 +240,7 @@ export const earnings_column_negative = [
 		Header: "Last Reaction",
 		id: "last_reaction",
 		accessor: (row) => {
-			return row.earnings_reaction[3][1];
+			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
 	{
