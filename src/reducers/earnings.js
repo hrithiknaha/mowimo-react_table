@@ -1,7 +1,7 @@
 import { TOGGLE_COUNT_SIGN } from "../actions/types";
 
 const initialState = {
-	isPositive: true,
+	isNegative: false,
 };
 
 export default function (state = initialState, action) {
@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
 		case TOGGLE_COUNT_SIGN:
 			return {
 				...state,
-				isPositive: !state.isPositive,
+				isNegative: !state.isNegative,
 			};
 		default:
 			return state;

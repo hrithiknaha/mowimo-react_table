@@ -9,9 +9,9 @@ function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
 
 	const columns = useMemo(() => {
-		if (props.earnings.isPositive) return earnings_column;
+		if (props.earnings.isNegative) return earnings_column;
 		return earnings_column_negative;
-	}, [earnings_column, props.earnings.isPositive]);
+	}, [earnings_column, props.earnings.isNegative]);
 	const data = useMemo(() => earnings, [earnings]);
 
 	useEffect(() => {
@@ -31,13 +31,27 @@ function StockEarnings(props) {
 			useSortBy
 		);
 
-	const toggler = () => {
-		props.countSignToggler();
+	const handleToggleClick = (e) => {
+		if (e.target.checked) props.countSignToggler(true);
+		else props.countSignToggler(false);
 	};
 
 	return (
 		<>
-			<button onClick={toggler}>Change Count Sign</button>
+			<div className="sign">
+				<label>Negative</label>
+				<label className="switch">
+					<input
+						onClick={handleToggleClick}
+						type="checkbox"
+						defaultChecked={props.earnings.isNegative === false ? false : true}
+					/>
+					<div>
+						<span></span>
+					</div>
+				</label>
+				<label>Positive</label>
+			</div>
 			<table {...getTableProps()}>
 				{/* Maping any header groups first (Grouped Header). then mapping each
 				column inside of grouped header to get each individual columnsa and its
