@@ -91,6 +91,19 @@ td:last-child {
 	background-color: teal;
 	border-radius: 6px;
 	position: relative;
+
+	&-left {
+		position: absolute;
+		font-size: 0.5rem;
+		top: -0.6rem;
+	}
+
+	&-right {
+		position: absolute;
+		right: 0;
+		font-size: 0.5rem;
+		top: -0.6rem;
+	}
 }
 
 .arrow {
