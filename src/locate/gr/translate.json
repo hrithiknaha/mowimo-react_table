@@ -62,6 +62,11 @@
         "COUNT": "ANZAHL ",
 
         "Negative": "Negativ",
-        "Positive": "Positiv"
+        "Positive": "Positiv",
+
+        "1Y": "1J",
+        "TODAY": "HEUTE",
+
+        "d": "T"
     }
 }

@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
-import { useTable, useSortBy } from "react-table";
+import {
+	useTable,
+	useSortBy,
+	useGlobalFilter,
+	usePagination,
+} from "react-table";
 import { earnings_column, earnings_column_negative } from "../config/earnings";
 import { connect } from "react-redux";
 import { countSignToggler, setEarningPage } from "../actions/earnings";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import Navbar from "./Navbar";
 
 function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
@@ -41,19 +47,30 @@ function StockEarnings(props) {
 		return () => props.setEarningPage(false);
 	}, [props.earnings.threshold]);
 
-	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-		useTable(
-			{
-				columns,
-				data,
-			},
-			useSortBy
-		);
+	const {
+		getTableProps,
+		getTableBodyProps,
+		headerGroups,
+		rows,
+		prepareRow,
+		state,
+		setGlobalFilter,
+	} = useTable(
+		{
+			columns,
+			data,
+		},
+		useGlobalFilter,
+		useSortBy
+	);
+
+	const { globalFilter } = state;
 
 	const { t } = useTranslation();
 
 	return (
 		<>
+			<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
 			<table {...getTableProps()}>
 				{/* Maping any header groups first (Grouped Header). then mapping each
 				column inside of grouped header to get each individual columnsa and its

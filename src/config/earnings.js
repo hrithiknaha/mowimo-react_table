@@ -53,8 +53,8 @@ export const earnings_column = [
 			<div>
 				{i18n.t("EARNINGS")}
 				<div className="earnings-header">
-					<div>1Y</div>
-					<div>TODAY</div>
+					<div>{i18n.t("1Y")}</div>
+					<div>{i18n.t("TODAY")}</div>
 				</div>
 			</div>
 		),
@@ -139,7 +139,8 @@ export const earnings_column = [
 								left: `${daysDiff[i]}%`,
 							}}
 						>
-							{daysDiffScores[i]}d
+							{daysDiffScores[i]}
+							{i18n.t("d")}
 						</div>
 					);
 				}
@@ -229,8 +230,8 @@ export const earnings_column_negative = [
 			<div>
 				{i18n.t("EARNINGS")}
 				<div className="earnings-header">
-					<div>1Y</div>
-					<div>TODAY</div>
+					<div>{i18n.t("1Y")}</div>
+					<div>{i18n.t("TODAY")}</div>
 				</div>
 			</div>
 		),
@@ -315,7 +316,8 @@ export const earnings_column_negative = [
 								left: `${daysDiff[i]}%`,
 							}}
 						>
-							{daysDiffScores[i]}d
+							{daysDiffScores[i]}
+							{i18n.t("d")}
 						</div>
 					);
 				}

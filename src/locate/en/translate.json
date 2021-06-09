@@ -64,6 +64,11 @@
         "COUNT": "COUNT",
 
         "Negative": "Negative",
-        "Positive": "Positive"
+        "Positive": "Positive",
+
+        "1Y": "1Y",
+        "TODAY": "TODAY",
+
+        "d": "d"
     }
 }
