@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 
 function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
+	const [top, setTop] = useState("");
 
 	const { index } = useParams();
 
@@ -26,6 +27,16 @@ function StockEarnings(props) {
 			.then(({ data }) => {
 				setEarnings(data);
 			});
+
+		window.addEventListener(
+			"scroll",
+			() => {
+				if (window.scrollY > 60) {
+					setTop("top");
+				} else setTop("");
+			},
+			true
+		);
 
 		return () => props.setEarningPage(false);
 	}, [props.earnings.threshold]);
@@ -49,7 +60,7 @@ function StockEarnings(props) {
 				index. Printing the Header and the tooltip */}
 				<thead>
 					{headerGroups.map((headerGroup) => (
-						<tr {...headerGroup.getHeaderGroupProps()}>
+						<tr className={top} {...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map((column, index) => (
 								<th
 									className="tooltip"

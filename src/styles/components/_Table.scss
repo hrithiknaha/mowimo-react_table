@@ -19,13 +19,12 @@ th {
 	// line-height: 16px;
 	top: 0;
 	border-bottom: 1px solid #6e6e6e;
+	z-index: 999;
 }
 // creates some space between sidebar and table header // see also global.scss
 th:first-child {
 	padding: 0.5rem 3rem;
-	
 }
-
 
 .table {
 	padding-top: 3rem;
