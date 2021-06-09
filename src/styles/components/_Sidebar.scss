@@ -78,6 +78,20 @@
 			margin: 0 auto;
 		}
 	}
+
+	&-range {
+		display: flex;
+		justify-content: space-around;
+		padding-top: 1rem;
+	}
+
+	&-toggle {
+		display: flex;
+		justify-content: space-around;
+		padding-top: 1rem;
+		width: 85%;
+		margin: 0 auto;
+	}
 }
 
 .td {

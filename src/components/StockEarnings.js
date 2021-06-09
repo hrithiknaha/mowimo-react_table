@@ -3,7 +3,7 @@ import axios from "axios";
 import { useTable, useSortBy } from "react-table";
 import { earnings_column, earnings_column_negative } from "../config/earnings";
 import { connect } from "react-redux";
-import { countSignToggler } from "../actions/earnings";
+import { countSignToggler, setEarningPage } from "../actions/earnings";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -13,18 +13,22 @@ function StockEarnings(props) {
 	const { index } = useParams();
 
 	const columns = useMemo(() => {
+		console.log("Run");
 		if (props.earnings.isNegative) return earnings_column;
 		return earnings_column_negative;
-	}, [earnings_column, props.earnings.isNegative]);
+	}, [props.earnings.isNegative, props.earnings.threshold]);
 	const data = useMemo(() => earnings, [earnings]);
 
 	useEffect(() => {
+		props.setEarningPage(true);
 		axios
 			.get(`http://levermy.herokuapp.com/earnings/${index}`)
 			.then(({ data }) => {
 				setEarnings(data);
 			});
-	}, []);
+
+		return () => props.setEarningPage(false);
+	}, [props.earnings.threshold]);
 
 	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
 		useTable(
@@ -35,29 +39,10 @@ function StockEarnings(props) {
 			useSortBy
 		);
 
-	const handleToggleClick = (e) => {
-		if (e.target.checked) props.countSignToggler(true);
-		else props.countSignToggler(false);
-	};
-
 	const { t } = useTranslation();
 
 	return (
 		<>
-			<div className="sign">
-				<label>{t("Negative")}</label>
-				<label className="switch">
-					<input
-						onClick={handleToggleClick}
-						type="checkbox"
-						defaultChecked={props.earnings.isNegative === false ? false : true}
-					/>
-					<div>
-						<span></span>
-					</div>
-				</label>
-				<label>{t("Positive")}</label>
-			</div>
 			<table {...getTableProps()}>
 				{/* Maping any header groups first (Grouped Header). then mapping each
 				column inside of grouped header to get each individual columnsa and its
@@ -106,4 +91,6 @@ const mapStateToProps = (state) => ({
 	earnings: state.earnings,
 });
 
-export default connect(mapStateToProps, { countSignToggler })(StockEarnings);
+export default connect(mapStateToProps, { countSignToggler, setEarningPage })(
+	StockEarnings
+);

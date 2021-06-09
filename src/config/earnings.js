@@ -1,5 +1,6 @@
 import moment from "moment";
 import i18n from "../i18n";
+import store from "../store";
 
 const parseDate = (str) => {
 	let bits = str.split("-");
@@ -55,6 +56,7 @@ export const earnings_column = [
 		},
 		// disableGlobalFilter: true,
 		Cell: (row) => {
+			const threshold = store.getState().earnings.threshold;
 			const earnings = row.row.original.earnings_reaction;
 			let markers = [];
 			let markerScores = [];
@@ -88,17 +90,17 @@ export const earnings_column = [
 					daysDiff.push(relative_description);
 				}
 			});
-			console.log(markers);
-			console.log(markerScores);
-			console.log(daysDiff);
-			console.log(daysDiffScores);
+			// console.log(markers);
+			// console.log(markerScores);
+			// console.log(daysDiff);
+			// console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
 				for (let i = 0; i < markers.length; i++) {
 					let arrow = null;
-					if (markerScores[i] > 1) arrow = "up";
-					else if (markerScores[i] < -1) arrow = "down";
+					if (markerScores[i] > threshold) arrow = "up";
+					else if (markerScores[i] < -threshold) arrow = "down";
 					else arrow = "dot";
 
 					markersArray.push(
@@ -223,6 +225,7 @@ export const earnings_column_negative = [
 		},
 		// disableGlobalFilter: true,
 		Cell: (row) => {
+			const threshold = store.getState().earnings.threshold;
 			const earnings = row.row.original.earnings_reaction;
 			let markers = [];
 			let markerScores = [];
@@ -256,17 +259,17 @@ export const earnings_column_negative = [
 					daysDiff.push(relative_description);
 				}
 			});
-			console.log(markers);
-			console.log(markerScores);
-			console.log(daysDiff);
-			console.log(daysDiffScores);
+			// console.log(markers);
+			// console.log(markerScores);
+			// console.log(daysDiff);
+			// console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
 				for (let i = 0; i < markers.length; i++) {
 					let arrow = null;
-					if (markerScores[i] > 1) arrow = "up";
-					else if (markerScores[i] < -1) arrow = "down";
+					if (markerScores[i] > threshold) arrow = "up";
+					else if (markerScores[i] < -threshold) arrow = "down";
 					else arrow = "dot";
 
 					markersArray.push(
@@ -347,7 +350,7 @@ export const earnings_column_negative = [
 			const earnings = row.earnings_reaction;
 
 			earnings.map((earning) => {
-				if (earning[1] <= 0) negative++;
+				if (earning[1] < 0) negative++;
 			});
 			if (negative) return negative;
 			else return 0;
