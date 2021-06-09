@@ -49,7 +49,15 @@ export const earnings_column = [
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: i18n.t("EARNINGS"),
+		Header: () => (
+			<div>
+				{i18n.t("EARNINGS")}
+				<div className="earnings-header">
+					<div>1Y</div>
+					<div>TODAY</div>
+				</div>
+			</div>
+		),
 		id: "earnings_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[0][0];
@@ -81,14 +89,15 @@ export const earnings_column = [
 						timespan - days_difference / 2
 					);
 					daysDiff.push(relative_description);
-				} else {
-					const days_difference = date_diff(date, new Date());
-					daysDiffScores.push(days_difference);
-					let relative_description = relativePosition(
-						timespan - days_difference / 2
-					);
-					daysDiff.push(relative_description);
 				}
+				// else {
+				// 	const days_difference = date_diff(date, new Date());
+				// 	daysDiffScores.push(days_difference);
+				// 	let relative_description = relativePosition(
+				// 		timespan - days_difference / 2
+				// 	);
+				// 	daysDiff.push(relative_description);
+				// }
 			});
 			// console.log(markers);
 			// console.log(markerScores);
@@ -145,10 +154,8 @@ export const earnings_column = [
 					}}
 					className="line"
 				>
-					<div className="line-left">1Y</div>
 					<div>{printMarkers()}</div>
 					<div>{printDaysDiff()}</div>
-					<div className="line-right">TODAY</div>
 				</div>
 			);
 		},
@@ -218,7 +225,15 @@ export const earnings_column_negative = [
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: i18n.t("EARNINGS"),
+		Header: () => (
+			<div>
+				{i18n.t("EARNINGS")}
+				<div className="earnings-header">
+					<div>1Y</div>
+					<div>TODAY</div>
+				</div>
+			</div>
+		),
 		id: "earnings_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[0][0];
@@ -250,14 +265,15 @@ export const earnings_column_negative = [
 						timespan - days_difference / 2
 					);
 					daysDiff.push(relative_description);
-				} else {
-					const days_difference = date_diff(date, new Date());
-					daysDiffScores.push(days_difference);
-					let relative_description = relativePosition(
-						timespan - days_difference / 2
-					);
-					daysDiff.push(relative_description);
 				}
+				//else {
+				// 	const days_difference = date_diff(date, new Date());
+				// 	daysDiffScores.push(days_difference);
+				// 	let relative_description = relativePosition(
+				// 		timespan - days_difference / 2
+				// 	);
+				// 	daysDiff.push(relative_description);
+				// }
 			});
 			// console.log(markers);
 			// console.log(markerScores);
@@ -314,10 +330,8 @@ export const earnings_column_negative = [
 					}}
 					className="line"
 				>
-					<div className="line-left">1Y</div>
 					<div>{printMarkers()}</div>
 					<div>{printDaysDiff()}</div>
-					<div className="line-right">TODAY</div>
 				</div>
 			);
 		},
