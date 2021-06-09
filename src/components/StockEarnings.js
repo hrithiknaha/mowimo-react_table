@@ -5,6 +5,7 @@ import { earnings_column, earnings_column_negative } from "../config/earnings";
 import { connect } from "react-redux";
 import { countSignToggler } from "../actions/earnings";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function StockEarnings(props) {
 	const [earnings, setEarnings] = useState([]);
@@ -39,10 +40,12 @@ function StockEarnings(props) {
 		else props.countSignToggler(false);
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<>
 			<div className="sign">
-				<label>Negative</label>
+				<label>{t("Negative")}</label>
 				<label className="switch">
 					<input
 						onClick={handleToggleClick}
@@ -53,7 +56,7 @@ function StockEarnings(props) {
 						<span></span>
 					</div>
 				</label>
-				<label>Positive</label>
+				<label>{t("Positive")}</label>
 			</div>
 			<table {...getTableProps()}>
 				{/* Maping any header groups first (Grouped Header). then mapping each

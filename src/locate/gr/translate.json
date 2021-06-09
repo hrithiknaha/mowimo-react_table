@@ -53,6 +53,15 @@
         "IMPORTANCE": "BEDEUTUNG",
         "SCORE": "SCORE",
         "EXCEPTION": "AUSNAHME",
-        "CALCULATION FOR": "BERECHNUNG FÜR"
+        "CALCULATION FOR": "BERECHNUNG FÜR",
+
+        "EARNINGS": "Quartalszahlen",
+        "LAST REPORTED": "ZULETZT GEMELDET",
+        "LAST REACTION": "LETZTE REAKTION",
+        "AVERAGE": "DURCHSCHNITTLICH",
+        "COUNT": "ANZAHL ",
+
+        "Negative": "Negativ",
+        "Positive": "Positiv"
     }
 }

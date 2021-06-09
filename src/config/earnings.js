@@ -1,4 +1,5 @@
 import moment from "moment";
+import i18n from "../i18n";
 
 const parseDate = (str) => {
 	let bits = str.split("-");
@@ -26,7 +27,7 @@ export const earnings_column = [
 					textAlign: "left",
 				}}
 			>
-				Name
+				{i18n.t("SEC NAME")}
 			</div>
 		),
 		accessor: "name",
@@ -47,7 +48,7 @@ export const earnings_column = [
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: "Earnings",
+		Header: i18n.t("EARNINGS"),
 		id: "earnings_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[0][0];
@@ -151,7 +152,7 @@ export const earnings_column = [
 		},
 	},
 	{
-		Header: "Last Reported",
+		Header: i18n.t("LAST REPORTED"),
 		accessor: "last_earnings_date",
 		// disableGlobalFilter: true,
 		Cell: (row) => {
@@ -159,19 +160,19 @@ export const earnings_column = [
 		},
 	},
 	{
-		Header: "Last Reaction",
+		Header: i18n.t("LAST REACTION"),
 		id: "last_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
 	{
-		Header: "Average",
+		Header: i18n.t("AVERAGE"),
 		accessor: "average_reaction",
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: "Count (+ve)",
+		Header: `${i18n.t("COUNT")} (+ve)`,
 		id: "count",
 		accessor: (row) => {
 			let positive = null;
@@ -194,7 +195,7 @@ export const earnings_column_negative = [
 					textAlign: "left",
 				}}
 			>
-				Name
+				{i18n.t("SEC NAME")}
 			</div>
 		),
 		accessor: "name",
@@ -215,7 +216,7 @@ export const earnings_column_negative = [
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: "Earnings",
+		Header: i18n.t("EARNINGS"),
 		id: "earnings_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[0][0];
@@ -225,16 +226,40 @@ export const earnings_column_negative = [
 			const earnings = row.row.original.earnings_reaction;
 			let markers = [];
 			let markerScores = [];
-			earnings.map((earning) => {
+			let daysDiff = [];
+			let daysDiffScores = [];
+			earnings.map((earning, i, el) => {
 				const dateOfEarning = earning[0];
 				const date = parseDate(dateOfEarning);
 				const timespan = date_diff(date, new Date());
 				const relative_marker = relativePosition(timespan);
 				markers.push(relative_marker);
 				markerScores.push(earning[1]);
+
+				//Days Between Tickers
+				if (el[i + 1] != undefined) {
+					const days_difference = date_diff(
+						date,
+						parseDate(earnings[i + 1][0])
+					);
+					daysDiffScores.push(days_difference);
+					let relative_description = relativePosition(
+						timespan - days_difference / 2
+					);
+					daysDiff.push(relative_description);
+				} else {
+					const days_difference = date_diff(date, new Date());
+					daysDiffScores.push(days_difference);
+					let relative_description = relativePosition(
+						timespan - days_difference / 2
+					);
+					daysDiff.push(relative_description);
+				}
 			});
-			// console.log(markers);
-			// console.log(markerScores);
+			console.log(markers);
+			console.log(markerScores);
+			console.log(daysDiff);
+			console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
@@ -259,6 +284,26 @@ export const earnings_column_negative = [
 				return markersArray;
 			};
 
+			const printDaysDiff = () => {
+				let daysArray = [];
+				for (let i = 0; i < daysDiff.length; i++) {
+					daysArray.push(
+						<div
+							className="line-days"
+							style={{
+								position: "absolute",
+								textAlign: "left",
+								left: `${daysDiff[i]}%`,
+							}}
+						>
+							{daysDiffScores[i]}d
+						</div>
+					);
+				}
+
+				return daysArray;
+			};
+
 			return (
 				<div
 					style={{
@@ -268,13 +313,14 @@ export const earnings_column_negative = [
 				>
 					<div className="line-left">1Y</div>
 					<div>{printMarkers()}</div>
+					<div>{printDaysDiff()}</div>
 					<div className="line-right">TODAY</div>
 				</div>
 			);
 		},
 	},
 	{
-		Header: "Last Reported",
+		Header: i18n.t("LAST REPORTED"),
 		accessor: "last_earnings_date",
 		// disableGlobalFilter: true,
 		Cell: (row) => {
@@ -282,19 +328,19 @@ export const earnings_column_negative = [
 		},
 	},
 	{
-		Header: "Last Reaction",
+		Header: i18n.t("LAST REACTION"),
 		id: "last_reaction",
 		accessor: (row) => {
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
 	{
-		Header: "Average",
+		Header: i18n.t("AVERAGE"),
 		accessor: "average_reaction",
 		// disableGlobalFilter: true,
 	},
 	{
-		Header: "Count (-ve)",
+		Header: `${i18n.t("COUNT")} (-ve)`,
 		id: "count",
 		accessor: (row) => {
 			let negative = null;

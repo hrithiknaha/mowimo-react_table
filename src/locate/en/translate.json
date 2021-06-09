@@ -55,6 +55,15 @@
         "IMPORTANCE": "IMPORTANCE",
         "SCORE": "SCORE",
         "EXCEPTION": "EXCEPTION",
-        "CALCULATION FOR": "CALCULATOR FOR"
+        "CALCULATION FOR": "CALCULATOR FOR",
+
+        "EARNINGS": "EARNINGS",
+        "LAST REPORTED": "LAST REPORTED",
+        "LAST REACTION": "LAST REACTION",
+        "AVERAGE": "AVERAGE",
+        "COUNT": "COUNT",
+
+        "Negative": "Negative",
+        "Positive": "Positive"
     }
 }
