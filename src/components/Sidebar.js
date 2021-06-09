@@ -163,20 +163,20 @@ function Sidebar({
 								<output id="rangevalue1">{earnings.threshold}%</output>
 							</div>
 							<div className="sidebar-toggle">
-								<label>{t("Negative")}</label>
+								<label>{t("Positive")}</label>
 								<label className="switch">
 									<input
 										onClick={handleToggleClick}
 										type="checkbox"
 										defaultChecked={
-											earnings.isNegative === false ? false : true
+											earnings.isNegative === false ? true : false
 										}
 									/>
 									<div>
 										<span></span>
 									</div>
 								</label>
-								<label>{t("Positive")}</label>
+								<label>{t("Negative")}</label>
 							</div>
 						</div>
 					)}

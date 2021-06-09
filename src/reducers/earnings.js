@@ -5,7 +5,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-	isNegative: false,
+	isNegative: true,
 	onEarning: false,
 	threshold: 1,
 };
