@@ -65,15 +65,21 @@ function App(props) {
 							<Route path="/sp500" exact>
 								<SP500 i18n={props.i18n} handleColor={handleColor} />
 							</Route>
-							<Route path="/score/:ticker" exact component={Ticker} />
+							<Route path="/score/:ticker" exact>
+								<Ticker handleColor={handleColor} />
+							</Route>
 							<Route path="/policy" exact component={Policy} />
 							<Route path="/imprint" exact component={Imprint} />
-							<Route path="/portfolio" exact component={Portfolio} />
+							<Route path="/portfolio" exact>
+								<Portfolio handleColor={handleColor} />
+							</Route>
 							<Route
 								path="/stock/earnings/:index"
 								exact
 								component={StockEarnings}
-							/>
+							>
+								<StockEarnings handleColor={handleColor} />
+							</Route>
 						</Switch>
 					</div>
 				</div>

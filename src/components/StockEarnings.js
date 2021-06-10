@@ -12,8 +12,16 @@ import { countSignToggler, setEarningPage } from "../actions/earnings";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "./Navbar";
+import useCookie from "../hooks/useCookie";
 
 function StockEarnings(props) {
+	const [cookie, updateCookie] = useCookie("color", "black");
+	const [color, setColor] = useState();
+
+	const hanldeColorChange = (e) => {
+		setColor(e.target.value);
+		props.handleColor(e.target.value);
+	};
 	const [earnings, setEarnings] = useState([]);
 	const [top, setTop] = useState("");
 
@@ -70,6 +78,29 @@ function StockEarnings(props) {
 
 	return (
 		<>
+			{!document.cookie && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<p>{t("cookie")}</p>
+							<div className="modal-content-form">
+								<input
+									type="color"
+									onChange={hanldeColorChange}
+									value="#151515"
+								/>
+								<button
+									onClick={() => {
+										updateCookie(color, 100);
+									}}
+								>
+									{t("Accept")}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 			<Navbar filter={globalFilter} setFilter={setGlobalFilter} />
 			<table {...getTableProps()}>
 				{/* Maping any header groups first (Grouped Header). then mapping each

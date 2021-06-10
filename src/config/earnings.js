@@ -185,11 +185,12 @@ export const earnings_column = [
 		Header: `${i18n.t("COUNT")} (+ve)`,
 		id: "count",
 		accessor: (row) => {
+			const threshold = store.getState().earnings.threshold;
 			let positive = null;
 			const earnings = row.earnings_reaction;
 
 			earnings.map((earning) => {
-				if (earning[1] >= 0) positive++;
+				if (earning[1] >= threshold) positive++;
 			});
 			if (positive) return positive;
 			else return 0;
@@ -362,11 +363,12 @@ export const earnings_column_negative = [
 		Header: `${i18n.t("COUNT")} (-ve)`,
 		id: "count",
 		accessor: (row) => {
+			const threshold = store.getState().earnings.threshold;
 			let negative = null;
 			const earnings = row.earnings_reaction;
 
 			earnings.map((earning) => {
-				if (earning[1] < 0) negative++;
+				if (earning[1] < threshold) negative++;
 			});
 			if (negative) return negative;
 			else return 0;

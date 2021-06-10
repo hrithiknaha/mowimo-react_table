@@ -18,8 +18,17 @@ import RowTen from "./modals/RowTen";
 import RowEleven from "./modals/RowEleven";
 import RowTwelve from "./modals/RowTwelve";
 import RowThirteen from "./modals/RowThirteen";
+import useCookie from "../hooks/useCookie";
 
 function Ticker(props) {
+	const [cookie, updateCookie] = useCookie("color", "black");
+	const [color, setColor] = useState();
+
+	const hanldeColorChange = (e) => {
+		setColor(e.target.value);
+		props.handleColor(e.target.value);
+	};
+
 	//Getting the paramater from the URL for ex, /score/AGM or /score/AAPL, so ticker will have AGM or AAPLE or any other ticker name depending on which URL it is going
 	const { ticker } = useParams();
 
@@ -156,6 +165,29 @@ function Ticker(props) {
 
 	return (
 		<>
+			{!document.cookie && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<p>{t("cookie")}</p>
+							<div className="modal-content-form">
+								<input
+									type="color"
+									onChange={hanldeColorChange}
+									value="#151515"
+								/>
+								<button
+									onClick={() => {
+										updateCookie(color, 100);
+									}}
+								>
+									{t("Accept")}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 			{!props.table.isLoading && (
 				<div className="container ticker">
 					<RowOne show={isOpen1} onClose={onClose1} />
