@@ -368,7 +368,7 @@ export const earnings_column_negative = [
 			const earnings = row.earnings_reaction;
 
 			earnings.map((earning) => {
-				if (earning[1] < threshold) negative++;
+				if (earning[1] < -threshold) negative++;
 			});
 			if (negative) return negative;
 			else return 0;
