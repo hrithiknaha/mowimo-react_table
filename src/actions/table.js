@@ -8,6 +8,8 @@ import {
 	SET_SCORE_STYLE,
 	FETCH_TICKER,
 	SET_TYPE,
+	SET_LOCK_TOGGLE,
+	UNLOCKED_TICKER,
 } from "./types";
 
 //Now this is known as actions, actions are basically functions which are called by or from components and actions in return triggers or calles the reducers functions, Al the dipatch function are basically a fancy way of calling reducer functions
@@ -125,4 +127,16 @@ export const callLike = () => (dispatch) => {
 
 export const chooseTicker = (row) => {
 	console.log("Liked");
+};
+
+export const makePayment = (ticker) => (dispatch) => {
+	// const { sec_ticker } = row;
+	axios
+		.get(`https://levermy.herokuapp.com/levermann/unlocked/all/${ticker}`)
+		.then(({ data }) => {
+			dispatch({
+				type: UNLOCKED_TICKER,
+				payload: data,
+			});
+		});
 };

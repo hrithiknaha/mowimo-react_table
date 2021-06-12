@@ -5,10 +5,12 @@ import {
 	FETCH_TICKER,
 	NASDAQ,
 	REMOVE_PORTFOLIO,
+	UNLOCKED_TICKER,
 	SET_SCORE_STYLE,
 	SET_TYPE,
 	SET_WEEK_SELECTED,
 	SP500,
+	SET_PAYMENT_METHOD,
 } from "../actions/types";
 
 var empty = require("is-empty");
@@ -33,6 +35,8 @@ if (portfolioToken) {
 		data: {},
 		isLoading: true,
 		type: "levermann",
+		forPayment: false,
+		tickerForPayment: "",
 	};
 } else {
 	initialState = {
@@ -47,6 +51,8 @@ if (portfolioToken) {
 		data: {},
 		isLoading: true,
 		type: "levermann",
+		forPayment: false,
+		tickerForPayment: "",
 	};
 }
 
@@ -131,6 +137,18 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				type: action.payload,
+			};
+		case SET_PAYMENT_METHOD:
+			return {
+				...state,
+				forPayment: true,
+				tickerForPayment: action.payload,
+			};
+		case UNLOCKED_TICKER:
+			return {
+				...state,
+				rows: action.payload[1],
+				forPayment: false,
 			};
 		default:
 			return state;

@@ -5,7 +5,13 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
 import store from "../store";
-import { ADD_PORTFOLIO, REMOVE_PORTFOLIO } from "../actions/types";
+import {
+	ADD_PORTFOLIO,
+	REMOVE_PORTFOLIO,
+	UNLOCKED_TICKER,
+	SET_PAYMENT_METHOD,
+} from "../actions/types";
+import axios from "axios";
 
 //The last column, which is the interaction column has two button depending on the data stored in localstorage. Here the two functions are written, one to add the liked ticker and one to remove the liked ticket
 //Here we are calling the recuder function ADD_PORTFOIO and also storing thr data in localstorage, same for removal calling dispatch function REMOVE_PORTFOLIO and also removing from localstorage
@@ -50,6 +56,13 @@ const removeTicker = (data) => {
 	});
 	like.splice(indexofLike, 1);
 	localStorage.setItem("like", JSON.stringify(like));
+};
+
+const setPayment = (row) => {
+	store.dispatch({
+		type: SET_PAYMENT_METHOD,
+		payload: row.sec_ticker,
+	});
 };
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
@@ -132,8 +145,18 @@ export const COLUMNS = [
 		accessor: "reaction_earnings_score",
 		disableGlobalFilter: true,
 		Cell: (row) => {
-			if (row.row.original.visibility === 0) return <AiFillLock />;
-			if (row.row.original.reaction_earnings_score === 0) return 0;
+			if (row.row.original.visibility === 0)
+				return (
+					<div>
+						<button
+							className="column-interactions"
+							onClick={() => setPayment(row.row.original)}
+						>
+							<AiFillLock />
+						</button>
+					</div>
+				);
+			// if (row.row.original.reaction_earnings_score === 0) return 0;
 			return row.row.original.reaction_earnings_score || 0;
 		},
 	},

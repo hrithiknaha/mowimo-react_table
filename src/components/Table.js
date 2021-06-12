@@ -11,7 +11,12 @@ import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Navbar from "./Navbar";
 import { connect } from "react-redux";
-import { fetchData, setWeekSelected, setScoreStyle } from "../actions/table";
+import {
+	fetchData,
+	setWeekSelected,
+	setScoreStyle,
+	makePayment,
+} from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
@@ -30,6 +35,8 @@ function Table(props) {
 
 	const [cookie, updateCookie] = useCookie("color", "black");
 	const [color, setColor] = useState();
+
+	const [lockToggle, setLockToggle] = useState(false);
 
 	const hanldeColorChange = (e) => {
 		setColor(e.target.value);
@@ -101,6 +108,10 @@ function Table(props) {
 		else props.setScoreStyle("scores");
 	};
 
+	const makePaymentButton = () => {
+		props.makePayment(props.table.tickerForPayment);
+	};
+
 	return (
 		<>
 			{!document.cookie && (
@@ -121,6 +132,22 @@ function Table(props) {
 								>
 									{t("Accept")}
 								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{props.table.forPayment && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<div className="modal-content-form">
+								<p className="modal-p">
+									You are about to unlock score info for stock{" "}
+									{props.table.tickerForPayment}. Pay now.
+								</p>
+								<button onClick={makePaymentButton}>{t("Accept")}</button>
 							</div>
 						</div>
 					</div>
@@ -291,4 +318,5 @@ export default connect(mapStateToProps, {
 	fetchData,
 	setWeekSelected,
 	setScoreStyle,
+	makePayment,
 })(Table);
