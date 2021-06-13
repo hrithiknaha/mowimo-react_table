@@ -67,6 +67,10 @@
         "1Y": "1J",
         "TODAY": "HEUTE",
 
-        "d": "T"
+        "d": "T",
+
+        "PaymentText": "Sie sind im Begriff, Punkteinformationen für Aktien freizuschalten",
+        "payNow": "Zahlen Sie jetzt",
+        "PayNow": "Es wird beim Aktualisieren zurückgesetzt"
     }
 }

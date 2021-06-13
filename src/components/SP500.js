@@ -145,9 +145,10 @@ function SP500(props) {
 						<div class="modal-content">
 							<div className="modal-content-form">
 								<p className="modal-p">
-									You are about to unlock score info for stock{" "}
-									{props.table.tickerForPayment}. Pay now.
+									{t("PaymentText")} {props.table.tickerForPayment}
 								</p>
+								<p className="modal-p">{t("Refresh")}</p>
+								<p className="modal-p">{t("PayNow")}</p>
 								<button onClick={makePaymentButton}>{t("Accept")}</button>
 							</div>
 						</div>

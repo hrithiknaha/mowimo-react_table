@@ -144,7 +144,8 @@ function Table(props) {
 						<div class="modal-content">
 							<div className="modal-content-form">
 								<p className="modal-p">
-									You are about to unlock score info for stock{" "}
+									You are about to unlock score info for stock . It will reset
+									on refresh.
 									{props.table.tickerForPayment}. Pay now.
 								</p>
 								<button onClick={makePaymentButton}>{t("Accept")}</button>

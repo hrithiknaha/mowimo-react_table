@@ -69,6 +69,10 @@
         "1Y": "1Y",
         "TODAY": "TODAY",
 
-        "d": "d"
+        "d": "d",
+
+        "PaymentText":"You are about to unlock score info for stock",
+        "PayNow": "Pay Now",
+        "Refresh": "It will be reset on refresh"
     }
 }
