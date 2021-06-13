@@ -11,7 +11,12 @@ import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Navbar from "./Navbar";
 import { connect } from "react-redux";
-import { callSP, setWeekSelected, setScoreStyle } from "../actions/table";
+import {
+	callSP,
+	setWeekSelected,
+	setScoreStyle,
+	makePaymentSP,
+} from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
@@ -104,6 +109,10 @@ function SP500(props) {
 		else props.setScoreStyle("scores");
 	};
 
+	const makePaymentButton = () => {
+		props.makePaymentSP(props.table.tickerForPayment);
+	};
+
 	return (
 		<>
 			{!document.cookie && (
@@ -129,6 +138,23 @@ function SP500(props) {
 					</div>
 				</div>
 			)}
+
+			{props.table.forPayment && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<div className="modal-content-form">
+								<p className="modal-p">
+									You are about to unlock score info for stock{" "}
+									{props.table.tickerForPayment}. Pay now.
+								</p>
+								<button onClick={makePaymentButton}>{t("Accept")}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
 			<div className="container">
 				<Navbar
 					filter={globalFilter}
@@ -292,4 +318,5 @@ export default connect(mapStateToProps, {
 	callSP,
 	setWeekSelected,
 	setScoreStyle,
+	makePaymentSP,
 })(SP500);

@@ -167,10 +167,28 @@ export const chooseTicker = (row) => {
 	console.log("Liked");
 };
 
-export const makePayment = (ticker) => (dispatch) => {
+export const makePayment = (ticker) => (dispatch, state) => {
 	// const { sec_ticker } = row;
+	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
 	axios
-		.get(`https://levermy.herokuapp.com/levermann/unlocked/all/${ticker}`)
+		.get(
+			`https://levermy.herokuapp.com/levermann/unlocked/all/${ticker}?style=${scoreStyle}`
+		)
+		.then(({ data }) => {
+			dispatch({
+				type: UNLOCKED_TICKER,
+				payload: { data, ticker },
+			});
+		});
+};
+
+export const makePaymentSP = (ticker) => (dispatch, state) => {
+	// const { sec_ticker } = row;
+	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
+	axios
+		.get(
+			`https://levermy.herokuapp.com/levermann/unlocked/SP500/${ticker}?style=${scoreStyle}`
+		)
 		.then(({ data }) => {
 			dispatch({
 				type: UNLOCKED_TICKER,

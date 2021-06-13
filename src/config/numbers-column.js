@@ -5,7 +5,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
 import store from "../store";
-import { ADD_PORTFOLIO, REMOVE_PORTFOLIO } from "../actions/types";
+import {
+	ADD_PORTFOLIO,
+	REMOVE_PORTFOLIO,
+	SET_PAYMENT_METHOD,
+} from "../actions/types";
 
 const chooseTicker = (data) => {
 	if (store.getState().table.portfolio.length <= 5) {
@@ -48,6 +52,13 @@ const removeTicker = (data) => {
 	});
 	like.splice(indexofLike, 1);
 	localStorage.setItem("like", JSON.stringify(like));
+};
+
+const setPayment = (row) => {
+	store.dispatch({
+		type: SET_PAYMENT_METHOD,
+		payload: row.sec_ticker,
+	});
 };
 
 //The definations of the columns are set here, Header signifies the Name which will be displayed on the table Header
@@ -106,7 +117,17 @@ export const NUM_COLUMNS = [
 		accessor: "equity_ratio_value",
 		disableGlobalFilter: true,
 		Cell: (row) => {
-			if (row.row.original.visibility === 0) return <AiFillLock />;
+			if (row.row.original.visibility === 0)
+				return (
+					<div>
+						<button
+							className="column-interactions"
+							onClick={() => setPayment(row.row.original)}
+						>
+							<AiFillLock />
+						</button>
+					</div>
+				);
 			return row.value || null;
 		},
 	},
