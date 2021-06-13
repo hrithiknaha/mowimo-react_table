@@ -37,6 +37,7 @@ if (portfolioToken) {
 		type: "levermann",
 		forPayment: false,
 		tickerForPayment: "",
+		unlockedTicker: "",
 	};
 } else {
 	initialState = {
@@ -53,6 +54,7 @@ if (portfolioToken) {
 		type: "levermann",
 		forPayment: false,
 		tickerForPayment: "",
+		unlockedTicker: "",
 	};
 }
 
@@ -147,8 +149,9 @@ export default function (state = initialState, action) {
 		case UNLOCKED_TICKER:
 			return {
 				...state,
-				rows: action.payload[1],
+				rows: action.payload.data[1],
 				forPayment: false,
+				unlockedTicker: action.payload.ticker,
 			};
 		default:
 			return state;

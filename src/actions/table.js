@@ -15,19 +15,32 @@ import {
 //Now this is known as actions, actions are basically functions which are called by or from components and actions in return triggers or calles the reducers functions, Al the dipatch function are basically a fancy way of calling reducer functions
 export const fetchData = () => (dispatch, state) => {
 	console.log("Fetching All");
-	const { weekSelected, scoreStyle } = state().table;
+	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
 
-	axios
-		.get(
-			`https://levermy.herokuapp.com/levermann/all/${weekSelected}?style=${scoreStyle}`
-			// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
-		)
-		.then(({ data }) => {
-			dispatch({
-				type: FETCH_DATA,
-				payload: { data, type: "all" },
+	if (unlockedTicker) {
+		console.log("Unlocked");
+		axios
+			.get(
+				`https://levermy.herokuapp.com/levermann/unlocked/all/${unlockedTicker}?style=${scoreStyle}`
+			)
+			.then(({ data }) => {
+				dispatch({
+					type: FETCH_DATA,
+					payload: { data, type: "all" },
+				});
 			});
-		});
+	} else
+		axios
+			.get(
+				`https://levermy.herokuapp.com/levermann/all/${weekSelected}?style=${scoreStyle}`
+				// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
+			)
+			.then(({ data }) => {
+				dispatch({
+					type: FETCH_DATA,
+					payload: { data, type: "all" },
+				});
+			});
 };
 
 export const callDowJones = () => (dispatch, state) => {
@@ -64,18 +77,31 @@ export const callNasdaq = () => (dispatch, state) => {
 
 export const callSP = () => (dispatch, state) => {
 	console.log("Fetching SP500");
-	const { weekSelected, scoreStyle } = state().table;
+	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
 
-	axios
-		.get(
-			`http://levermy.herokuapp.com/levermann/sp500/${weekSelected}?style=${scoreStyle}`
-		)
-		.then(({ data }) => {
-			dispatch({
-				type: SP500,
-				payload: { data, type: "sp" },
+	if (unlockedTicker) {
+		console.log("Unlocked");
+		axios
+			.get(
+				`https://levermy.herokuapp.com/levermann/unlocked/SP500/${unlockedTicker}?style=${scoreStyle}`
+			)
+			.then(({ data }) => {
+				dispatch({
+					type: FETCH_DATA,
+					payload: { data, type: "sp" },
+				});
 			});
-		});
+	} else
+		axios
+			.get(
+				`http://levermy.herokuapp.com/levermann/sp500/${weekSelected}?style=${scoreStyle}`
+			)
+			.then(({ data }) => {
+				dispatch({
+					type: SP500,
+					payload: { data, type: "sp" },
+				});
+			});
 };
 
 export const setWeekSelected = (week) => (dispatch) => {
@@ -92,16 +118,28 @@ export const setScoreStyle = (style) => (dispatch) => {
 	});
 };
 
-export const fetchTickerData = (ticker) => (dispatch) => {
-	console.log("Fetching Ticker");
-	axios
-		.get(`https://levermy.herokuapp.com/levermann/stock/${ticker}`)
-		.then(({ data }) => {
-			dispatch({
-				type: FETCH_TICKER,
-				payload: data,
+export const fetchTickerData = (ticker) => (dispatch, state) => {
+	const { unlockedTicker } = state().table;
+	if (unlockedTicker) {
+		axios
+			.get(
+				`https://levermy.herokuapp.com/levermann/unlocked/stock/${unlockedTicker}`
+			)
+			.then(({ data }) => {
+				dispatch({
+					type: FETCH_TICKER,
+					payload: data,
+				});
 			});
-		});
+	} else
+		axios
+			.get(`https://levermy.herokuapp.com/levermann/stock/${ticker}`)
+			.then(({ data }) => {
+				dispatch({
+					type: FETCH_TICKER,
+					payload: data,
+				});
+			});
 };
 
 export const callStart = () => (dispatch) => {
@@ -136,7 +174,7 @@ export const makePayment = (ticker) => (dispatch) => {
 		.then(({ data }) => {
 			dispatch({
 				type: UNLOCKED_TICKER,
-				payload: data,
+				payload: { data, ticker },
 			});
 		});
 };
