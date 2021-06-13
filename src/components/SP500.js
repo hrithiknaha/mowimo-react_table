@@ -22,6 +22,7 @@ import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 
 import useCookie from "../hooks/useCookie";
+import Loader from "./Loader";
 
 function SP500(props) {
 	const [top, setTop] = useState("");
@@ -222,21 +223,28 @@ function SP500(props) {
 						</thead>
 						{/* Mapping page index with default size of 10, and then mapping each row
 				inside of each age to get all the rows. */}
-						<tbody {...getTableBodyProps()}>
-							{rows.map((row) => {
-								prepareRow(row);
-								return (
-									<tr {...row.getRowProps()}>
-										{row.cells.map((cell) => {
-											return (
-												<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-											);
-										})}
-									</tr>
-								);
-							})}
-						</tbody>
+						{props.table.isLoading ? (
+							<Loader />
+						) : (
+							<tbody {...getTableBodyProps()}>
+								{rows.map((row) => {
+									prepareRow(row);
+									return (
+										<tr {...row.getRowProps()}>
+											{row.cells.map((cell) => {
+												return (
+													<td className="row" {...cell.getCellProps()}>
+														{cell.render("Cell")}
+													</td>
+												);
+											})}
+										</tr>
+									);
+								})}
+							</tbody>
+						)}
 					</table>
+
 					{/* //React Table Actions for Changing page size, going to a custom page
 			number and pagination */}
 					{/* <div className="table-actions">

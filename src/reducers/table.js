@@ -70,7 +70,7 @@ export default function (state = initialState, action) {
 				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
-				isLoading: true,
+				isLoading: false,
 			};
 		case DOW_JONES:
 			return {
@@ -78,7 +78,7 @@ export default function (state = initialState, action) {
 				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
-				isLoading: true,
+				isLoading: false,
 			};
 		case NASDAQ:
 			return {
@@ -86,7 +86,7 @@ export default function (state = initialState, action) {
 				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
-				isLoading: true,
+				isLoading: false,
 			};
 		case SP500:
 			return {
@@ -94,7 +94,7 @@ export default function (state = initialState, action) {
 				weeks: action.payload.data[0].dates_available.map((dates) => dates[0]),
 				rows: action.payload.data[1],
 				selected: action.payload.type,
-				isLoading: true,
+				isLoading: false,
 			};
 		case SET_WEEK_SELECTED:
 			return {
