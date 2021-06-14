@@ -73,6 +73,10 @@
 
         "PaymentText":"You are about to unlock score info for stock",
         "PayNow": "Pay Now",
-        "Refresh": "It will be reset on refresh"
+        "Refresh": "It will be reset on refresh",
+
+        "PortfolioSize": "Portfolio capacity will increase by one",
+
+        "Close": "Close"
     }
 }

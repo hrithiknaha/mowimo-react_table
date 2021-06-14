@@ -175,10 +175,10 @@ function Table(props) {
 					<div class="modal">
 						<div class="modal-content">
 							<button className="modal-button-one" onClick={handleOutsideModal}>
-								Close
+								{t("Close")}
 							</button>
 							<div className="modal-content-form">
-								<p className="modal-p">Portfolio Length increase by one</p>
+								<p className="modal-p">{t("PortfolioSize")}</p>
 								<p className="modal-p">{t("Refresh")}</p>
 								<p className="modal-p">{t("PayNow")}</p>
 								<button onClick={makePortolioPaymentButton}>

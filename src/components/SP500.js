@@ -16,6 +16,8 @@ import {
 	setWeekSelected,
 	setScoreStyle,
 	makePaymentSP,
+	makePortfolioPayment,
+	closeModal,
 } from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
@@ -114,6 +116,15 @@ function SP500(props) {
 		props.makePaymentSP(props.table.tickerForPayment);
 	};
 
+	const makePortolioPaymentButton = () => {
+		console.log("Clicking");
+		props.makePortfolioPayment();
+	};
+
+	const handleOutsideModal = (e) => {
+		props.closeModal();
+	};
+
 	return (
 		<>
 			{!document.cookie && (
@@ -144,6 +155,9 @@ function SP500(props) {
 				<div>
 					<div class="modal">
 						<div class="modal-content">
+							<button className="modal-button-one" onClick={handleOutsideModal}>
+								Close
+							</button>
 							<div className="modal-content-form">
 								<p className="modal-p">
 									{t("PaymentText")} {props.table.tickerForPayment}
@@ -151,6 +165,26 @@ function SP500(props) {
 								<p className="modal-p">{t("Refresh")}</p>
 								<p className="modal-p">{t("PayNow")}</p>
 								<button onClick={makePaymentButton}>{t("Accept")}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{props.table.portfolioPayment && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<button className="modal-button-one" onClick={handleOutsideModal}>
+								{t("Close")}
+							</button>
+							<div className="modal-content-form">
+								<p className="modal-p">{t("PortfolioSize")}</p>
+								<p className="modal-p">{t("Refresh")}</p>
+								<p className="modal-p">{t("PayNow")}</p>
+								<button onClick={makePortolioPaymentButton}>
+									{t("Accept")}
+								</button>
 							</div>
 						</div>
 					</div>
@@ -328,4 +362,6 @@ export default connect(mapStateToProps, {
 	setWeekSelected,
 	setScoreStyle,
 	makePaymentSP,
+	makePortfolioPayment,
+	closeModal,
 })(SP500);

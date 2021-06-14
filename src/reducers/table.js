@@ -20,8 +20,13 @@ var empty = require("is-empty");
 
 //Here the initial state is considring the data of the liked portfolio to be taken from localstorage if, the localstorage has no data then a brand new state is created.
 const portfolioToken = JSON.parse(localStorage.getItem("portfolioToken"));
-
 const like = JSON.parse(localStorage.getItem("like"));
+
+let portfolioLength;
+if (portfolioToken) {
+	if (portfolioToken.length < 6) portfolioLength = 5;
+	else portfolioLength = portfolioToken.length - 1;
+}
 
 let initialState = {};
 
@@ -42,7 +47,7 @@ if (portfolioToken) {
 		tickerForPayment: "",
 		unlockedTicker: "",
 		portfolioPayment: false,
-		portfolioLength: portfolioToken.length - 1,
+		portfolioLength: portfolioLength,
 	};
 } else {
 	initialState = {

@@ -71,6 +71,10 @@
 
         "PaymentText": "Sie sind im Begriff, Punkteinformationen für Aktien freizuschalten",
         "payNow": "Zahlen Sie jetzt",
-        "PayNow": "Es wird beim Aktualisieren zurückgesetzt"
+        "PayNow": "Es wird beim Aktualisieren zurückgesetzt",
+
+        "PortfolioSize": "Portfoliokapazität wird um eins erhöht",
+
+        "Close": "Schließen"
     }
 }
