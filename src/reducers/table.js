@@ -11,6 +11,9 @@ import {
 	SET_WEEK_SELECTED,
 	SP500,
 	SET_PAYMENT_METHOD,
+	ADD_PORTFOLIO_LENGTH,
+	MAKE_PORTFOLIO_PAYMENT,
+	CLOSE_MODAL,
 } from "../actions/types";
 
 var empty = require("is-empty");
@@ -38,6 +41,8 @@ if (portfolioToken) {
 		forPayment: false,
 		tickerForPayment: "",
 		unlockedTicker: "",
+		portfolioPayment: false,
+		portfolioLength: portfolioToken.length - 1,
 	};
 } else {
 	initialState = {
@@ -55,6 +60,8 @@ if (portfolioToken) {
 		forPayment: false,
 		tickerForPayment: "",
 		unlockedTicker: "",
+		portfolioPayment: false,
+		portfolioLength: 5,
 	};
 }
 
@@ -152,6 +159,23 @@ export default function (state = initialState, action) {
 				rows: action.payload.data[1],
 				forPayment: false,
 				unlockedTicker: action.payload.ticker,
+			};
+		case ADD_PORTFOLIO_LENGTH:
+			return {
+				...state,
+				portfolioPayment: true,
+			};
+		case MAKE_PORTFOLIO_PAYMENT:
+			return {
+				...state,
+				portfolioPayment: false,
+				portfolioLength: state.portfolioLength + 1,
+			};
+		case CLOSE_MODAL:
+			return {
+				...state,
+				portfolioPayment: false,
+				forPayment: false,
 			};
 		default:
 			return state;

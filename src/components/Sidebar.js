@@ -12,6 +12,7 @@ import Levermann from "../assets/symbol/levermann.png";
 import Heart from "../assets/symbol/heart.png";
 
 import { setThreshold, countSignToggler } from "../actions/earnings";
+import { addPortfolioSize } from "../actions/table";
 
 //The hnadlers are received here and are destructured as a norm of writing clean code.
 function Sidebar({
@@ -28,6 +29,7 @@ function Sidebar({
 	earnings,
 	setThreshold,
 	countSignToggler,
+	addPortfolioSize,
 }) {
 	const { t } = useTranslation();
 
@@ -38,6 +40,10 @@ function Sidebar({
 	const handleToggleClick = (e) => {
 		if (e.target.checked) countSignToggler(true);
 		else countSignToggler(false);
+	};
+
+	const makePortfolioPayment = () => {
+		addPortfolioSize();
 	};
 
 	return (
@@ -122,10 +128,18 @@ function Sidebar({
 					</div>
 					{!earnings.onEarning ? (
 						<div className="sidebar-portfolio">
-							<Link className="sidebar-anchor" to="/portfolio">
-								<img src={Heart} alt="Liked Portfolio Image" />
-								<span>Portfolio</span>
-							</Link>
+							<div className="sidebar-wrapper_add">
+								<Link className="sidebar-anchor" to="/portfolio">
+									<img src={Heart} alt="Liked Portfolio Image" />
+									<span>Portfolio</span>
+								</Link>
+								<button
+									className="sidebar-wrapper_add-button"
+									onClick={makePortfolioPayment}
+								>
+									+
+								</button>
+							</div>
 
 							<table className="sidebar-portfolio-table">
 								<thead>
@@ -195,6 +209,8 @@ const mapStateToProps = (state) => ({
 	earnings: state.earnings,
 });
 
-export default connect(mapStateToProps, { setThreshold, countSignToggler })(
-	Sidebar
-);
+export default connect(mapStateToProps, {
+	setThreshold,
+	countSignToggler,
+	addPortfolioSize,
+})(Sidebar);

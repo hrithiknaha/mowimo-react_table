@@ -10,6 +10,9 @@ import {
 	SET_TYPE,
 	SET_LOCK_TOGGLE,
 	UNLOCKED_TICKER,
+	ADD_PORTFOLIO_LENGTH,
+	MAKE_PORTFOLIO_PAYMENT,
+	CLOSE_MODAL,
 } from "./types";
 
 //Now this is known as actions, actions are basically functions which are called by or from components and actions in return triggers or calles the reducers functions, Al the dipatch function are basically a fancy way of calling reducer functions
@@ -195,4 +198,22 @@ export const makePaymentSP = (ticker) => (dispatch, state) => {
 				payload: { data, ticker },
 			});
 		});
+};
+
+export const addPortfolioSize = () => (dispatch) => {
+	dispatch({
+		type: ADD_PORTFOLIO_LENGTH,
+	});
+};
+
+export const makePortfolioPayment = () => (dispatch) => {
+	dispatch({
+		type: MAKE_PORTFOLIO_PAYMENT,
+	});
+};
+
+export const closeModal = () => (dispatch) => {
+	dispatch({
+		type: CLOSE_MODAL,
+	});
 };

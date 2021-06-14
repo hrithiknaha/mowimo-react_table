@@ -16,6 +16,8 @@ import {
 	setWeekSelected,
 	setScoreStyle,
 	makePayment,
+	makePortfolioPayment,
+	closeModal,
 } from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
@@ -113,6 +115,15 @@ function Table(props) {
 		props.makePayment(props.table.tickerForPayment);
 	};
 
+	const makePortolioPaymentButton = () => {
+		console.log("Clicking");
+		props.makePortfolioPayment();
+	};
+
+	const handleOutsideModal = (e) => {
+		props.closeModal();
+	};
+
 	return (
 		<>
 			{!document.cookie && (
@@ -143,13 +154,36 @@ function Table(props) {
 				<div>
 					<div class="modal">
 						<div class="modal-content">
+							<button className="modal-button-one" onClick={handleOutsideModal}>
+								Close
+							</button>
 							<div className="modal-content-form">
 								<p className="modal-p">
-									You are about to unlock score info for stock . It will reset
-									on refresh.
-									{props.table.tickerForPayment}. Pay now.
+									{t("PaymentText")} {props.table.tickerForPayment}
 								</p>
+								<p className="modal-p">{t("Refresh")}</p>
+								<p className="modal-p">{t("PayNow")}</p>
 								<button onClick={makePaymentButton}>{t("Accept")}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+
+			{props.table.portfolioPayment && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<button className="modal-button-one" onClick={handleOutsideModal}>
+								Close
+							</button>
+							<div className="modal-content-form">
+								<p className="modal-p">Portfolio Length increase by one</p>
+								<p className="modal-p">{t("Refresh")}</p>
+								<p className="modal-p">{t("PayNow")}</p>
+								<button onClick={makePortolioPaymentButton}>
+									{t("Accept")}
+								</button>
 							</div>
 						</div>
 					</div>
@@ -325,4 +359,6 @@ export default connect(mapStateToProps, {
 	setWeekSelected,
 	setScoreStyle,
 	makePayment,
+	makePortfolioPayment,
+	closeModal,
 })(Table);
