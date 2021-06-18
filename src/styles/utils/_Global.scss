@@ -52,6 +52,11 @@ input[type="text" i] {
 	color: white;
 	border: none;
 	font-size: 1.5rem;
+	display: none;
+
+	&-header {
+		display: none;
+	}
 
 	&:hover {
 		cursor: pointer;
@@ -64,8 +69,18 @@ input[type="text" i] {
 
 tbody {
 	& > tr {
+		height: 64px;
+		width: 100%;
 		&:hover {
 			background-color: #e6e6e626;
+
+			& .column-interactions {
+				display: inline-block;
+			}
+		}
+
+		&:hover .column-interactions-header {
+			display: block;
 		}
 	}
 }
@@ -76,6 +91,7 @@ td:first-child {
 	// padding: 1rem 3rem;
 }
 td:last-child {
+	width: 50px;
 	border-bottom-right-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
 }
@@ -148,4 +164,23 @@ td:last-child {
 .earnings-header {
 	display: flex;
 	justify-content: space-between;
+}
+
+.normal-height {
+	height: 100%;
+}
+
+.column-interactions-liked {
+	background-color: transparent;
+	color: white;
+	border: none;
+	font-size: 1.5rem;
+	display: inline-block;
+}
+
+.column-lock {
+	background-color: transparent;
+	color: white;
+	border: none;
+	font-size: 1.5rem;
 }

@@ -152,7 +152,7 @@ function Sidebar({
 									{table.hasPortfolio &&
 										table.portfolio.map((stock) => {
 											return (
-												<tr key={stock}>
+												<tr key={stock} className="normal-height">
 													<td className="td">{stock.split(",")[0]}</td>
 													<td className="td">{stock.split(",")[1]}</td>
 												</tr>

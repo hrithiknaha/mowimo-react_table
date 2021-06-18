@@ -152,7 +152,7 @@ export const COLUMNS = [
 				return (
 					<div>
 						<button
-							className="column-interactions"
+							className="column-lock"
 							onClick={() => setPayment(row.row.original)}
 						>
 							<AiFillLock />
@@ -213,7 +213,10 @@ export const COLUMNS = [
 		},
 	},
 	{
-		Header: i18n.t("Interactions"),
+		Header: () => (
+			<div className="column-interactions-header">{i18n.t("Interactions")}</div>
+		),
+		id: "interactions",
 		Cell: ({ row }) => {
 			if (
 				store.getState().table.portfolio_like.includes(row.original.sec_ticker)
@@ -221,7 +224,7 @@ export const COLUMNS = [
 				return (
 					<div>
 						<button
-							className="column-interactions"
+							className="column-interactions-liked"
 							onClick={() => removeTicker(row.original)}
 						>
 							<AiFillHeart />

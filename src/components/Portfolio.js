@@ -22,12 +22,23 @@ function Portfolio({ table, handleColor }) {
 		const fetchTicker = () => {
 			table.portfolio.map((stock) => {
 				const ticker = stock.split(",")[0];
-				axios
-					.get(`https://levermy.herokuapp.com/levermann/stock/${ticker}`)
-					.then(({ data }) => {
-						portfolio.push(data[1][0]);
-						setTickers((prevArray) => [...prevArray, data[1][0]]);
-					});
+
+				if (ticker === table.unlockedTicker)
+					axios
+						.get(
+							`https://levermy.herokuapp.com/levermann/unlocked/stock/${ticker}`
+						)
+						.then(({ data }) => {
+							portfolio.push(data[1][0]);
+							setTickers((prevArray) => [...prevArray, data[1][0]]);
+						});
+				else
+					axios
+						.get(`https://levermy.herokuapp.com/levermann/stock/${ticker}`)
+						.then(({ data }) => {
+							portfolio.push(data[1][0]);
+							setTickers((prevArray) => [...prevArray, data[1][0]]);
+						});
 			});
 		};
 
