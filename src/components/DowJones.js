@@ -20,6 +20,8 @@ import Loader from "./Loader";
 
 import useCookie from "../hooks/useCookie";
 
+import placeholder from "../assets/placeholder.jpeg";
+
 function DowJones(props) {
 	const [top, setTop] = useState("");
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
@@ -137,6 +139,20 @@ function DowJones(props) {
 					setFilter={setGlobalFilter}
 					index={"dowjones"}
 				/>
+				<div className="table-header_content">
+					<img src={placeholder} alt="table header image" />
+					<div className="table-header_content-text">
+						<p>INDEX</p>
+						<h1 className="no-margin">DOWJONES</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Accusantium, maxime.
+						</p>
+						<p className="no-margin">
+							{props.table.rows.length} {t("Stock")}
+						</p>
+					</div>
+				</div>
 				<div className="table">
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">

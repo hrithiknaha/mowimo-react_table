@@ -25,6 +25,8 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import useCookie from "../hooks/useCookie";
 import Loader from "./Loader";
 
+import placeholder from "../assets/placeholder.jpeg";
+
 function Table(props) {
 	const [top, setTop] = useState("");
 
@@ -196,6 +198,20 @@ function Table(props) {
 					setFilter={setGlobalFilter}
 					index={"all"}
 				/>
+				<div className="table-header_content">
+					<img src={placeholder} alt="table header image" />
+					<div className="table-header_content-text">
+						<p>INDEX</p>
+						<h1 className="no-margin">{t("All Index")}</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Accusantium, maxime.
+						</p>
+						<p className="no-margin">
+							{props.table.rows.length} {t("Stock")}
+						</p>
+					</div>
+				</div>
 				<div className="table">
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">

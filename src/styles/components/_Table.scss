@@ -111,3 +111,24 @@ th:first-child {
 		}
 	}
 }
+
+.table-header_content {
+	display: flex;
+	margin: 1rem;
+
+	&-text {
+		padding-left: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+
+		& > h1 {
+			font-size: 5rem;
+		}
+
+		& > p {
+			// margin-top: 3rem;
+			font-size: 0.75rem;
+		}
+	}
+}

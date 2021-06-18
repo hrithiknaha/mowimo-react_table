@@ -26,6 +26,8 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import useCookie from "../hooks/useCookie";
 import Loader from "./Loader";
 
+import placeholder from "../assets/placeholder.jpeg";
+
 function SP500(props) {
 	const [top, setTop] = useState("");
 	// memoization of column and row data, as prescribed by react-table, memoiazation is important as it reduces unnecessary rendering of the component, the basic idea being the data will be store and will not be called everytime. What is Cache memory to computer useMemo is same for react
@@ -197,6 +199,21 @@ function SP500(props) {
 					setFilter={setGlobalFilter}
 					index={"sp500"}
 				/>
+
+				<div className="table-header_content">
+					<img src={placeholder} alt="table header image" />
+					<div className="table-header_content-text">
+						<p>INDEX</p>
+						<h1 className="no-margin">S&P500</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Accusantium, maxime.
+						</p>
+						<p className="no-margin">
+							{props.table.rows.length} {t("Stock")}
+						</p>
+					</div>
+				</div>
 				<div className="table">
 					{/* Filter component, passing filter data and setFilter data as props */}
 					<div className="table-header">

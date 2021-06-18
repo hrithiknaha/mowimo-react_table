@@ -75,6 +75,8 @@
 
         "PortfolioSize": "Portfoliokapazität wird um eins erhöht",
 
-        "Close": "Schließen"
+        "Close": "Schließen",
+
+        "All Index": "ALLES INDEX"
     }
 }
