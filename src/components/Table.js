@@ -208,7 +208,7 @@ function Table(props) {
 							Accusantium, maxime.
 						</p>
 						<p className="no-margin">
-							{props.table.rows.length} {t("Stock")}
+							{props.table.rows.length} {t("SEC NAME")}
 						</p>
 					</div>
 				</div>
