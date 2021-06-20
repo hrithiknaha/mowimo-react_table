@@ -26,6 +26,7 @@ import useCookie from "../hooks/useCookie";
 import Loader from "./Loader";
 
 import placeholder from "../assets/placeholder.jpeg";
+import placeholderSmall from "../assets/placeholder-smaller.jpeg";
 
 function Table(props) {
 	const [top, setTop] = useState("");
@@ -199,7 +200,7 @@ function Table(props) {
 					index={"all"}
 				/>
 				<div className="table-header_content">
-					<img src={placeholder} alt="table header image" />
+					<img src={placeholderSmall} alt="table header image" />
 					<div className="table-header_content-text">
 						<p>INDEX</p>
 						<h1 className="no-margin">{t("All Index")}</h1>
@@ -208,7 +209,7 @@ function Table(props) {
 							Accusantium, maxime.
 						</p>
 						<p className="no-margin">
-							{props.table.rows.length} {t("SEC NAME")}
+							{props.table.rows.length} {t("STOCKS")}
 						</p>
 					</div>
 				</div>

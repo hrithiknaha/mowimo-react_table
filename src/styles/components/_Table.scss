@@ -114,7 +114,11 @@ th:first-child {
 
 .table-header_content {
 	display: flex;
-	margin: 1rem;
+	margin: 2rem;
+
+	& > img {
+		filter: drop-shadow(6px 3px 15px black);
+	}
 
 	&-text {
 		padding-left: 1rem;

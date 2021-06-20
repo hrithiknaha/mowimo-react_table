@@ -11,7 +11,13 @@ import { NUM_COLUMNS } from "../config/numbers-column";
 import { DEFAULT_SORT } from "../config/defaultSort";
 import Navbar from "./Navbar";
 import { connect } from "react-redux";
-import { callDowJones, setWeekSelected, setScoreStyle } from "../actions/table";
+import {
+	callDowJones,
+	setWeekSelected,
+	setScoreStyle,
+	makePortfolioPayment,
+	closeModal,
+} from "../actions/table";
 
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
@@ -21,6 +27,7 @@ import Loader from "./Loader";
 import useCookie from "../hooks/useCookie";
 
 import placeholder from "../assets/placeholder.jpeg";
+import placeholderSmall from "../assets/placeholder-smaller.jpeg";
 
 function DowJones(props) {
 	const [top, setTop] = useState("");
@@ -108,6 +115,15 @@ function DowJones(props) {
 		else props.setScoreStyle("scores");
 	};
 
+	const makePortolioPaymentButton = () => {
+		console.log("Clicking");
+		props.makePortfolioPayment();
+	};
+
+	const handleOutsideModal = (e) => {
+		props.closeModal();
+	};
+
 	return (
 		<>
 			{!document.cookie && (
@@ -133,6 +149,25 @@ function DowJones(props) {
 					</div>
 				</div>
 			)}
+			{props.table.portfolioPayment && (
+				<div>
+					<div class="modal">
+						<div class="modal-content">
+							<button className="modal-button-one" onClick={handleOutsideModal}>
+								{t("Close")}
+							</button>
+							<div className="modal-content-form">
+								<p className="modal-p">{t("PortfolioSize")}</p>
+								<p className="modal-p">{t("Refresh")}</p>
+								<p className="modal-p">{t("PayNow")}</p>
+								<button onClick={makePortolioPaymentButton}>
+									{t("Accept")}
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 			<div className="container">
 				<Navbar
 					filter={globalFilter}
@@ -140,7 +175,7 @@ function DowJones(props) {
 					index={"dowjones"}
 				/>
 				<div className="table-header_content">
-					<img src={placeholder} alt="table header image" />
+					<img src={placeholderSmall} alt="table header image" />
 					<div className="table-header_content-text">
 						<p>INDEX</p>
 						<h1 className="no-margin">DOWJONES</h1>
@@ -149,7 +184,7 @@ function DowJones(props) {
 							Accusantium, maxime.
 						</p>
 						<p className="no-margin">
-							{props.table.rows.length} {t("SEC NAME")}
+							{props.table.rows.length} {t("STOCKS")}
 						</p>
 					</div>
 				</div>
@@ -317,4 +352,6 @@ export default connect(mapStateToProps, {
 
 	setWeekSelected,
 	setScoreStyle,
+	makePortfolioPayment,
+	closeModal,
 })(DowJones);

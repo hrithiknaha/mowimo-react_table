@@ -201,6 +201,7 @@ export const makePaymentSP = (ticker) => (dispatch, state) => {
 };
 
 export const addPortfolioSize = () => (dispatch) => {
+	console.log("Adding Portfolio Size");
 	dispatch({
 		type: ADD_PORTFOLIO_LENGTH,
 	});

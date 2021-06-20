@@ -49,7 +49,7 @@ input[type="text" i] {
 
 .column-interactions {
 	background-color: transparent;
-	color: white;
+	color: grey;
 	border: none;
 	font-size: 1.5rem;
 	display: none;
@@ -60,6 +60,7 @@ input[type="text" i] {
 
 	&:hover {
 		cursor: pointer;
+		color: white;
 	}
 }
 
@@ -176,6 +177,10 @@ td:last-child {
 	border: none;
 	font-size: 1.5rem;
 	display: inline-block;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .column-lock {

@@ -79,6 +79,8 @@
 
         "Close": "Close",
 
-        "All Index": "ALL INDEX"
+        "All Index": "ALL INDEX",
+
+        "STOCKS" : "STOCKS"
     }
 }

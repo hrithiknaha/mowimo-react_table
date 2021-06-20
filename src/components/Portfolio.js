@@ -6,6 +6,10 @@ import { connect } from "react-redux";
 
 import useCookie from "../hooks/useCookie";
 
+import Navbar from "./Navbar";
+
+import placeholderSmall from "../assets/placeholder-smaller.jpeg";
+
 function Portfolio({ table, handleColor }) {
 	const [cookie, updateCookie] = useCookie("color", "black");
 	const [color, setColor] = useState();
@@ -72,6 +76,25 @@ function Portfolio({ table, handleColor }) {
 				</div>
 			)}
 			<div className="portfolio">
+				{/* <Navbar
+					filter={globalFilter}
+					setFilter={setGlobalFilter}
+					index={"all"}
+				/> */}
+				<div className="table-header_content">
+					<img src={placeholderSmall} alt="table header image" />
+					<div className="table-header_content-text">
+						<p>INDEX</p>
+						<h1 className="no-margin">PORTFOLIO</h1>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Accusantium, maxime.
+						</p>
+						<p className="no-margin">
+							{table.portfolioLength + 1} {t("STOCKS")}
+						</p>
+					</div>
+				</div>
 				<table className="sidebar-portfolio-table">
 					<thead>
 						<tr>
