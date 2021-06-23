@@ -14,6 +14,7 @@ import DowJones from "./components/DowJones";
 import Nasdaq from "./components/Nasdaq";
 import SP500 from "./components/SP500";
 import Portfolio from "./components/Portfolio";
+import Broker from "./components/Broker";
 //The above components are the individual components written inside the components folder. All the logic is written separately
 //And then they are called in the App.js to be rendered. Mind that these the parent level component and not child level component like Filter, hence only parent level components are called here.
 
@@ -80,6 +81,7 @@ function App(props) {
 							>
 								<StockEarnings handleColor={handleColor} />
 							</Route>
+							<Route path="/broker" component={Broker} />
 						</Switch>
 					</div>
 				</div>

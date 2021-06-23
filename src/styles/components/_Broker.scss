@@ -1,0 +1,18 @@
+.broker {
+	height: 100%;
+
+	&-range {
+		width: 80%;
+		margin: 0 auto;
+
+		&_wrapper {
+			display: flex;
+			width: 100%;
+			justify-content: space-around;
+
+			& > input {
+				width: 70%;
+			}
+		}
+	}
+}
