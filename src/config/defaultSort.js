@@ -5,3 +5,8 @@ export const DEFAULT_SORT = {
 	id: "end_score",
 	desc: true,
 };
+
+export const BROKER_SORT = {
+	id: "margin_interest",
+	desc: true,
+};

@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import store from "../store";
+import comdirect from "../assets/BrokerLogos/comdirect_logo.png";
+import consors from "../assets/BrokerLogos/consors_logo.png";
+import dkb from "../assets/BrokerLogos/dkb_logo.png";
+import interactive from "../assets/BrokerLogos/interactive_brokers_logo.png";
+import onvista from "../assets/BrokerLogos/onvista_logo.png";
+import scalable from "../assets/BrokerLogos/scalable_cap_logo.png";
+import trade from "../assets/BrokerLogos/trade_rep_logo.png";
 
 let maxCostPerTrade = null;
 let costPerTrade = null;
@@ -10,7 +17,6 @@ export const broker_columns = [
 	{
 		Header: "Broker",
 		accessor: "name",
-		isHidden: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -19,6 +25,7 @@ export const broker_columns = [
 				if (fragments_trading_available === 1) {
 					if (row.row.original.margin_available === 1) {
 						if (marginLoad > row.row.original.margin_minimum_loan_amount) {
+							row.column.isHidden = true;
 							return row.value;
 						} else return null;
 					} else return null;
@@ -59,6 +66,7 @@ export const broker_columns = [
 	{
 		Header: "Formula",
 		accessor: "formula_text_lowest",
+		width: 250,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -169,10 +177,11 @@ export const broker_columns = [
 					if (extraCostPerTrade < minimum_extra_costs_lowest)
 						extraCostPerTrade = minimum_extra_costs_lowest;
 
-					costPerTrade =
+					let costPerTradeBeforeExtraCost =
 						fixed_ordercosts_lowest +
-						fixed_ordercosts_lowest * averageTradeSize +
-						extraCostPerTrade;
+						fixed_ordercosts_lowest * averageTradeSize;
+
+					costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
 					if (costPerTrade < minimum_ordercost_lowest)
 						costPerTrade = minimum_ordercost_lowest;
@@ -188,7 +197,15 @@ export const broker_columns = [
 
 					if (row.row.original.margin_available === 1) {
 						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return costPerTrade.toFixed(2);
+							return (
+								<div className="value">
+									<span className="broker-tooltip">
+										{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
+										foreign charges
+									</span>
+									{costPerTrade.toFixed(2)}
+								</div>
+							);
 						else return null;
 					} else return null;
 				} else return null;
@@ -198,10 +215,10 @@ export const broker_columns = [
 				if (extraCostPerTrade < minimum_extra_costs_lowest)
 					extraCostPerTrade = minimum_extra_costs_lowest;
 
-				costPerTrade =
-					fixed_ordercosts_lowest +
-					fixed_ordercosts_lowest * averageTradeSize +
-					extraCostPerTrade;
+				let costPerTradeBeforeExtraCost =
+					fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
+
+				costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
 				if (costPerTrade < minimum_ordercost_lowest)
 					costPerTrade = minimum_ordercost_lowest;
@@ -216,7 +233,15 @@ export const broker_columns = [
 
 				if (row.row.original.margin_available === 1) {
 					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return costPerTrade.toFixed(2);
+						return (
+							<div className="value">
+								<span className="broker-tooltip">
+									{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
+									foreign charges
+								</span>
+								{costPerTrade.toFixed(2)}
+							</div>
+						);
 					else return null;
 				} else return null;
 			}
@@ -281,6 +306,8 @@ export const broker_columns = [
 	{
 		Header: "Margin Interest Rate",
 		accessor: "margin_interest",
+		defaultCanSort: true,
+		sortDescFirst: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;

@@ -1,8 +1,10 @@
 import { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 
-import { useTable, useGlobalFilter } from "react-table";
+import { useTable, useGlobalFilter, useSortBy } from "react-table";
 import { broker_columns } from "../config/broker";
+
+import { BROKER_SORT } from "../config/defaultSort";
 
 import {
 	getBrokerData,
@@ -17,6 +19,7 @@ function Broker(props) {
 
 	const columns = useMemo(() => broker_columns, [broker_columns]);
 	const data = useMemo(() => brokers, [brokers]);
+	const defaultSort = useMemo(() => BROKER_SORT, []);
 
 	const {
 		getTableProps,
@@ -30,7 +33,11 @@ function Broker(props) {
 		{
 			columns,
 			data,
-		}
+			initialState: {
+				sortBy: [defaultSort],
+			},
+		},
+		useSortBy
 		// useGlobalFilter
 	);
 
@@ -140,7 +147,7 @@ function Broker(props) {
 						{headerGroups.map((headerGroup) => (
 							<tr {...headerGroup.getHeaderGroupProps()}>
 								{headerGroup.headers.map((column) => (
-									<th {...column.getHeaderProps()}>
+									<th {...column.getHeaderProps(column.getSortByToggleProps())}>
 										{column.render("Header")}
 									</th>
 								))}
