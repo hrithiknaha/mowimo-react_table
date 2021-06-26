@@ -41,15 +41,15 @@ function Broker(props) {
 	}, []);
 
 	const handleAverageTradesPerYearRange = (e) => {
-		console.log("Trades Per Year", e.target.value);
+		// console.log("Trades Per Year", e.target.value);
 		props.setTradesPerYear(e.target.value);
 	};
 	const handleTradeSizeRange = (e) => {
-		console.log("Average Trade Size", e.target.value);
+		// console.log("Average Trade Size", e.target.value);
 		props.setAverageTradeSize(e.target.value);
 	};
 	const handleMarginLoadRange = (e) => {
-		console.log("Margin Load", e.target.value);
+		// console.log("Margin Load", e.target.value);
 		props.setMarginLoad(e.target.value);
 		// return setGlobalFilter(e.target.value);
 	};
@@ -61,6 +61,7 @@ function Broker(props) {
 
 	return (
 		<div className="broker">
+			<h1 className="broker-title">BROKER</h1>
 			<div className="broker-text">
 				<p>
 					Applying the levermann strategy leads to roughly four trades per
@@ -73,48 +74,54 @@ function Broker(props) {
 
 			<div className="broker-actions">
 				<div className="broker-actions_range">
-					<label htmlFor="tradesPerYear">Trades Per year</label>
-					<input
-						type="range"
-						id="tradesPerYear"
-						name="tradesPerYear"
-						min="1"
-						max="100"
-						defaultValue="48"
-						onChange={handleAverageTradesPerYearRange}
-						onmousemove="tradesPerYearOutput.value=value"
-					/>
-					<output id="tradesPerYearOutput">{tradesPerYear}</output>
+					<label htmlFor="tradesPerYear">Trades Per year </label>
+					<div className="broker-actions_range_wrapper">
+						<input
+							type="range"
+							id="tradesPerYear"
+							name="tradesPerYear"
+							min="1"
+							max="100"
+							defaultValue="48"
+							onChange={handleAverageTradesPerYearRange}
+							onmousemove="tradesPerYearOutput.value=value"
+						/>
+						<span id="tradesPerYearOutput">{tradesPerYear}</span>
+					</div>
 				</div>
 
 				<div className="broker-actions_range">
-					<label htmlFor="averageTradeSize">Average Trade Size</label>
-					<input
-						type="range"
-						id="averageTradeSize"
-						name="averageTradeSize"
-						min="100"
-						max="100000"
-						defaultValue="1000"
-						onChange={handleTradeSizeRange}
-						onmousemove="averageTradeSizeOutput.value=value"
-					/>
-					<output id="averageTradeSizeOutput">{averageTradeSize}</output>
+					<label htmlFor="averageTradeSize">Average Trade Size </label>
+					<div className="broker-actions_range_wrapper">
+						<input
+							type="range"
+							id="averageTradeSize"
+							name="averageTradeSize"
+							min="100"
+							max="100000"
+							defaultValue="1000"
+							onChange={handleTradeSizeRange}
+							onmousemove="averageTradeSizeOutput.value=value"
+						/>
+						<span id="averageTradeSizeOutput">{averageTradeSize}</span>
+					</div>
 				</div>
 
 				<div className="broker-actions_range">
 					<label htmlFor="marginLoad">Margin Load</label>
-					<input
-						type="range"
-						id="marginLoad"
-						name="marginLoad"
-						min="100"
-						max="100000"
-						defaultValue="0"
-						onChange={handleMarginLoadRange}
-						onmousemove="marginLoadOutput.value=value"
-					/>
-					<output id="marginLoadOutput">{marginLoad}</output>
+					<div className="broker-actions_range_wrapper">
+						<input
+							type="range"
+							id="marginLoad"
+							name="marginLoad"
+							min="100"
+							max="100000"
+							defaultValue="0"
+							onChange={handleMarginLoadRange}
+							onmousemove="marginLoadOutput.value=value"
+						/>
+						<span id="marginLoadOutput">{marginLoad}</span>
+					</div>
 				</div>
 				<div className="broker-actions_fragments">
 					<label htmlFor="fragments">Purchase stocks in even amounts</label>

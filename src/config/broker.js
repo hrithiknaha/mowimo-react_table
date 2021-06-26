@@ -10,7 +10,7 @@ export const broker_columns = [
 	{
 		Header: "Broker",
 		accessor: "name",
-		minRows: 0,
+		isHidden: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -18,9 +18,9 @@ export const broker_columns = [
 			if (showFragments) {
 				if (fragments_trading_available === 1) {
 					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
+						if (marginLoad > row.row.original.margin_minimum_loan_amount) {
 							return row.value;
-						else return null;
+						} else return null;
 					} else return null;
 				} else return null;
 			} else {
