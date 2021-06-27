@@ -191,6 +191,7 @@ function Broker(props) {
 
 			<div className="broker-notes">
 				<p>{t("Broker_Charge")}</p>
+				<p>Euro to USD: {props.broker.euroToUsd}</p>
 				<p>{t("Broker_Note")}</p>
 			</div>
 		</div>
