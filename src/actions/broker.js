@@ -28,8 +28,6 @@ export const getBrokerOnMargin = () => (dispatch, state) => {
 		}
 	});
 
-	console.log(brokersOnMargin);
-
 	dispatch({
 		type: GET_BROKER_ON_MARGIN_LOAD,
 		payload: brokersOnMargin,

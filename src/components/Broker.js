@@ -31,10 +31,11 @@ function Broker(props) {
 	const data = useMemo(() => {
 		if (showFragments) return showBrokers;
 		else {
-			if (marginLoad === 0) return brokers;
-			else return showBrokers;
+			if (marginLoad == 0) {
+				return brokers;
+			} else return showBrokers;
 		}
-	}, [showBrokers, brokers]);
+	}, [showBrokers, brokers, marginLoad]);
 	const defaultSort = useMemo(() => BROKER_SORT, []);
 
 	const {
@@ -73,8 +74,12 @@ function Broker(props) {
 	};
 	const handleMarginLoadRange = (e) => {
 		// console.log("Margin Load", e.target.value);
-		props.setMarginLoad(e.target.value);
-		props.getBrokerOnMargin();
+		if (showFragments) {
+			props.setMarginLoad(e.target.value);
+		} else {
+			props.setMarginLoad(e.target.value);
+			props.getBrokerOnMargin();
+		}
 		// return setGlobalFilter(e.target.value);
 	};
 
@@ -139,7 +144,7 @@ function Broker(props) {
 							type="range"
 							id="marginLoad"
 							name="marginLoad"
-							min="100"
+							min="0"
 							max="100000"
 							defaultValue="0"
 							onChange={handleMarginLoadRange}
