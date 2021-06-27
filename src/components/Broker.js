@@ -130,6 +130,7 @@ function Broker(props) {
 							min="100"
 							max="100000"
 							defaultValue="1000"
+							step="100"
 							onChange={handleTradeSizeRange}
 							onmousemove="averageTradeSizeOutput.value=value"
 						/>
@@ -147,6 +148,7 @@ function Broker(props) {
 							min="0"
 							max="100000"
 							defaultValue="0"
+							step="100"
 							onChange={handleMarginLoadRange}
 							onmousemove="marginLoadOutput.value=value"
 						/>

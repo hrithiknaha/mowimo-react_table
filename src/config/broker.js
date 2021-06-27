@@ -44,7 +44,6 @@ export const broker_columns = [
 	{
 		Header: i18n.t("TYPE"),
 		accessor: "type",
-		disableSortBy: true,
 		// Cell: (row) => {
 		// 	const { marginLoad, showFragments } = store.getState().broker;
 		// 	const { fragments_trading_available } = row.row.original;
@@ -69,7 +68,7 @@ export const broker_columns = [
 	{
 		Header: i18n.t("FORMULA"),
 		accessor: "formula_text_lowest",
-		disableSortBy: true,
+
 		// width: 300,
 		// Cell: (row) => {
 		// 	const { marginLoad, showFragments } = store.getState().broker;
@@ -95,32 +94,14 @@ export const broker_columns = [
 	{
 		Header: i18n.t("MIN"),
 		accessor: "minimum_ordercosts_lowest",
-		disableSortBy: true,
-		// Cell: (row) => {
-		// 	const { marginLoad, showFragments } = store.getState().broker;
-		// 	const { fragments_trading_available } = row.row.original;
 
-		// 	if (showFragments) {
-		// 		if (fragments_trading_available === 1) {
-		// 			if (row.row.original.margin_available === 1) {
-		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 					return row.value;
-		// 				else return null;
-		// 			} else return null;
-		// 		} else return null;
-		// 	} else {
-		// 		if (row.row.original.margin_available === 1) {
-		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 				return row.value;
-		// 			else return null;
-		// 		} else return null;
-		// 	}
-		// },
+		Cell: (row) => {
+			return row.value.toFixed(2);
+		},
 	},
 	{
 		Header: i18n.t("MAX"),
 		id: "max",
-		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, averageTradeSize, showFragments } =
 				store.getState().broker;
@@ -158,34 +139,28 @@ export const broker_columns = [
 	{
 		Header: i18n.t("PER TRADE"),
 		id: "per trade",
-		disableSortBy: true,
+
 		Cell: (row) => {
-			const {
-				marginLoad,
-				averageTradeSize,
-				averageEuroPrice,
-				euroToUsd,
-				showFragments,
-			} = store.getState().broker;
+			console.log(row);
+			const { averageTradeSize, averageEuroPrice, euroToUsd } =
+				store.getState().broker;
 
 			const {
 				fixed_ordercosts_lowest,
 				relative_extra_ordercosts_lowest,
-				minimum_extra_costs_lowest,
+				minimum_extra_ordercosts_lowest,
 				minimum_ordercost_lowest,
 				relative_ordercosts_lowest,
-				fragments_trading_available,
 			} = row.row.original;
 
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
 			let extraCostPerTrade =
 				relative_extra_ordercosts_lowest * averageTradeSize;
-			if (extraCostPerTrade < minimum_extra_costs_lowest)
-				extraCostPerTrade = minimum_extra_costs_lowest;
+
+			if (extraCostPerTrade < minimum_extra_ordercosts_lowest)
+				extraCostPerTrade = minimum_extra_ordercosts_lowest;
 
 			let costPerTradeBeforeExtraCost =
-				fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
+				fixed_ordercosts_lowest + relative_ordercosts_lowest * averageTradeSize;
 
 			costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
@@ -195,13 +170,13 @@ export const broker_columns = [
 
 			if (row.row.original.name === "Interactive Brokers")
 				costPerTrade =
-					fixed_ordercosts_lowest +
-					(relative_ordercosts_lowest * averageTradeSize) /
-						averageEuroPrice /
-						euroToUsd;
+					(fixed_ordercosts_lowest +
+						(relative_ordercosts_lowest * averageTradeSize) /
+							averageEuroPrice) /
+					euroToUsd;
 
-			// if (row.row.original.margin_available === 1) {
-			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			if (extraCostPerTrade === 0)
+				return <div className="value">{costPerTrade.toFixed(2)}</div>;
 			return (
 				<div className="value">
 					<span className="broker-tooltip">
@@ -211,51 +186,12 @@ export const broker_columns = [
 					{costPerTrade.toFixed(2)}
 				</div>
 			);
-			// 		else return null;
-			// 	} else return null;
-			// } else return null;
-			// } else {
-			// 	let extraCostPerTrade =
-			// 		relative_extra_ordercosts_lowest * averageTradeSize;
-			// 	if (extraCostPerTrade < minimum_extra_costs_lowest)
-			// 		extraCostPerTrade = minimum_extra_costs_lowest;
-
-			// 	let costPerTradeBeforeExtraCost =
-			// 		fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
-
-			// 	costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
-
-			// 	if (costPerTrade < minimum_ordercost_lowest)
-			// 		costPerTrade = minimum_ordercost_lowest;
-			// 	else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
-
-			// 	if (row.row.original.name === "Interactive Brokers")
-			// 		costPerTrade =
-			// 			fixed_ordercosts_lowest +
-			// 			(relative_ordercosts_lowest * averageTradeSize) /
-			// 				averageEuroPrice /
-			// 				euroToUsd;
-
-			// 	if (row.row.original.margin_available === 1) {
-			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 			return (
-			// 				<div className="value">
-			// 					<span className="broker-tooltip">
-			// 						{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
-			// 						foreign charges
-			// 					</span>
-			// 					{costPerTrade.toFixed(2)}
-			// 				</div>
-			// 			);
-			// 		else return null;
-			// 	} else return null;
-			// }
 		},
 	},
 	{
 		Header: i18n.t("PER MONTH"),
 		id: "per month",
-		disableSortBy: true,
+
 		Cell: (row) => {
 			const { marginLoad, tradesPerYear, showFragments } =
 				store.getState().broker;
@@ -264,7 +200,7 @@ export const broker_columns = [
 
 			// if (showFragments) {
 			// 	if (fragments_trading_available === 1) {
-			costPerMonth = costPerTrade * tradesPerYear;
+			costPerMonth = costPerTrade * (tradesPerYear / 12);
 			// 		if (row.row.original.margin_available === 1) {
 			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
 			return costPerMonth.toFixed(2);
@@ -284,11 +220,8 @@ export const broker_columns = [
 	{
 		Header: i18n.t("PER YEAR"),
 		id: "per year",
-		disableSortBy: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
 
+		Cell: (row) => {
 			// if (showFragments) {
 			// 	if (fragments_trading_available === 1) {
 			const costPerYear = 12 * costPerMonth;
@@ -313,63 +246,29 @@ export const broker_columns = [
 	{
 		Header: i18n.t("MARGIN INTEREST RATE"),
 		accessor: "margin_interest",
-		defaultCanSort: true,
-		sortDescFirst: true,
-		disableSortBy: true,
-		// Cell: (row) => {
-		// 	const { marginLoad, showFragments } = store.getState().broker;
-		// 	const { fragments_trading_available } = row.row.original;
 
-		// 	if (showFragments) {
-		// 		if (fragments_trading_available === 1) {
-		// 			if (row.row.original.margin_available === 1) {
-		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 					return row.value;
-		// 				else return null;
-		// 			} else return null;
-		// 		} else return null;
-		// 	} else {
-		// 		if (row.row.original.margin_available === 1) {
-		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 				return row.value;
-		// 			else return null;
-		// 		} else return null;
-		// 	}
-		// },
+		Cell: (row) => {
+			const marginInterest = row.value * 100;
+			return <div>{marginInterest.toFixed(2)} %</div>;
+		},
 	},
 	{
 		Header: i18n.t("INTEREST PER YEAR"),
 		id: "interestPerYear",
-		disableSortBy: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { margin_interest, fragments_trading_available } = row.row.original;
 
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
+		Cell: (row) => {
+			const { marginLoad } = store.getState().broker;
+			const { margin_interest } = row.row.original;
+
 			const interestPerYear = margin_interest * marginLoad;
 
-			// if (row.row.original.margin_available === 1) {
-			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
 			return interestPerYear.toFixed(2);
-			// 			else return null;
-			// 		} else return null;
-			// 	} else return null;
-			// } else {
-			// 	const interestPerYear = margin_interest * marginLoad;
-
-			// 	if (row.row.original.margin_available === 1) {
-			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 			return interestPerYear.toFixed(2);
-			// 		else return null;
-			// 	} else return null;
-			// }
 		},
 	},
 	{
 		Header: i18n.t("LINK"),
 		id: "Link",
-		disableSortBy: true,
+
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { website_url, fragments_trading_available } = row.row.original;
