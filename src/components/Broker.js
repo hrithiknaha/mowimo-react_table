@@ -166,9 +166,11 @@ function Broker(props) {
 					<tbody {...getTableBodyProps()}>
 						{rows.map((row) => {
 							prepareRow(row);
+							console.log(row.getRowProps());
 							return (
 								<tr {...row.getRowProps()}>
 									{row.cells.map((cell) => {
+										console.log(console.log(cell.render("Cell")));
 										return (
 											<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
 										);

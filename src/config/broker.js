@@ -19,7 +19,7 @@ export const broker_columns = [
 	{
 		Header: i18n.t("BROKER"),
 		accessor: "name",
-		disableSortBy: true,
+		isHidden: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -30,15 +30,15 @@ export const broker_columns = [
 						if (marginLoad > row.row.original.margin_minimum_loan_amount) {
 							row.column.isHidden = true;
 							return row.value;
-						} else return null;
-					} else return null;
-				} else return null;
+						} else return <div className="displayNone">{null}</div>;
+					} else return <div className="displayNone">{null}</div>;
+				} else return <div className="displayNone">{null}</div>;
 			} else {
 				if (row.row.original.margin_available === 1) {
 					if (marginLoad > row.row.original.margin_minimum_loan_amount)
 						return row.value;
-					else return null;
-				} else return null;
+					else return <div className="displayNone">{null}</div>;
+				} else return <div className="displayNone">{null}</div>;
 			}
 		},
 	},
