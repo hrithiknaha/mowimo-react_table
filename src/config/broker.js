@@ -19,104 +19,103 @@ export const broker_columns = [
 	{
 		Header: i18n.t("BROKER"),
 		accessor: "name",
-		isHidden: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
+		// Cell: (row) => {
+		// 	const { marginLoad, showFragments } = store.getState().broker;
+		// 	const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount) {
-							row.column.isHidden = true;
-							return row.value;
-						} else return <div className="displayNone">{null}</div>;
-					} else return <div className="displayNone">{null}</div>;
-				} else return <div className="displayNone">{null}</div>;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return row.value;
-					else return <div className="displayNone">{null}</div>;
-				} else return <div className="displayNone">{null}</div>;
-			}
-		},
+		// 	if (showFragments) {
+		// 		if (fragments_trading_available === 1) {
+		// 			if (row.row.original.margin_available === 1) {
+		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount) {
+		// 					row.column.isHidden = true;
+		// 					return row.value;
+		// 				} else return <div className="displayNone">{null}</div>;
+		// 			} else return <div className="displayNone">{null}</div>;
+		// 		} else return <div className="displayNone">{null}</div>;
+		// 	} else {
+		// 		if (row.row.original.margin_available === 1) {
+		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 				return row.value;
+		// 			else return <div className="displayNone">{null}</div>;
+		// 		} else return <div className="displayNone">{null}</div>;
+		// 	}
+		// },
 	},
 	{
 		Header: i18n.t("TYPE"),
 		accessor: "type",
 		disableSortBy: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
+		// Cell: (row) => {
+		// 	const { marginLoad, showFragments } = store.getState().broker;
+		// 	const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return row.value;
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return row.value;
-					else return null;
-				} else return null;
-			}
-		},
+		// 	if (showFragments) {
+		// 		if (fragments_trading_available === 1) {
+		// 			if (row.row.original.margin_available === 1) {
+		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 					return row.value;
+		// 				else return null;
+		// 			} else return null;
+		// 		} else return null;
+		// 	} else {
+		// 		if (row.row.original.margin_available === 1) {
+		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 				return row.value;
+		// 			else return null;
+		// 		} else return null;
+		// 	}
+		// },
 	},
 	{
 		Header: i18n.t("FORMULA"),
 		accessor: "formula_text_lowest",
 		disableSortBy: true,
-		width: 300,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
+		// width: 300,
+		// Cell: (row) => {
+		// 	const { marginLoad, showFragments } = store.getState().broker;
+		// 	const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return row.value;
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return row.value;
-					else return null;
-				} else return null;
-			}
-		},
+		// 	if (showFragments) {
+		// 		if (fragments_trading_available === 1) {
+		// 			if (row.row.original.margin_available === 1) {
+		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 					return row.value;
+		// 				else return null;
+		// 			} else return null;
+		// 		} else return null;
+		// 	} else {
+		// 		if (row.row.original.margin_available === 1) {
+		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 				return row.value;
+		// 			else return null;
+		// 		} else return null;
+		// 	}
+		// },
 	},
 	{
 		Header: i18n.t("MIN"),
 		accessor: "minimum_ordercosts_lowest",
 		disableSortBy: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
+		// Cell: (row) => {
+		// 	const { marginLoad, showFragments } = store.getState().broker;
+		// 	const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return row.value;
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return row.value;
-					else return null;
-				} else return null;
-			}
-		},
+		// 	if (showFragments) {
+		// 		if (fragments_trading_available === 1) {
+		// 			if (row.row.original.margin_available === 1) {
+		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 					return row.value;
+		// 				else return null;
+		// 			} else return null;
+		// 		} else return null;
+		// 	} else {
+		// 		if (row.row.original.margin_available === 1) {
+		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 				return row.value;
+		// 			else return null;
+		// 		} else return null;
+		// 	}
+		// },
 	},
 	{
 		Header: i18n.t("MAX"),
@@ -131,29 +130,29 @@ export const broker_columns = [
 				fragments_trading_available,
 			} = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					maxCostPerTrade =
-						maximum_fixed_ordercosts_lowest +
-						maximum_relative_ordercosts_lowest * averageTradeSize;
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			maxCostPerTrade =
+				maximum_fixed_ordercosts_lowest +
+				maximum_relative_ordercosts_lowest * averageTradeSize;
 
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return maxCostPerTrade.toFixed(2);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				maxCostPerTrade =
-					maximum_fixed_ordercosts_lowest +
-					maximum_relative_ordercosts_lowest * averageTradeSize;
+			// if (row.row.original.margin_available === 1) {
+			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return maxCostPerTrade.toFixed(2);
+			// 		else return null;
+			// 	} else return null;
+			// } else return null;
+			// } else {
+			// maxCostPerTrade =
+			// 	maximum_fixed_ordercosts_lowest +
+			// 	maximum_relative_ordercosts_lowest * averageTradeSize;
 
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return maxCostPerTrade.toFixed(2);
-					else return null;
-				} else return null;
-			}
+			// if (row.row.original.margin_available === 1) {
+			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 		return maxCostPerTrade.toFixed(2);
+			// 	else return null;
+			// } else return null;
+			// }
 		},
 	},
 	{
@@ -178,81 +177,79 @@ export const broker_columns = [
 				fragments_trading_available,
 			} = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					let extraCostPerTrade =
-						relative_extra_ordercosts_lowest * averageTradeSize;
-					if (extraCostPerTrade < minimum_extra_costs_lowest)
-						extraCostPerTrade = minimum_extra_costs_lowest;
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			let extraCostPerTrade =
+				relative_extra_ordercosts_lowest * averageTradeSize;
+			if (extraCostPerTrade < minimum_extra_costs_lowest)
+				extraCostPerTrade = minimum_extra_costs_lowest;
 
-					let costPerTradeBeforeExtraCost =
-						fixed_ordercosts_lowest +
-						fixed_ordercosts_lowest * averageTradeSize;
+			let costPerTradeBeforeExtraCost =
+				fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
 
-					costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
+			costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
-					if (costPerTrade < minimum_ordercost_lowest)
-						costPerTrade = minimum_ordercost_lowest;
-					else if (costPerTrade > maxCostPerTrade)
-						costPerTrade = maxCostPerTrade;
+			if (costPerTrade < minimum_ordercost_lowest)
+				costPerTrade = minimum_ordercost_lowest;
+			else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
 
-					if (row.row.original.name === "Interactive Brokers")
-						costPerTrade =
-							fixed_ordercosts_lowest +
-							(relative_ordercosts_lowest * averageTradeSize) /
-								averageEuroPrice /
-								euroToUsd;
+			if (row.row.original.name === "Interactive Brokers")
+				costPerTrade =
+					fixed_ordercosts_lowest +
+					(relative_ordercosts_lowest * averageTradeSize) /
+						averageEuroPrice /
+						euroToUsd;
 
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return (
-								<div className="value">
-									<span className="broker-tooltip">
-										{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
-										foreign charges
-									</span>
-									{costPerTrade.toFixed(2)}
-								</div>
-							);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				let extraCostPerTrade =
-					relative_extra_ordercosts_lowest * averageTradeSize;
-				if (extraCostPerTrade < minimum_extra_costs_lowest)
-					extraCostPerTrade = minimum_extra_costs_lowest;
+			// if (row.row.original.margin_available === 1) {
+			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return (
+				<div className="value">
+					<span className="broker-tooltip">
+						{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)} foreign
+						charges
+					</span>
+					{costPerTrade.toFixed(2)}
+				</div>
+			);
+			// 		else return null;
+			// 	} else return null;
+			// } else return null;
+			// } else {
+			// 	let extraCostPerTrade =
+			// 		relative_extra_ordercosts_lowest * averageTradeSize;
+			// 	if (extraCostPerTrade < minimum_extra_costs_lowest)
+			// 		extraCostPerTrade = minimum_extra_costs_lowest;
 
-				let costPerTradeBeforeExtraCost =
-					fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
+			// 	let costPerTradeBeforeExtraCost =
+			// 		fixed_ordercosts_lowest + fixed_ordercosts_lowest * averageTradeSize;
 
-				costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
+			// 	costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
-				if (costPerTrade < minimum_ordercost_lowest)
-					costPerTrade = minimum_ordercost_lowest;
-				else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
+			// 	if (costPerTrade < minimum_ordercost_lowest)
+			// 		costPerTrade = minimum_ordercost_lowest;
+			// 	else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
 
-				if (row.row.original.name === "Interactive Brokers")
-					costPerTrade =
-						fixed_ordercosts_lowest +
-						(relative_ordercosts_lowest * averageTradeSize) /
-							averageEuroPrice /
-							euroToUsd;
+			// 	if (row.row.original.name === "Interactive Brokers")
+			// 		costPerTrade =
+			// 			fixed_ordercosts_lowest +
+			// 			(relative_ordercosts_lowest * averageTradeSize) /
+			// 				averageEuroPrice /
+			// 				euroToUsd;
 
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return (
-							<div className="value">
-								<span className="broker-tooltip">
-									{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
-									foreign charges
-								</span>
-								{costPerTrade.toFixed(2)}
-							</div>
-						);
-					else return null;
-				} else return null;
-			}
+			// 	if (row.row.original.margin_available === 1) {
+			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 			return (
+			// 				<div className="value">
+			// 					<span className="broker-tooltip">
+			// 						{costPerTrade.toFixed(2)} + {extraCostPerTrade.toFixed(2)}{" "}
+			// 						foreign charges
+			// 					</span>
+			// 					{costPerTrade.toFixed(2)}
+			// 				</div>
+			// 			);
+			// 		else return null;
+			// 	} else return null;
+			// }
 		},
 	},
 	{
@@ -265,23 +262,23 @@ export const broker_columns = [
 
 			const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					costPerMonth = costPerTrade * tradesPerYear;
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return costPerMonth.toFixed(2);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				costPerMonth = costPerTrade * tradesPerYear;
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return costPerMonth.toFixed(2);
-					else return null;
-				} else return null;
-			}
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			costPerMonth = costPerTrade * tradesPerYear;
+			// 		if (row.row.original.margin_available === 1) {
+			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return costPerMonth.toFixed(2);
+			// 		else return null;
+			// 	} else return null;
+			// } else return null;
+			// } else {
+			// 	costPerMonth = costPerTrade * tradesPerYear;
+			// 	if (row.row.original.margin_available === 1) {
+			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 			return costPerMonth.toFixed(2);
+			// 		else return null;
+			// 	} else return null;
+			// }
 		},
 	},
 	{
@@ -292,25 +289,25 @@ export const broker_columns = [
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					const costPerYear = 12 * costPerMonth;
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			const costPerYear = 12 * costPerMonth;
 
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return costPerYear.toFixed(2);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				const costPerYear = 12 * costPerMonth;
+			// if (row.row.original.margin_available === 1) {
+			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return costPerYear.toFixed(2);
+			// 			else return null;
+			// 		} else return null;
+			// 	} else return null;
+			// } else {
+			// 	const costPerYear = 12 * costPerMonth;
 
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return costPerYear.toFixed(2);
-					else return null;
-				} else return null;
-			}
+			// 	if (row.row.original.margin_available === 1) {
+			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 			return costPerYear.toFixed(2);
+			// 		else return null;
+			// 	} else return null;
+			// }
 		},
 	},
 	{
@@ -319,26 +316,26 @@ export const broker_columns = [
 		defaultCanSort: true,
 		sortDescFirst: true,
 		disableSortBy: true,
-		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { fragments_trading_available } = row.row.original;
+		// Cell: (row) => {
+		// 	const { marginLoad, showFragments } = store.getState().broker;
+		// 	const { fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return row.value;
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return row.value;
-					else return null;
-				} else return null;
-			}
-		},
+		// 	if (showFragments) {
+		// 		if (fragments_trading_available === 1) {
+		// 			if (row.row.original.margin_available === 1) {
+		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 					return row.value;
+		// 				else return null;
+		// 			} else return null;
+		// 		} else return null;
+		// 	} else {
+		// 		if (row.row.original.margin_available === 1) {
+		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+		// 				return row.value;
+		// 			else return null;
+		// 		} else return null;
+		// 	}
+		// },
 	},
 	{
 		Header: i18n.t("INTEREST PER YEAR"),
@@ -348,25 +345,25 @@ export const broker_columns = [
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { margin_interest, fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					const interestPerYear = margin_interest * marginLoad;
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			const interestPerYear = margin_interest * marginLoad;
 
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return interestPerYear.toFixed(2);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				const interestPerYear = margin_interest * marginLoad;
+			// if (row.row.original.margin_available === 1) {
+			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return interestPerYear.toFixed(2);
+			// 			else return null;
+			// 		} else return null;
+			// 	} else return null;
+			// } else {
+			// 	const interestPerYear = margin_interest * marginLoad;
 
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return interestPerYear.toFixed(2);
-					else return null;
-				} else return null;
-			}
+			// 	if (row.row.original.margin_available === 1) {
+			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 			return interestPerYear.toFixed(2);
+			// 		else return null;
+			// 	} else return null;
+			// }
 		},
 	},
 	{
@@ -377,29 +374,29 @@ export const broker_columns = [
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { website_url, fragments_trading_available } = row.row.original;
 
-			if (showFragments) {
-				if (fragments_trading_available === 1) {
-					if (row.row.original.margin_available === 1) {
-						if (marginLoad > row.row.original.margin_minimum_loan_amount)
-							return (
-								<a href={website_url}>
-									<FaExternalLinkAlt />
-								</a>
-							);
-						else return null;
-					} else return null;
-				} else return null;
-			} else {
-				if (row.row.original.margin_available === 1) {
-					if (marginLoad > row.row.original.margin_minimum_loan_amount)
-						return (
-							<a href={website_url}>
-								<FaExternalLinkAlt />
-							</a>
-						);
-					else return null;
-				} else return null;
-			}
+			// if (showFragments) {
+			// 	if (fragments_trading_available === 1) {
+			// 		if (row.row.original.margin_available === 1) {
+			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			return (
+				<a href={website_url}>
+					<FaExternalLinkAlt />
+				</a>
+			);
+			// 				else return null;
+			// 			} else return null;
+			// 		} else return null;
+			// 	} else {
+			// 		if (row.row.original.margin_available === 1) {
+			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+			// 				return (
+			// 					<a href={website_url}>
+			// 						<FaExternalLinkAlt />
+			// 					</a>
+			// 				);
+			// 			else return null;
+			// 		} else return null;
+			// 	}
 		},
 	},
 ];

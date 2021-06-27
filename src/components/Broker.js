@@ -18,11 +18,23 @@ import {
 } from "../actions/broker";
 
 function Broker(props) {
-	const { tradesPerYear, averageTradeSize, marginLoad, showBrokers } =
-		props.broker;
+	const {
+		tradesPerYear,
+		averageTradeSize,
+		marginLoad,
+		showBrokers,
+		brokers,
+		showFragments,
+	} = props.broker;
 
 	const columns = useMemo(() => broker_columns, [broker_columns]);
-	const data = useMemo(() => showBrokers, [showBrokers]);
+	const data = useMemo(() => {
+		if (showFragments) return showBrokers;
+		else {
+			if (marginLoad === 0) return brokers;
+			else return showBrokers;
+		}
+	}, [showBrokers, brokers]);
 	const defaultSort = useMemo(() => BROKER_SORT, []);
 
 	const {
