@@ -196,6 +196,7 @@ function Sidebar({
 					)}
 				</div>
 				<div className="sidebar-links">
+					<Link to="/broker">{t("Broker")}</Link>
 					<Link to="/policy">{t("Privacy Policy")}</Link>
 					<Link to="/imprint">{t("Imprint")}</Link>
 				</div>

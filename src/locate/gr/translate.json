@@ -79,6 +79,28 @@
 
         "All Index": "ALLES INDEX",
 
-        "STOCKS" : "AKTIEN"
+        "STOCKS" : "AKTIEN",
+
+        "Broker": "Brokervergleich",
+        "Broker_Text": "Die Anwendung der Levermann Strategie führt zu rund vier Trades pro Monat, daher ist es sinnvoll sich genau mit der Brokerwahl auseinanderzusetzen. Unser Vergleich hilft Dir den richtigen Broker zu finden.",
+        "Broker_Charge": "* zzgl. Fremdspesen",
+        "Broker_Note": "Haftungsausschluss: Anlegen kann sich finanziell lohnen, aber es ist nicht ohne Risiko. Sie können (einen Teil) Ihre(r) Einlage verlieren.",
+
+        "Trades Per Year": "Trades pro Jahr",
+        "Average Trade Size": "Durchschnittliche Handelsgröße",
+        "Margin Load": "Margin-Darlehen",
+
+        "TYPE": "TYPE",
+        "FORMULA": "FORMEL",
+        "MIN": "MIN",
+        "MAX": "MAX",
+        "PER TRADE": "PRO TRADE",
+        "PER MONTH": "PRO MONAT",
+        "PER YEAR": "PRO JAHR",
+        "MARGIN INTEREST RATE": "MARGENZINSSATZ",
+        "INTEREST PER YEAR": "ZINSEN PRO JAHR",
+        "LINK": "LINK",
+
+        "EVEN STOCKS BUY": "Aktien zu glatten Beträgen kaufen"
     }
 }

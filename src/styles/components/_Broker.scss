@@ -43,6 +43,13 @@
 		&_fragments {
 			padding-top: 2rem;
 			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			& > .switch {
+				padding-top: 1rem;
+			}
 		}
 	}
 

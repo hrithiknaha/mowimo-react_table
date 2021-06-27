@@ -81,6 +81,29 @@
 
         "All Index": "ALL INDEX",
 
-        "STOCKS" : "STOCKS"
+        "STOCKS" : "STOCKS",
+
+        "Broker": "Broker",
+        "Broker_Text": "Applying the levermann strategy leads to roughly four trades per month, assuming you manage a complete Levermann portfolio of circa 10 positions. Due to this trading activity, it is important to take brokerage fees into account. Our comparison helps you find the broker of your choice.",
+        "Broker_Charge": "* plus foreign charges",
+        "Broker_Note": "Disclaimer: Investing can be financially worthwhile, but it is not without risk. You can lose (part of) your deposit",
+
+        "Trades Per Year": "Trades Per Year",
+        "Average Trade Size": "Average Trade Size",
+        "Margin Load": "Margin Load",
+
+        "BROKER": "BROKER",
+        "TYPE": "TYPE",
+        "FORMULA": "FORMULA",
+        "MIN": "MIN",
+        "MAX": "MAX",
+        "PER TRADE": "PER TRADE",
+        "PER MONTH": "PER MONTH",
+        "PER YEAR": "PER YEAR",
+        "MARGIN INTEREST RATE": "MARGIN INTEREST RATE",
+        "INTEREST PER YEAR": "INTEREST PER YEAR",
+        "LINK": "LINK",
+
+        "EVEN STOCKS BUY": "Purchase stocks in event amount"
     }
 }

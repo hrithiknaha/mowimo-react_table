@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import store from "../store";
+import i18n from "../i18n";
+
 import comdirect from "../assets/BrokerLogos/comdirect_logo.png";
 import consors from "../assets/BrokerLogos/consors_logo.png";
 import dkb from "../assets/BrokerLogos/dkb_logo.png";
@@ -15,8 +17,9 @@ let costPerMonth = null;
 
 export const broker_columns = [
 	{
-		Header: "Broker",
+		Header: i18n.t("BROKER"),
 		accessor: "name",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -40,8 +43,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Type",
+		Header: i18n.t("TYPE"),
 		accessor: "type",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -64,9 +68,10 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Formula",
+		Header: i18n.t("FORMULA"),
 		accessor: "formula_text_lowest",
-		width: 250,
+		disableSortBy: true,
+		width: 300,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -89,8 +94,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Min",
+		Header: i18n.t("MIN"),
 		accessor: "minimum_ordercosts_lowest",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -113,8 +119,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Max",
+		Header: i18n.t("MAX"),
 		id: "max",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, averageTradeSize, showFragments } =
 				store.getState().broker;
@@ -150,8 +157,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Per Trade",
+		Header: i18n.t("PER TRADE"),
 		id: "per trade",
+		disableSortBy: true,
 		Cell: (row) => {
 			const {
 				marginLoad,
@@ -248,8 +256,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Per Month",
+		Header: i18n.t("PER MONTH"),
 		id: "per month",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, tradesPerYear, showFragments } =
 				store.getState().broker;
@@ -276,8 +285,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Per Year",
+		Header: i18n.t("PER YEAR"),
 		id: "per year",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -304,10 +314,11 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Margin Interest Rate",
+		Header: i18n.t("MARGIN INTEREST RATE"),
 		accessor: "margin_interest",
 		defaultCanSort: true,
 		sortDescFirst: true,
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { fragments_trading_available } = row.row.original;
@@ -330,8 +341,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Interest Per Year",
+		Header: i18n.t("INTEREST PER YEAR"),
 		id: "interestPerYear",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { margin_interest, fragments_trading_available } = row.row.original;
@@ -358,8 +370,9 @@ export const broker_columns = [
 		},
 	},
 	{
-		Header: "Link",
+		Header: i18n.t("LINK"),
 		id: "Link",
+		disableSortBy: true,
 		Cell: (row) => {
 			const { marginLoad, showFragments } = store.getState().broker;
 			const { website_url, fragments_trading_available } = row.row.original;

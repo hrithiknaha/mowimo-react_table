@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import { useTable, useGlobalFilter, useSortBy } from "react-table";
 import { broker_columns } from "../config/broker";
@@ -66,22 +67,18 @@ function Broker(props) {
 		else props.toggleFragmentsTrade(false);
 	};
 
+	const { t } = useTranslation();
+
 	return (
 		<div className="broker">
-			<h1 className="broker-title">BROKER</h1>
+			<h1 className="broker-title">{t("Broker")}</h1>
 			<div className="broker-text">
-				<p>
-					Applying the levermann strategy leads to roughly four trades per
-					month, assuming you manage a complete Levermann portfolio of circa 10
-					positions. Due to this trading activity, it is important to take
-					brokerage fees into account. Our comparison helps you find the broker
-					of your choice.
-				</p>
+				<p>{t("Broker_Text")}</p>
 			</div>
 
 			<div className="broker-actions">
 				<div className="broker-actions_range">
-					<label htmlFor="tradesPerYear">Trades Per year </label>
+					<label htmlFor="tradesPerYear">{t("Trades Per Year")}</label>
 					<div className="broker-actions_range_wrapper">
 						<input
 							type="range"
@@ -98,7 +95,7 @@ function Broker(props) {
 				</div>
 
 				<div className="broker-actions_range">
-					<label htmlFor="averageTradeSize">Average Trade Size </label>
+					<label htmlFor="averageTradeSize">{t("Average Trade Size")}</label>
 					<div className="broker-actions_range_wrapper">
 						<input
 							type="range"
@@ -115,7 +112,7 @@ function Broker(props) {
 				</div>
 
 				<div className="broker-actions_range">
-					<label htmlFor="marginLoad">Margin Load</label>
+					<label htmlFor="marginLoad">{t("Margin Load")}</label>
 					<div className="broker-actions_range_wrapper">
 						<input
 							type="range"
@@ -131,13 +128,25 @@ function Broker(props) {
 					</div>
 				</div>
 				<div className="broker-actions_fragments">
-					<label htmlFor="fragments">Purchase stocks in even amounts</label>
-					<input
+					<label htmlFor="fragments">{t("EVEN STOCKS BUY")}</label>
+					{/* <input
 						type="checkbox"
 						name="fragments"
 						id="fragments"
 						onClick={handleFragmentChecked}
-					/>
+					/> */}
+					<label className="switch">
+						<input
+							onClick={handleFragmentChecked}
+							type="checkbox"
+							// defaultChecked={
+							// 	props.table.scoreStyle === "scores" ? false : true
+							// }
+						/>
+						<div>
+							<span></span>
+						</div>
+					</label>
 				</div>
 			</div>
 
@@ -172,11 +181,8 @@ function Broker(props) {
 			</div>
 
 			<div className="broker-notes">
-				<p>* plus foreign charges</p>
-				<p>
-					Disclaimer: Investing can be financially worthwhile, but it is not
-					without risk. You can lose (part of) your deposit
-				</p>
+				<p>{t("Broker_Charge")}</p>
+				<p>{t("Broker_Note")}</p>
 			</div>
 		</div>
 	);
