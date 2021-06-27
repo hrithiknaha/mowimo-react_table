@@ -13,13 +13,16 @@ import {
 	setAverageTradeSize,
 	setMarginLoad,
 	toggleFragmentsTrade,
+	getFragmentsOnly,
+	getBrokerOnMargin,
 } from "../actions/broker";
 
 function Broker(props) {
-	const { tradesPerYear, averageTradeSize, marginLoad, brokers } = props.broker;
+	const { tradesPerYear, averageTradeSize, marginLoad, showBrokers } =
+		props.broker;
 
 	const columns = useMemo(() => broker_columns, [broker_columns]);
-	const data = useMemo(() => brokers, [brokers]);
+	const data = useMemo(() => showBrokers, [showBrokers]);
 	const defaultSort = useMemo(() => BROKER_SORT, []);
 
 	const {
@@ -59,12 +62,18 @@ function Broker(props) {
 	const handleMarginLoadRange = (e) => {
 		// console.log("Margin Load", e.target.value);
 		props.setMarginLoad(e.target.value);
+		props.getBrokerOnMargin();
 		// return setGlobalFilter(e.target.value);
 	};
 
 	const handleFragmentChecked = (e) => {
-		if (e.target.checked) props.toggleFragmentsTrade(true);
-		else props.toggleFragmentsTrade(false);
+		if (e.target.checked) {
+			props.toggleFragmentsTrade(true);
+			props.getFragmentsOnly();
+		} else {
+			props.toggleFragmentsTrade(false);
+			props.getBrokerOnMargin();
+		}
 	};
 
 	const { t } = useTranslation();
@@ -166,11 +175,9 @@ function Broker(props) {
 					<tbody {...getTableBodyProps()}>
 						{rows.map((row) => {
 							prepareRow(row);
-							console.log(row.getRowProps());
 							return (
 								<tr {...row.getRowProps()}>
 									{row.cells.map((cell) => {
-										console.log(console.log(cell.render("Cell")));
 										return (
 											<td {...cell.getCellProps()}>{cell.render("Cell")}</td>
 										);
@@ -200,4 +207,6 @@ export default connect(mapStateToProps, {
 	setAverageTradeSize,
 	setMarginLoad,
 	toggleFragmentsTrade,
+	getFragmentsOnly,
+	getBrokerOnMargin,
 })(Broker);
