@@ -27,7 +27,10 @@ function Broker(props) {
 		showFragments,
 	} = props.broker;
 
-	const columns = useMemo(() => broker_columns, [broker_columns]);
+	const columns = useMemo(
+		() => broker_columns,
+		[broker_columns, averageTradeSize]
+	);
 	const data = useMemo(() => {
 		if (showFragments) return showBrokers;
 		else {
@@ -35,7 +38,7 @@ function Broker(props) {
 				return brokers;
 			} else return showBrokers;
 		}
-	}, [showBrokers, brokers, marginLoad]);
+	}, [showBrokers, brokers, marginLoad, averageTradeSize]);
 	const defaultSort = useMemo(() => BROKER_SORT, []);
 
 	const {
@@ -62,7 +65,7 @@ function Broker(props) {
 
 	useEffect(() => {
 		props.getBrokerData();
-	}, []);
+	}, [props.getBrokerData]);
 
 	const handleAverageTradesPerYearRange = (e) => {
 		// console.log("Trades Per Year", e.target.value);

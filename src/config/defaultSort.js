@@ -7,6 +7,5 @@ export const DEFAULT_SORT = {
 };
 
 export const BROKER_SORT = {
-	id: "margin_interest",
-	desc: true,
+	id: "per_trade",
 };

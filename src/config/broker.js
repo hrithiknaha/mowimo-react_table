@@ -138,10 +138,9 @@ export const broker_columns = [
 	},
 	{
 		Header: i18n.t("PER TRADE"),
-		id: "per trade",
-
-		Cell: (row) => {
-			console.log(row);
+		id: "per_trade",
+		sortType: "basic",
+		accessor: (row) => {
 			const { averageTradeSize, averageEuroPrice, euroToUsd } =
 				store.getState().broker;
 
@@ -149,7 +148,51 @@ export const broker_columns = [
 				fixed_ordercosts_lowest,
 				relative_extra_ordercosts_lowest,
 				minimum_extra_ordercosts_lowest,
-				minimum_ordercost_lowest,
+				minimum_ordercosts_lowest,
+				relative_ordercosts_lowest,
+				maximum_fixed_ordercosts_lowest,
+				maximum_relative_ordercosts_lowest,
+			} = row;
+
+			maxCostPerTrade =
+				maximum_fixed_ordercosts_lowest +
+				maximum_relative_ordercosts_lowest * averageTradeSize;
+
+			let extraCostPerTrade =
+				relative_extra_ordercosts_lowest * averageTradeSize;
+
+			if (extraCostPerTrade < minimum_extra_ordercosts_lowest)
+				extraCostPerTrade = minimum_extra_ordercosts_lowest;
+
+			let costPerTradeBeforeExtraCost =
+				fixed_ordercosts_lowest + relative_ordercosts_lowest * averageTradeSize;
+
+			let costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
+
+			if (costPerTrade < minimum_ordercosts_lowest)
+				costPerTrade = minimum_ordercosts_lowest;
+			else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
+
+			if (row.name === "Interactive Brokers")
+				costPerTrade =
+					(fixed_ordercosts_lowest +
+						(relative_ordercosts_lowest * averageTradeSize) /
+							averageEuroPrice) /
+					euroToUsd;
+
+			console.log(row.name, costPerTrade);
+
+			return costPerTrade;
+		},
+		Cell: (row) => {
+			const { averageTradeSize, averageEuroPrice, euroToUsd } =
+				store.getState().broker;
+
+			const {
+				fixed_ordercosts_lowest,
+				relative_extra_ordercosts_lowest,
+				minimum_extra_ordercosts_lowest,
+				minimum_ordercosts_lowest,
 				relative_ordercosts_lowest,
 			} = row.row.original;
 
@@ -164,8 +207,8 @@ export const broker_columns = [
 
 			costPerTrade = costPerTradeBeforeExtraCost + extraCostPerTrade;
 
-			if (costPerTrade < minimum_ordercost_lowest)
-				costPerTrade = minimum_ordercost_lowest;
+			if (costPerTrade < minimum_ordercosts_lowest)
+				costPerTrade = minimum_ordercosts_lowest;
 			else if (costPerTrade > maxCostPerTrade) costPerTrade = maxCostPerTrade;
 
 			if (row.row.original.name === "Interactive Brokers")
@@ -175,8 +218,7 @@ export const broker_columns = [
 							averageEuroPrice) /
 					euroToUsd;
 
-			if (extraCostPerTrade === 0)
-				return <div className="value">{costPerTrade.toFixed(2)}</div>;
+			if (extraCostPerTrade === 0) return costPerTrade.toFixed(2);
 			return (
 				<div className="value">
 					<span className="broker-tooltip">
