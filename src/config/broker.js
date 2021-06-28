@@ -3,13 +3,13 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import store from "../store";
 import i18n from "../i18n";
 
-import comdirect from "../assets/BrokerLogos/comdirect_logo.png";
-import consors from "../assets/BrokerLogos/consors_logo.png";
-import dkb from "../assets/BrokerLogos/dkb_logo.png";
-import interactive from "../assets/BrokerLogos/interactive_brokers_logo.png";
-import onvista from "../assets/BrokerLogos/onvista_logo.png";
-import scalable from "../assets/BrokerLogos/scalable_cap_logo.png";
-import trade from "../assets/BrokerLogos/trade_rep_logo.png";
+import comdirect from "../assets/BrokerLogos/comdirect.png";
+import consors from "../assets/BrokerLogos/consors.png";
+import dkb from "../assets/BrokerLogos/dkb.png";
+import ibkr from "../assets/BrokerLogos/ibkr.png";
+import onvista from "../assets/BrokerLogos/onvista.png";
+import scalablecapital from "../assets/BrokerLogos/scalablecapital.png";
+import traderepublic from "../assets/BrokerLogos/traderepublic.png";
 
 let maxCostPerTrade = null;
 let costPerTrade = null;
@@ -19,27 +19,52 @@ export const broker_columns = [
 	{
 		Header: i18n.t("BROKER"),
 		accessor: "name",
-		// Cell: (row) => {
-		// 	const { marginLoad, showFragments } = store.getState().broker;
-		// 	const { fragments_trading_available } = row.row.original;
+		Cell: (row) => {
+			const { logo } = row.row.original;
 
-		// 	if (showFragments) {
-		// 		if (fragments_trading_available === 1) {
-		// 			if (row.row.original.margin_available === 1) {
-		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount) {
-		// 					row.column.isHidden = true;
-		// 					return row.value;
-		// 				} else return <div className="displayNone">{null}</div>;
-		// 			} else return <div className="displayNone">{null}</div>;
-		// 		} else return <div className="displayNone">{null}</div>;
-		// 	} else {
-		// 		if (row.row.original.margin_available === 1) {
-		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 				return row.value;
-		// 			else return <div className="displayNone">{null}</div>;
-		// 		} else return <div className="displayNone">{null}</div>;
-		// 	}
-		// },
+			if (logo === "comdirect.png")
+				return (
+					<div>
+						<img className="broker-image" src={comdirect} />
+					</div>
+				);
+			else if (logo === "consors.png")
+				return (
+					<div>
+						<img className="broker-image" src={consors} />
+					</div>
+				);
+			else if (logo === "dkb.png")
+				return (
+					<div>
+						<img className="broker-image" src={dkb} />
+					</div>
+				);
+			else if (logo === "ibkr.png")
+				return (
+					<div>
+						<img className="broker-image" src={ibkr} />
+					</div>
+				);
+			else if (logo === "onvista.png")
+				return (
+					<div>
+						<img className="broker-image" src={onvista} />
+					</div>
+				);
+			else if (logo === "scalablecapital.png")
+				return (
+					<div>
+						<img className="broker-image" src={scalablecapital} />
+					</div>
+				);
+			else
+				return (
+					<div>
+						<img className="broker-image" src={traderepublic} />
+					</div>
+				);
+		},
 	},
 	{
 		Header: i18n.t("TYPE"),
