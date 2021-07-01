@@ -73,7 +73,7 @@ export const callNasdaq = () => (dispatch, state) => {
 		.then(({ data }) => {
 			dispatch({
 				type: NASDAQ,
-				payload: { data, type: "nasdaq" },
+				payload: { data, type: "nasdaq100" },
 			});
 		});
 };
@@ -91,7 +91,7 @@ export const callSP = () => (dispatch, state) => {
 			.then(({ data }) => {
 				dispatch({
 					type: FETCH_DATA,
-					payload: { data, type: "sp" },
+					payload: { data, type: "sp500" },
 				});
 			});
 	} else
@@ -102,7 +102,7 @@ export const callSP = () => (dispatch, state) => {
 			.then(({ data }) => {
 				dispatch({
 					type: SP500,
-					payload: { data, type: "sp" },
+					payload: { data, type: "sp500" },
 				});
 			});
 };

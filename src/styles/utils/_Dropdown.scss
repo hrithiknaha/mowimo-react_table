@@ -1,0 +1,33 @@
+.dropdown {
+	width: 20%;
+	padding-top: 0.5rem;
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 90%;
+		position: absolute;
+		background-color: rgba(59, 59, 59, 0.822);
+
+		&_text {
+			padding: 0.75rem;
+			text-align: left;
+
+			&:hover {
+				background-color: #827d7d8c;
+				padding: 0.75rem;
+			}
+		}
+	}
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.no-align {
+	align-self: baseline;
+	position: relative;
+	text-align: center;
+}

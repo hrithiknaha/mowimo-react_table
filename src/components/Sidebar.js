@@ -108,7 +108,7 @@ function Sidebar({
 						<Link
 							to="/nasdaq"
 							className={
-								selected === "nasdaq"
+								selected === "nasdaq100"
 									? "sidebar-index_selected"
 									: "sidebar-anchor"
 							}
@@ -119,7 +119,9 @@ function Sidebar({
 						<Link
 							to="/sp500"
 							className={
-								selected === "sp" ? "sidebar-index_selected" : "sidebar-anchor"
+								selected === "sp500"
+									? "sidebar-index_selected"
+									: "sidebar-anchor"
 							}
 							onClick={handleSP}
 						>
@@ -196,6 +198,8 @@ function Sidebar({
 					)}
 				</div>
 				<div className="sidebar-links">
+					<Link to={`/stock/earnings/${selected}`}>{t("Stock Earning")}</Link>
+
 					<Link to="/broker">{t("Broker")}</Link>
 					<Link to="/policy">{t("Privacy Policy")}</Link>
 					<Link to="/imprint">{t("Imprint")}</Link>
