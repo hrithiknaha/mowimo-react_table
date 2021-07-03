@@ -46,6 +46,13 @@ function Dropdown() {
 		downloadContent("cookies.txt", string);
 	};
 
+	const handleDeleteCookies = () => {
+		delete_cookie("color");
+		localStorage.removeItem("like");
+		localStorage.removeItem("portfolioToken");
+		window.location.reload();
+	};
+
 	return (
 		<div className="no-align">
 			<img src={profile} className="dropdown" onClick={handleMenuShow} />
@@ -63,6 +70,10 @@ function Dropdown() {
 
 				<Link onClick={handleDownloadCookies} className="dropdown-wrapper_text">
 					Download Cookies
+				</Link>
+
+				<Link onClick={handleDeleteCookies} className="dropdown-wrapper_text">
+					Delete Cookies
 				</Link>
 			</div>
 		</div>
