@@ -1,5 +1,10 @@
+//THis is the Broker Actions, all the fetching or manipulaton of fata before final storage is reducer is done here.
+//This actions are called from each individual components, For this case all this actions are called from the Borker.js component.
+//For example the first action getBrokerData is called everytime the Broker page is Loaded. At that time it will fetch the data from the API
+//And then pass that data to GET_BROKER_DATA part of the BRoker reducer to store the broker data in the broker[] array.
+//Similarly for other datas.
+
 import axios from "axios";
-import broker from "../reducers/broker";
 import {
 	GET_BROKER_DATA,
 	SET_AVERAGE_TRADE_SIZE,

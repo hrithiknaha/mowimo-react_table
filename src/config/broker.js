@@ -1,3 +1,9 @@
+//This file is the basic defintion of the data that the Broken page's table will render.
+//We have the HEader in every object which signifies what should the Header name be.
+//We have the accessor, which basicaly asks us which data should "this" particular row display. We match it from the API.
+//And at last the Cell, if we want to have some manually canculations to make, or a certain way to show the data then we can do that in
+//cell value.
+
 import { Link } from "react-router-dom";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import store from "../store";
@@ -69,52 +75,10 @@ export const broker_columns = [
 	{
 		Header: i18n.t("TYPE"),
 		accessor: "type",
-		// Cell: (row) => {
-		// 	const { marginLoad, showFragments } = store.getState().broker;
-		// 	const { fragments_trading_available } = row.row.original;
-
-		// 	if (showFragments) {
-		// 		if (fragments_trading_available === 1) {
-		// 			if (row.row.original.margin_available === 1) {
-		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 					return row.value;
-		// 				else return null;
-		// 			} else return null;
-		// 		} else return null;
-		// 	} else {
-		// 		if (row.row.original.margin_available === 1) {
-		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 				return row.value;
-		// 			else return null;
-		// 		} else return null;
-		// 	}
-		// },
 	},
 	{
 		Header: i18n.t("FORMULA"),
 		accessor: "formula_text_lowest",
-
-		// width: 300,
-		// Cell: (row) => {
-		// 	const { marginLoad, showFragments } = store.getState().broker;
-		// 	const { fragments_trading_available } = row.row.original;
-
-		// 	if (showFragments) {
-		// 		if (fragments_trading_available === 1) {
-		// 			if (row.row.original.margin_available === 1) {
-		// 				if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 					return row.value;
-		// 				else return null;
-		// 			} else return null;
-		// 		} else return null;
-		// 	} else {
-		// 		if (row.row.original.margin_available === 1) {
-		// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-		// 				return row.value;
-		// 			else return null;
-		// 		} else return null;
-		// 	}
-		// },
 	},
 	{
 		Header: i18n.t("MIN"),
@@ -128,37 +92,17 @@ export const broker_columns = [
 		Header: i18n.t("MAX"),
 		id: "max",
 		Cell: (row) => {
-			const { marginLoad, averageTradeSize, showFragments } =
-				store.getState().broker;
+			const { averageTradeSize } = store.getState().broker;
 			const {
 				maximum_fixed_ordercosts_lowest,
 				maximum_relative_ordercosts_lowest,
-				fragments_trading_available,
 			} = row.row.original;
 
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
 			maxCostPerTrade =
 				maximum_fixed_ordercosts_lowest +
 				maximum_relative_ordercosts_lowest * averageTradeSize;
 
-			// if (row.row.original.margin_available === 1) {
-			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
 			return maxCostPerTrade.toFixed(2);
-			// 		else return null;
-			// 	} else return null;
-			// } else return null;
-			// } else {
-			// maxCostPerTrade =
-			// 	maximum_fixed_ordercosts_lowest +
-			// 	maximum_relative_ordercosts_lowest * averageTradeSize;
-
-			// if (row.row.original.margin_available === 1) {
-			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 		return maxCostPerTrade.toFixed(2);
-			// 	else return null;
-			// } else return null;
-			// }
 		},
 	},
 	{
@@ -260,28 +204,11 @@ export const broker_columns = [
 		id: "per month",
 
 		Cell: (row) => {
-			const { marginLoad, tradesPerYear, showFragments } =
-				store.getState().broker;
+			const { tradesPerYear } = store.getState().broker;
 
-			const { fragments_trading_available } = row.row.original;
-
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
 			costPerMonth = costPerTrade * (tradesPerYear / 12);
-			// 		if (row.row.original.margin_available === 1) {
-			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
+
 			return costPerMonth.toFixed(2);
-			// 		else return null;
-			// 	} else return null;
-			// } else return null;
-			// } else {
-			// 	costPerMonth = costPerTrade * tradesPerYear;
-			// 	if (row.row.original.margin_available === 1) {
-			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 			return costPerMonth.toFixed(2);
-			// 		else return null;
-			// 	} else return null;
-			// }
 		},
 	},
 	{
@@ -289,25 +216,8 @@ export const broker_columns = [
 		id: "per year",
 
 		Cell: (row) => {
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
 			const costPerYear = 12 * costPerMonth;
-
-			// if (row.row.original.margin_available === 1) {
-			// 	if (marginLoad > row.row.original.margin_minimum_loan_amount)
 			return costPerYear.toFixed(2);
-			// 			else return null;
-			// 		} else return null;
-			// 	} else return null;
-			// } else {
-			// 	const costPerYear = 12 * costPerMonth;
-
-			// 	if (row.row.original.margin_available === 1) {
-			// 		if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 			return costPerYear.toFixed(2);
-			// 		else return null;
-			// 	} else return null;
-			// }
 		},
 	},
 	{
@@ -337,32 +247,13 @@ export const broker_columns = [
 		id: "Link",
 
 		Cell: (row) => {
-			const { marginLoad, showFragments } = store.getState().broker;
-			const { website_url, fragments_trading_available } = row.row.original;
+			const { website_url } = row.row.original;
 
-			// if (showFragments) {
-			// 	if (fragments_trading_available === 1) {
-			// 		if (row.row.original.margin_available === 1) {
-			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
 			return (
 				<a href={website_url}>
 					<FaExternalLinkAlt />
 				</a>
 			);
-			// 				else return null;
-			// 			} else return null;
-			// 		} else return null;
-			// 	} else {
-			// 		if (row.row.original.margin_available === 1) {
-			// 			if (marginLoad > row.row.original.margin_minimum_loan_amount)
-			// 				return (
-			// 					<a href={website_url}>
-			// 						<FaExternalLinkAlt />
-			// 					</a>
-			// 				);
-			// 			else return null;
-			// 		} else return null;
-			// 	}
 		},
 	},
 ];

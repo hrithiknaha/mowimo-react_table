@@ -1,3 +1,11 @@
+//This is the DB of your react application. All the data that we get from our API needs to be stored first somewhere in order to anything with it.
+//WHen we use Redux we store all those data in a Reducer like this one.
+//Here we define the initialState or the default values of all the values that we want to store/
+//As you can see we have a brokers empty array as default value. So when the site is loaded, that will get populated with the broker datas from thr api.
+//These CASES, are called from the action component. When a particular event takes place, such as a page is loaded, or a button is clicked.
+//SO the ideal flow is, Suppose a page is loaded, at that time one particular action will be called and that action will call the API to get all the data
+//And then that action will pass that data to one particular reducer's case to make data manipulations
+
 import {
 	GET_BROKER_DATA,
 	GET_FRAGMENT_BROKER_DATA,

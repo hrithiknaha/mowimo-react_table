@@ -64,15 +64,6 @@ function SP500(props) {
 		getTableProps,
 		getTableBodyProps,
 		headerGroups,
-		page,
-		nextPage,
-		previousPage,
-		canNextPage,
-		canPreviousPage,
-		pageOptions,
-		gotoPage,
-		pageCount,
-		setPageSize,
 		prepareRow,
 		state,
 		setGlobalFilter,
@@ -296,75 +287,6 @@ function SP500(props) {
 							</tbody>
 						)}
 					</table>
-
-					{/* //React Table Actions for Changing page size, going to a custom page
-			number and pagination */}
-					{/* <div className="table-actions">
-						<select
-							value={pageSize}
-							onChange={(e) => setPageSize(Number(e.target.value))}
-						> */}
-					{/* Add the number here [10,25,50], you can add any number and then it will be in the list of page size. */}
-					{/* {[10, 25, 50].map((pageSize) => {
-								return (
-									<option key={pageSize} value={pageSize}>
-										{t("Show")} {pageSize}
-									</option>
-								);
-							})}
-						</select>
-						<span> */}
-					{/* All the {t()} functions are basically the translation functions, and
-						depending on the browser language it will automatically detect it
-						and switch between Englisha and German */}
-					{/* {t("Page")}{" "}
-							<strong>
-								{pageIndex + 1} {t("of")} {pageOptions.length}{" "}
-							</strong>
-						</span>
-						<span>
-							{t("Go to Page")}{" "}
-							<input
-								type="number"
-								defaultValue={pageIndex + 1}
-								onChange={(e) => {
-									const pageNumber = e.target.value
-										? Number(e.target.value) - 1
-										: 0;
-									gotoPage(pageNumber);
-								}}
-								style={{ width: "50px" }}
-							/>
-						</span>
-						<button
-							className="button-primary"
-							onClick={() => gotoPage(0)}
-							disabled={!canPreviousPage}
-						>
-							<BsChevronDoubleLeft />
-						</button>
-						<button
-							className="button-primary"
-							onClick={() => previousPage()}
-							disabled={!canPreviousPage}
-						>
-							<GrFormPreviousLink />
-						</button>
-						<button
-							className="button-primary"
-							onClick={() => nextPage()}
-							disabled={!canNextPage}
-						>
-							<GrFormNextLink />
-						</button>
-						<button
-							className="button-primary"
-							onClick={() => gotoPage(pageCount - 1)}
-							disabled={!canNextPage}
-						>
-							<BsChevronDoubleRight />
-						</button>
-					</div> */}
 				</div>
 			</div>
 		</>

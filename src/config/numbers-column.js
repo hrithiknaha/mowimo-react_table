@@ -121,7 +121,7 @@ export const NUM_COLUMNS = [
 				return (
 					<div>
 						<button
-							className="column-interactions"
+							className="column-lock"
 							onClick={() => setPayment(row.row.original)}
 						>
 							<AiFillLock />
@@ -170,7 +170,7 @@ export const NUM_COLUMNS = [
 				return (
 					<div>
 						<button
-							className="column-interactions"
+							className="column-interactions-liked"
 							onClick={() => removeTicker(row.original)}
 						>
 							<AiFillHeart />

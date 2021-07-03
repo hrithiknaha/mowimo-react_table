@@ -76,11 +76,6 @@ function Portfolio({ table, handleColor }) {
 				</div>
 			)}
 			<div className="portfolio">
-				{/* <Navbar
-					filter={globalFilter}
-					setFilter={setGlobalFilter}
-					index={"all"}
-				/> */}
 				<div className="table-header_content">
 					<img src={placeholderSmall} alt="table header image" />
 					<div className="table-header_content-text">

@@ -90,19 +90,7 @@ export const earnings_column = [
 					);
 					daysDiff.push(relative_description);
 				}
-				// else {
-				// 	const days_difference = date_diff(date, new Date());
-				// 	daysDiffScores.push(days_difference);
-				// 	let relative_description = relativePosition(
-				// 		timespan - days_difference / 2
-				// 	);
-				// 	daysDiff.push(relative_description);
-				// }
 			});
-			// console.log(markers);
-			// console.log(markerScores);
-			// console.log(daysDiff);
-			// console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];
@@ -268,19 +256,7 @@ export const earnings_column_negative = [
 					);
 					daysDiff.push(relative_description);
 				}
-				//else {
-				// 	const days_difference = date_diff(date, new Date());
-				// 	daysDiffScores.push(days_difference);
-				// 	let relative_description = relativePosition(
-				// 		timespan - days_difference / 2
-				// 	);
-				// 	daysDiff.push(relative_description);
-				// }
 			});
-			// console.log(markers);
-			// console.log(markerScores);
-			// console.log(daysDiff);
-			// console.log(daysDiffScores);
 
 			const printMarkers = () => {
 				let markersArray = [];

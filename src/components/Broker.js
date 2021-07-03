@@ -63,6 +63,8 @@ function Broker(props) {
 
 	// const { globalFilter } = state;
 
+	//As we come here, this particular function is reponsible to trigger anything that is inside it eveytime a page is loaded.
+	//So the cycle of fetching cycle comes from here.
 	useEffect(() => {
 		props.getBrokerData();
 	}, [props.getBrokerData]);
@@ -160,20 +162,8 @@ function Broker(props) {
 				</div>
 				<div className="broker-actions_fragments">
 					<label htmlFor="fragments">{t("EVEN STOCKS BUY")}</label>
-					{/* <input
-						type="checkbox"
-						name="fragments"
-						id="fragments"
-						onClick={handleFragmentChecked}
-					/> */}
 					<label className="switch">
-						<input
-							onClick={handleFragmentChecked}
-							type="checkbox"
-							// defaultChecked={
-							// 	props.table.scoreStyle === "scores" ? false : true
-							// }
-						/>
+						<input onClick={handleFragmentChecked} type="checkbox" />
 						<div>
 							<span></span>
 						</div>
