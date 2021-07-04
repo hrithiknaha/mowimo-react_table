@@ -56,6 +56,7 @@ export default function (state = initialState, action) {
 		case SET_AVERAGE_TRADE_SIZE:
 			return {
 				...state,
+				brokers: [...state.brokers],
 				averageTradeSize: action.payload,
 			};
 		case SET_MARGIN_LOAD:

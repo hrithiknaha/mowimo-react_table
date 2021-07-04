@@ -113,6 +113,8 @@ export const broker_columns = [
 		Header: i18n.t("PER TRADE"),
 		id: "per_trade",
 		sortType: "basic",
+		sortable: true,
+		sortFunction: (a, b) => (a > b ? 1 : -1),
 		accessor: (row) => {
 			const { averageTradeSize, averageEuroPrice, euroToUsd } =
 				store.getState().broker;
@@ -153,7 +155,7 @@ export const broker_columns = [
 							averageEuroPrice) /
 					euroToUsd;
 
-			console.log(row.name, costPerTrade);
+			console.log("Accessor :", costPerTrade);
 
 			return costPerTrade;
 		},

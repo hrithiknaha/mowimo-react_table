@@ -27,11 +27,13 @@ function Broker(props) {
 		showFragments,
 	} = props.broker;
 
-	const columns = useMemo(
-		() => broker_columns,
-		[broker_columns, averageTradeSize]
-	);
+	const columns = useMemo(() => {
+		console.log("Calling Columns");
+		return broker_columns;
+	}, [broker_columns, averageTradeSize]);
+
 	const data = useMemo(() => {
+		console.log("Calling Rows");
 		if (showFragments) return showBrokers;
 		else {
 			if (marginLoad == 0) {
@@ -39,7 +41,11 @@ function Broker(props) {
 			} else return showBrokers;
 		}
 	}, [showBrokers, brokers, marginLoad, averageTradeSize]);
-	const defaultSort = useMemo(() => BROKER_SORT, []);
+
+	const defaultSort = useMemo(() => {
+		console.log("Calling Orders");
+		return BROKER_SORT;
+	}, [averageTradeSize]);
 
 	const {
 		getTableProps,
