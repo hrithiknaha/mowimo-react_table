@@ -57,12 +57,16 @@ function Sidebar({
 					</div>
 					<div className="sidebar-portfolio">
 						{type === "start" ? (
-							<Link className="sidebar-anchor_selected" onClick={handleStart}>
+							<Link
+								to="#"
+								className="sidebar-anchor_selected"
+								onClick={handleStart}
+							>
 								<img src={HomeSelected} alt="Home selected image" />
 								<span>Start</span>
 							</Link>
 						) : (
-							<Link className="sidebar-anchor" onClick={handleStart}>
+							<Link to="#" className="sidebar-anchor" onClick={handleStart}>
 								<img src={HomeUnselected} alt="Home image" />
 								<span>Start</span>
 							</Link>
@@ -70,6 +74,7 @@ function Sidebar({
 
 						{type === "levermann" ? (
 							<Link
+								to="/"
 								className="sidebar-anchor_selected"
 								onClick={handleLevermann}
 							>
@@ -77,7 +82,7 @@ function Sidebar({
 								<span>Levermann</span>
 							</Link>
 						) : (
-							<Link className="sidebar-anchor" onClick={handleLevermann}>
+							<Link to="/" className="sidebar-anchor" onClick={handleLevermann}>
 								<img src={Levermann} alt="Levermann l image" />
 								<span>Levermann</span>
 							</Link>
@@ -174,7 +179,7 @@ function Sidebar({
 									max="10"
 									defaultValue="1"
 									onChange={handleRangeChange}
-									onmousemove="rangevalue1.value=value"
+									onMouseMove="rangevalue1.value=value"
 								/>
 								<output id="rangevalue1">{earnings.threshold}%</output>
 							</div>

@@ -119,7 +119,7 @@ function Broker(props) {
 							max="100"
 							defaultValue="48"
 							onChange={handleAverageTradesPerYearRange}
-							onmousemove="tradesPerYearOutput.value=value"
+							onMouseMove="tradesPerYearOutput.value=value"
 						/>
 						<span id="tradesPerYearOutput">{tradesPerYear}</span>
 					</div>

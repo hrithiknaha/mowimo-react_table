@@ -240,7 +240,9 @@ function DowJones(props) {
 						{/* Mapping page index with default size of 10, and then mapping each row
 				inside of each age to get all the rows. */}
 						{props.table.isLoading ? (
-							<Loader />
+							<tbody>
+								<Loader />
+							</tbody>
 						) : (
 							<tbody {...getTableBodyProps()}>
 								{rows.map((row) => {

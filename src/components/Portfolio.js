@@ -54,8 +54,8 @@ function Portfolio({ table, handleColor }) {
 		<>
 			{!document.cookie && (
 				<div>
-					<div class="modal">
-						<div class="modal-content">
+					<div className="modal">
+						<div className="modal-content">
 							<p>{t("cookie")}</p>
 							<div className="modal-content-form">
 								<input
@@ -96,43 +96,43 @@ function Portfolio({ table, handleColor }) {
 							<th>{t("SEC NAME")}</th>
 							<th>{t("SEC TICKER")}</th>
 							<th className="tooltipT">
-								1 <span class="tooltiptextT">{t("1")}</span>
+								1 <span className="tooltiptextT">{t("1")}</span>
 							</th>
 							<th className="tooltipT">
-								2 <span class="tooltiptextT">{t("2")}</span>
+								2 <span className="tooltiptextT">{t("2")}</span>
 							</th>
 							<th className="tooltipT">
-								3 <span class="tooltiptextT">{t("3")}</span>
+								3 <span className="tooltiptextT">{t("3")}</span>
 							</th>
 							<th className="tooltipT">
-								4 <span class="tooltiptextT">{t("4")}</span>
+								4 <span className="tooltiptextT">{t("4")}</span>
 							</th>
 							<th className="tooltipT">
-								5 <span class="tooltiptextT">{t("5")}</span>
+								5 <span className="tooltiptextT">{t("5")}</span>
 							</th>
 							<th className="tooltipT">
-								6 <span class="tooltiptextT">{t("6")}</span>
+								6 <span className="tooltiptextT">{t("6")}</span>
 							</th>
 							<th className="tooltipT">
-								7 <span class="tooltiptextT">{t("7")}</span>
+								7 <span className="tooltiptextT">{t("7")}</span>
 							</th>
 							<th className="tooltipT">
-								8 <span class="tooltiptextT">{t("8")}</span>
+								8 <span className="tooltiptextT">{t("8")}</span>
 							</th>
 							<th className="tooltipT">
-								9<span class="tooltiptextT">{t("9")}</span>
+								9<span className="tooltiptextT">{t("9")}</span>
 							</th>
 							<th className="tooltipT">
-								10 <span class="tooltiptextT">{t("10")}</span>
+								10 <span className="tooltiptextT">{t("10")}</span>
 							</th>
 							<th className="tooltipT">
-								11 <span class="tooltiptextT">{t("11")}</span>
+								11 <span className="tooltiptextT">{t("11")}</span>
 							</th>
 							<th className="tooltipT">
-								12 <span class="tooltiptextT">{t("12")}</span>
+								12 <span className="tooltiptextT">{t("12")}</span>
 							</th>
 							<th className="tooltipT">
-								13 <span class="tooltiptextT">{t("13")}</span>
+								13 <span className="tooltiptextT">{t("13")}</span>
 							</th>
 							<th>{t("Total")}</th>
 						</tr>

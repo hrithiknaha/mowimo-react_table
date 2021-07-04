@@ -62,19 +62,27 @@ function Dropdown() {
 			<div
 				className={menuShown ? "dropdown-wrapper" : "dropdown-wrapper hidden"}
 			>
-				<Link onClick={deleteCookie} className="dropdown-wrapper_text">
+				<Link to="#" onClick={deleteCookie} className="dropdown-wrapper_text">
 					Change Color
 				</Link>
 
-				<Link link="#" className="dropdown-wrapper_text">
+				<Link to="#" className="dropdown-wrapper_text">
 					Upgrade to Premium
 				</Link>
 
-				<Link onClick={handleDownloadCookies} className="dropdown-wrapper_text">
+				<Link
+					to="#"
+					onClick={handleDownloadCookies}
+					className="dropdown-wrapper_text"
+				>
 					Download Cookies
 				</Link>
 
-				<Link onClick={handleDeleteCookies} className="dropdown-wrapper_text">
+				<Link
+					to="#"
+					onClick={handleDeleteCookies}
+					className="dropdown-wrapper_text"
+				>
 					Delete Cookies
 				</Link>
 			</div>

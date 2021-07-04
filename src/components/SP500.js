@@ -20,13 +20,9 @@ import {
 	closeModal,
 } from "../actions/table";
 
-import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
-import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
-
 import useCookie from "../hooks/useCookie";
 import Loader from "./Loader";
 
-import placeholder from "../assets/placeholder.jpeg";
 import placeholderSmall from "../assets/placeholder-smaller.jpeg";
 
 function SP500(props) {
@@ -267,7 +263,9 @@ function SP500(props) {
 						{/* Mapping page index with default size of 10, and then mapping each row
 				inside of each age to get all the rows. */}
 						{props.table.isLoading ? (
-							<Loader />
+							<tbody>
+								<Loader />
+							</tbody>
 						) : (
 							<tbody {...getTableBodyProps()}>
 								{rows.map((row) => {
