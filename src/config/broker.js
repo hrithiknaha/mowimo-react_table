@@ -85,6 +85,10 @@ export const broker_columns = [
 		accessor: "minimum_ordercosts_lowest",
 
 		Cell: (row) => {
+			const { name } = row.row.original;
+			const { euroToUsd } = store.getState().broker;
+			if (name === "Interactive Brokers")
+				return (row.value / euroToUsd).toFixed(2);
 			return row.value.toFixed(2);
 		},
 	},

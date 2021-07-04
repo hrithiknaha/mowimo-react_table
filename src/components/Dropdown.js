@@ -23,27 +23,29 @@ function Dropdown() {
 
 	function downloadContent(name, content) {
 		let atag = document.createElement("a");
-		let file = new Blob([content], { type: "text/plain" });
+		let file = new Blob([content]);
 		atag.href = URL.createObjectURL(file);
 		atag.download = name;
 		atag.click();
+		console.log(file.type);
 	}
 
 	const handleDownloadCookies = () => {
 		let portfolios = JSON.parse(localStorage.getItem("portfolioToken"));
-
 		let portfolioText = "Liked Stocks Information \n";
-		portfolios.map((ticker) => {
-			// console.log(ticker);
-			let tickerText = ticker.split(",")[0];
-			let tickerScore = ticker.split(",")[1];
-			let string = `Stock ${tickerText} with total score of ${tickerScore} \n`;
-			portfolioText = portfolioText + string;
-		});
-		console.log(portfolioText);
+		if (portfolios) {
+			portfolios.map((ticker) => {
+				// console.log(ticker);
+				let tickerText = ticker.split(",")[0];
+				let tickerScore = ticker.split(",")[1];
+				let string = `Stock ${tickerText} with total score of ${tickerScore} \n`;
+				portfolioText = portfolioText + string;
+			});
+		} else portfolioText = "No Liked Stocks";
+
 		let colorText = `\n\nCookies with color option : ${document.cookie}`;
 		let string = portfolioText + colorText;
-		downloadContent("cookies.txt", string);
+		downloadContent("cookies", string);
 	};
 
 	const handleDeleteCookies = () => {

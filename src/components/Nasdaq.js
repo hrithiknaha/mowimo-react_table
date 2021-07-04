@@ -51,7 +51,7 @@ function Nasdaq(props) {
 		window.addEventListener(
 			"scroll",
 			() => {
-				if (window.scrollY > 170) {
+				if (window.scrollY > 335) {
 					setTop("top");
 				} else setTop("");
 			},
