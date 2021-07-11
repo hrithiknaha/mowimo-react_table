@@ -3,11 +3,10 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { fetchTickerData } from "../actions/table";
-import { AiFillLock } from "react-icons/ai";
+
 import RowOne from "./modals/RowOne";
 import RowTwo from "./modals/RowTwo";
 import RowThree from "./modals/RowThree";
-import Row4 from "./modals/RowFour";
 import RowFour from "./modals/RowFour";
 import RowFive from "./modals/RowFive";
 import RowSix from "./modals/RowSix";
@@ -19,6 +18,8 @@ import RowEleven from "./modals/RowEleven";
 import RowTwelve from "./modals/RowTwelve";
 import RowThirteen from "./modals/RowThirteen";
 import useCookie from "../hooks/useCookie";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 function Ticker(props) {
 	const [cookie, updateCookie] = useCookie("color", "black");
@@ -204,7 +205,14 @@ function Ticker(props) {
 					<RowTwelve show={isOpen12} onClose={onClose12} />
 					<RowThirteen show={isOpen13} onClose={onClose13} />
 					<div className="ticket-content">
-						<h1 className="ticker-content-name">{props.table.data.sec_name}</h1>
+						<h1 className="ticker-content-name">
+							{props.table.data.sec_name}
+							{props.table.portfolio_like.map((like) => {
+								if (like === props.table.data.sec_ticker)
+									return <AiFillHeart />;
+								else return null;
+							})}
+						</h1>
 						<div className="ticker-content-meta">
 							<div className="ticker-content-meta_row-one">
 								<p className="ticker-content-meta_data">

@@ -75,7 +75,7 @@ function Dropdown() {
 					onClick={handleDownloadCookies}
 					className="dropdown-wrapper_text"
 				>
-					Download Cookies
+					Download Cookie info
 				</Link>
 
 				<Link

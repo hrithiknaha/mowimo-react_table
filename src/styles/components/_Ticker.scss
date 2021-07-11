@@ -8,6 +8,13 @@
 	}
 
 	&-content {
+		&-name {
+			display: flex;
+			/* justify-content: center; */
+			align-items: center;
+			width: 20%;
+			justify-content: space-between;
+		}
 		&-meta {
 			display: flex;
 			width: 50%;
