@@ -97,7 +97,7 @@ function Sidebar({
 							// The function are called everytime the anchor tag is clicked, similar for all the below anchor tags
 							onClick={handleAll}
 						>
-							{t("All")}
+							{t("Top100")}
 						</Link>
 						<Link
 							to="/dowjones"

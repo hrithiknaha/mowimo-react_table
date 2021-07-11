@@ -28,6 +28,7 @@
         "Week": "Week",
 
         "All": "All",
+        "Top100": "Top100",
 
         "Sector": "Sector",
         "Industry": "Industry",
@@ -80,6 +81,7 @@
         "Close": "Close",
 
         "All Index": "ALL INDEX",
+        "TOP100":"TOP100",
 
         "STOCKS" : "STOCKS",
 

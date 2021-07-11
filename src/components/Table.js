@@ -194,7 +194,7 @@ function Table(props) {
 					<img src={placeholderSmall} alt="table header image" />
 					<div className="table-header_content-text">
 						<p>INDEX</p>
-						<h1 className="no-margin">{t("All Index")}</h1>
+						<h1 className="no-margin">{t("TOP100")}</h1>
 						<p>
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 							Accusantium, maxime.

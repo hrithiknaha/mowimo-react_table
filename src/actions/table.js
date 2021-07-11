@@ -23,7 +23,7 @@ export const fetchData = () => (dispatch, state) => {
 		console.log("Unlocked");
 		axios
 			.get(
-				`https://levermy.herokuapp.com/levermann/unlocked/all/${unlockedTicker}?style=${scoreStyle}`
+				`https://levermy.herokuapp.com/levermann/unlocked/top100/${unlockedTicker}?style=${scoreStyle}`
 			)
 			.then(({ data }) => {
 				dispatch({
@@ -34,7 +34,7 @@ export const fetchData = () => (dispatch, state) => {
 	} else
 		axios
 			.get(
-				`https://levermy.herokuapp.com/levermann/all/${weekSelected}?style=${scoreStyle}`
+				`https://levermy.herokuapp.com/levermann/top100/${weekSelected}?style=${scoreStyle}`
 				// `https://mysql-test-2021.herokuapp.com/levermann_week/all/${weekSelected}`
 			)
 			.then(({ data }) => {
@@ -173,7 +173,7 @@ export const makePayment = (ticker) => (dispatch, state) => {
 	const { scoreStyle } = state().table;
 	axios
 		.get(
-			`https://levermy.herokuapp.com/levermann/unlocked/all/${ticker}?style=${scoreStyle}`
+			`https://levermy.herokuapp.com/levermann/unlocked/top100/${ticker}?style=${scoreStyle}`
 		)
 		.then(({ data }) => {
 			dispatch({
