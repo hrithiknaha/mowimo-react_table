@@ -160,7 +160,9 @@ export const earnings_column = [
 	{
 		Header: i18n.t("LAST REACTION"),
 		id: "last_reaction",
+		sortType: "basic",
 		accessor: (row) => {
+			if (row.name === "Williams Companies") console.log(row.earnings_reaction);
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
@@ -326,7 +328,9 @@ export const earnings_column_negative = [
 	{
 		Header: i18n.t("LAST REACTION"),
 		id: "last_reaction",
+		sortType: "basic",
 		accessor: (row) => {
+			console.log(row.earnings_reaction);
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
@@ -342,6 +346,8 @@ export const earnings_column_negative = [
 			const threshold = store.getState().earnings.threshold;
 			let negative = null;
 			const earnings = row.earnings_reaction;
+
+			console.log("TEST");
 
 			earnings.map((earning) => {
 				if (earning[1] < -threshold) negative++;
