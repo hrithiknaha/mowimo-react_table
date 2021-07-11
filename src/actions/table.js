@@ -8,7 +8,6 @@ import {
 	SET_SCORE_STYLE,
 	FETCH_TICKER,
 	SET_TYPE,
-	SET_LOCK_TOGGLE,
 	UNLOCKED_TICKER,
 	ADD_PORTFOLIO_LENGTH,
 	MAKE_PORTFOLIO_PAYMENT,
@@ -171,8 +170,7 @@ export const chooseTicker = (row) => {
 };
 
 export const makePayment = (ticker) => (dispatch, state) => {
-	// const { sec_ticker } = row;
-	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
+	const { scoreStyle } = state().table;
 	axios
 		.get(
 			`https://levermy.herokuapp.com/levermann/unlocked/all/${ticker}?style=${scoreStyle}`
@@ -186,8 +184,7 @@ export const makePayment = (ticker) => (dispatch, state) => {
 };
 
 export const makePaymentSP = (ticker) => (dispatch, state) => {
-	// const { sec_ticker } = row;
-	const { weekSelected, scoreStyle, unlockedTicker } = state().table;
+	const { scoreStyle } = state().table;
 	axios
 		.get(
 			`https://levermy.herokuapp.com/levermann/unlocked/SP500/${ticker}?style=${scoreStyle}`

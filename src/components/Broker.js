@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import { useTable, useGlobalFilter, useSortBy } from "react-table";
+import { useTable, useSortBy } from "react-table";
 import { broker_columns } from "../config/broker";
 
 import { BROKER_SORT } from "../config/defaultSort";
@@ -28,7 +28,6 @@ function Broker(props) {
 	} = props.broker;
 
 	const columns = useMemo(() => {
-		console.log("Calling Columns");
 		return broker_columns;
 	}, [broker_columns, averageTradeSize]);
 
@@ -36,14 +35,13 @@ function Broker(props) {
 		console.log("Calling Rows");
 		if (showFragments) return showBrokers;
 		else {
-			if (marginLoad == 0) {
+			if (marginLoad === 0) {
 				return brokers;
 			} else return showBrokers;
 		}
 	}, [showBrokers, brokers, marginLoad, averageTradeSize]);
 
 	const defaultSort = useMemo(() => {
-		console.log("Calling Orders");
 		return BROKER_SORT;
 	}, [averageTradeSize]);
 

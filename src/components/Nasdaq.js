@@ -19,14 +19,10 @@ import {
 	closeModal,
 } from "../actions/table";
 
-import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
-import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
-
 import Loader from "./Loader";
 
 import useCookie from "../hooks/useCookie";
 
-import placeholder from "../assets/placeholder.jpeg";
 import placeholderSmall from "../assets/placeholder-smaller.jpeg";
 
 function Nasdaq(props) {
@@ -86,7 +82,7 @@ function Nasdaq(props) {
 	);
 
 	//Destructuring filter data, page index data and page size from react-table state.
-	const { globalFilter, pageIndex, pageSize } = state;
+	const { globalFilter } = state;
 
 	//Getting the translation function for Internilations
 	const { t } = useTranslation();

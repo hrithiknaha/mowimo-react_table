@@ -8,7 +8,6 @@ import store from "../store";
 import {
 	ADD_PORTFOLIO,
 	REMOVE_PORTFOLIO,
-	UNLOCKED_TICKER,
 	SET_PAYMENT_METHOD,
 } from "../actions/types";
 import axios from "axios";

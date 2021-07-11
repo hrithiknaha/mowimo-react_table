@@ -136,15 +136,14 @@ export default function (state = initialState, action) {
 				hasPortfolio: true,
 			};
 		case REMOVE_PORTFOLIO:
-			console.log(state.portfolio);
 			return {
 				...state,
 				portfolio: state.portfolio.filter(
 					(item) =>
-						item != action.payload.sec_ticker + "," + action.payload.end_score
+						item !== action.payload.sec_ticker + "," + action.payload.end_score
 				),
 				portfolio_like: state.portfolio_like.filter(
-					(item) => item != action.payload.sec_ticker
+					(item) => item !== action.payload.sec_ticker
 				),
 			};
 		case SET_TYPE:

@@ -162,7 +162,6 @@ export const earnings_column = [
 		id: "last_reaction",
 		sortType: "basic",
 		accessor: (row) => {
-			if (row.name === "Williams Companies") console.log(row.earnings_reaction);
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
@@ -330,7 +329,6 @@ export const earnings_column_negative = [
 		id: "last_reaction",
 		sortType: "basic",
 		accessor: (row) => {
-			console.log(row.earnings_reaction);
 			return row.earnings_reaction[row.earnings_reaction.length - 1][1];
 		},
 	},
