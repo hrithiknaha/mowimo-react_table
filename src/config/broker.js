@@ -155,8 +155,6 @@ export const broker_columns = [
 							averageEuroPrice) /
 					euroToUsd;
 
-			console.log("Accessor :", costPerTrade);
-
 			return costPerTrade;
 		},
 		Cell: (row) => {
