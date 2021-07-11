@@ -102,6 +102,9 @@ function Broker(props) {
 		}
 	};
 
+	const tradesPerYearOutputFunc = (value) => {
+		tradesPerYearOutput.value = value;
+	};
 	const { t } = useTranslation();
 
 	return (
@@ -123,7 +126,7 @@ function Broker(props) {
 							max="100"
 							defaultValue="48"
 							onChange={handleAverageTradesPerYearRange}
-							onMouseMove="tradesPerYearOutput.value=value"
+							onMouseMove={"tradesPerYearOutput.value = value"}
 						/>
 						<span id="tradesPerYearOutput">{tradesPerYear}</span>
 					</div>
@@ -141,7 +144,7 @@ function Broker(props) {
 							defaultValue="1000"
 							step="100"
 							onChange={handleTradeSizeRange}
-							onmousemove="averageTradeSizeOutput.value=value"
+							onMouseMove={"averageTradeSizeOutput.value=value"}
 						/>
 						<span id="averageTradeSizeOutput">{averageTradeSize}</span>
 					</div>
@@ -159,7 +162,7 @@ function Broker(props) {
 							defaultValue="0"
 							step="100"
 							onChange={handleMarginLoadRange}
-							onmousemove="marginLoadOutput.value=value"
+							onMouseMove={"marginLoadOutput.value=value"}
 						/>
 						<span id="marginLoadOutput">{marginLoad}</span>
 					</div>
